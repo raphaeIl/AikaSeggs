@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,56 +9,46 @@ namespace AikaSeggs.Common.Core
 {
     public class HttpMessage
     {
-        public string Packet { get; }
+        public string Content { get; private set; } // Serialized Packet
 
-        //public Dictionary<string, string>? Headers { get; init; }
-        public HttpMessage(string packet)
+        public bool DoMsgPack { get; set; }
+
+        public Dictionary<string, string>? Headers { get; init; }
+
+        private HttpMessage(string packet, bool doMsgPack = false, Dictionary<string, string> customHeaders = null)
         {
-            this.Packet = packet;
+            Content = packet;
+            DoMsgPack = doMsgPack;
+
+            // init with default headers
+            Headers = new Dictionary<string, string>();
+
+            // Set standard headers
+            Headers["Access-Control-Allow-Credentials"] = "true";
+            Headers["X-DNS-Prefetch-Control"] = "off";
+            Headers["X-Frame-Options"] = "SAMEORIGIN";
+            Headers["Strict-Transport-Security"] = "max-age=15552000; includeSubDomains";
+            Headers["X-Download-Options"] = "noopen";
+            Headers["X-Content-Type-Options"] = "nosniff";
+            Headers["X-XSS-Protection"] = "1; mode=block";
+            Headers["Access-Control-Allow-Origin"] = "*";
+            Headers["Access-Control-Allow-Headers"] = "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Deep-One-App-Version";
+            Headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS";
+
+            foreach (var header in customHeaders) // supports overriding
+            {
+                Headers[header.Key] = header.Value;
+            }
         }
-        //public HttpMessage(IMessage packet, bool doGzip = false, Dictionary<string, string> customHeaders = null)
-        //{
-        //    Packet = packet;
-        //    DoGzip = doGzip;
 
-        //    // init with default headers
-        //    Headers = new Dictionary<string, string>();
-
-        //    Headers["Proto-Type"] = packet.GetType().FullName.Replace("YotsubaBestGirl.Proto.", "");
-
-        //    Headers["Connection"] = "keep-alive";
-        //    Headers["Vary"] = "Accept-Encoding";
-        //    Headers["X-Enish-App-Review"] = "false";
-
-        //    // others
-        //    Headers["X-Enish-Date"] = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
-        //    Headers["Strict-Transport-Security"] = "max-age=15724800; includeSubDomains";
-
-        //    if (customHeaders is null)
-        //    {
-        //        // these does not exist in some packets, but they does in most of them, so add by default
-        //        Headers["X-Enish-App-Version-Check"] = "1";
-        //        Headers["X-Enish-App-Version-Master"] = Config.MasterVersion.ToString();
-        //        Headers["X-Enish-App-Version-Resource"] = Config.ResourceVersion.ToString();
-        //    }
-            
-        //    else
-        //    {
-        //        foreach (var header in customHeaders) // supports overriding
-        //        {
-        //            Headers[header.Key] = header.Value;
-        //        }
-        //    }
-        //}
-
-        //public static HttpMessage Create(IMessage packet, bool doGzip = false, Dictionary<string, string> customHeaders = null)
-        //{
-        //    return new HttpMessage(packet, doGzip, customHeaders);
-        //}
-        
-        public static HttpMessage Create(string packet)
+        public static HttpMessage Create(IMessage packet, bool doGzip = false, Dictionary<string, string> customHeaders = null)
         {
-            return new HttpMessage(packet);
+            return new HttpMessage(JsonConvert.SerializeObject(packet), doGzip, customHeaders);
+        }
+
+        public static HttpMessage Create(string jsonPacket, bool doGzip = false, Dictionary<string, string> customHeaders = null)
+        {
+            return new HttpMessage(jsonPacket, doGzip, customHeaders);
         }
 
     }

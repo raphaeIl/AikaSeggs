@@ -1,4 +1,5 @@
-﻿using AikaSeggs.Common.Core;
+﻿using AikaSeggs.Common;
+using AikaSeggs.Common.Core;
 using Serilog;
 using System.Net.Sockets;
 using System.Reflection;
@@ -83,9 +84,9 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
             // pure IMessage: use default HttpMessage.Create, HttpMessage: just use it
 
             // return val is IMessage, meaning use default headers, with no gzip
-            if (handler.ReturnType != typeof(HttpMessage))
+            if (handler.ReturnType == typeof(IMessage))
             {
-                string packet = (string)handler.Invoke(inst, args);
+                IMessage packet = (IMessage)handler.Invoke(inst, args);
 
                 return HttpMessage.Create(packet);
             }

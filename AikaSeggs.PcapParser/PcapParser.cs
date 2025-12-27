@@ -1,4 +1,5 @@
-﻿using AikaSeggs.Common.Core;
+﻿using AikaSeggs.Common;
+using AikaSeggs.Common.Core;
 using AikaSeggs.Common.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -15,7 +16,9 @@ namespace AikaSeggs.PcapParser
 
         public void LoadAllPackets()
         {
-            PcapParser.Instance.Parse("login_packets.json");
+            //PcapParser.Instance.Parse("0.json");
+            PcapParser.Instance.Parse("gacha_packets.json");
+            //PcapParser.Instance.Parse("login_packets.json");
         }
 
         public DeepOnePacket[] GetAllPcapPacketOfType(Protocol protocol)
@@ -41,7 +44,6 @@ namespace AikaSeggs.PcapParser
         public void Parse(string pcapFileName)
         {
             string pcapJsonFile = File.ReadAllText(Path.Combine(Config.PcapDir, pcapFileName));
-            Console.WriteLine(pcapJsonFile);
             var pcapPackets = JsonConvert.DeserializeObject<List<PcapPacket>>(pcapJsonFile);
 
             foreach (PcapPacket pcapPacket in pcapPackets)

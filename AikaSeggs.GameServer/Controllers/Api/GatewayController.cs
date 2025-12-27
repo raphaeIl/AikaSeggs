@@ -1,12 +1,14 @@
-﻿using AikaSeggs.Common.Core;
+﻿using AikaSeggs.Common;
+using AikaSeggs.Common.Core;
 using AikaSeggs.Common.Utils;
+using AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Serilog;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers;
 
 namespace AikaSeggs.GameServer.Controllers.Api
 {
@@ -26,7 +28,12 @@ namespace AikaSeggs.GameServer.Controllers.Api
         public IResult PostRequest(string path)
         {
             Log.Information("Gateway Post Request from: {path}", path);
-
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,  // Skip nulls
+                DefaultValueHandling = DefaultValueHandling.Ignore,  // Skip defaults
+                Formatting = Formatting.None  // No pretty print
+            };
             Protocol protocol = Util.GetProtocolFromRoute(path);
 
             if (protocol == Protocol.Unknown)
@@ -47,10 +54,10 @@ namespace AikaSeggs.GameServer.Controllers.Api
 
             //IMessage reqPacket = (IMessage)JsonSerializer.Deserialize(reqBody, packetClassType);
 
-            HttpMessage reqMessage = HttpMessage.Create(reqBody);
+            //HttpMessage reqMessage = HttpMessage.Create(reqBody);
 
             // resp
-            HttpMessage respMessage = protocolHandlerFactory.Invoke(protocol, reqMessage);
+            HttpMessage respMessage = protocolHandlerFactory.Invoke(protocol);
 
             if (respMessage is null)
             {
@@ -59,38 +66,13 @@ namespace AikaSeggs.GameServer.Controllers.Api
                 return Results.Empty;
             }
 
-            // Set standard headers
-            Response.Headers.Append("Access-Control-Allow-Credentials", "true");
-            Response.Headers.Append("X-DNS-Prefetch-Control", "off");
-            Response.Headers.Append("X-Frame-Options", "SAMEORIGIN");
-            Response.Headers.Append("Strict-Transport-Security", "max-age=15552000; includeSubDomains");
-            Response.Headers.Append("X-Download-Options", "noopen");
-            Response.Headers.Append("X-Content-Type-Options", "nosniff");
-            Response.Headers.Append("X-XSS-Protection", "1; mode=block");
-            Response.Headers.Append("Access-Control-Allow-Origin", "*");
-            Response.Headers.Append("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Deep-One-App-Version");
-            Response.Headers.Append("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+            // Set headers
+            foreach (var header in respMessage.Headers)
+            {
+                HttpContext.Response.Headers[header.Key] = header.Value;
+            }
 
-            return Results.Content(respMessage.Packet, "application/json; charset=utf-8");
-            //byte[] respBytes = respMessage.Packet.ToByteArray();
-
-            //HttpContext.Response.ContentType = "application/protobuf";
-
-            //foreach (var header in respMessage.Headers)
-            //{
-            //    HttpContext.Response.Headers[header.Key] = header.Value;
-            //}
-                
-            //if (respMessage.DoGzip)
-            //{
-            //    HttpContext.Response.Headers["Content-Encoding"] = "gzip";
-            //    using var gzip = new GZipStream(HttpContext.Response.Body, CompressionLevel.Fastest, leaveOpen: true);
-            //    gzip.Write(respBytes, 0, respBytes.Length);
-            //} else
-            //{
-            //    HttpContext.Response.ContentLength = respBytes.Length;
-            //    HttpContext.Response.Body.Write(respBytes, 0, respBytes.Length);
-            //}
+            return Results.Content(respMessage.Content, "application/json; charset=utf-8");
         }
     }
 }

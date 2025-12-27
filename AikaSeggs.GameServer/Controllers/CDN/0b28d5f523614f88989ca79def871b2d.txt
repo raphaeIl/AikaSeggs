@@ -1,0 +1,286 @@
+name, 
+stopbgm
+fadeoutblack,1.5
+endwait
+playbgm,/download/sound/bgm/bgm005.mp3,0.5,,,
+name,,,,,,,,,,,
+msg,0,,,,,,,,,,,
+spriteoff,all,0.5
+endwait,,,,,,,,,,,
+bg,color_0_0_0,1,255
+endwait,,,,,,,,,,,
+name, 
+movie,download/character/100221/adv/anm/100221_01.mp4,mov1,1,,,,,,,,,
+wait,0.01,
+name,<outline width=2 color=black>ブリジット・ボードウィン</outline>,
+msg,1,<outline width=2 color=black>「ほら……するなら、はやくしてよ」</outline>,
+clickwait
+msg,0,<size=31><outline width=2 color=black>ルルイエに取り残され、脱出のために幻夢境を想索し、\n施設を封鎖している元凶であるナコト原書に接触しなければならない。</outline></size>,
+clickwait
+name, 
+msg,0,<size=31><outline width=2 color=black>しかし、幻夢境を満たすナコト原書の力に身を浸せば浸すほどに、\n人の肉体と魂には多大な負荷がかかってしまう。</outline></size>,
+clickwait
+name, 
+msg,0,<size=31><outline width=2 color=black>――自分に、そんな負荷を軽減する力がある。</outline></size>,
+clickwait
+name, 
+msg,0,<size=31><outline width=2 color=black>そう言われても実感はないが、それでも\n自分の行いによって誰かが助かるのなら……。</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_01.mp3
+msg,1,<size=31><outline width=2 color=black>「いつまで考え込んでるのよ……ほら」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_02.mp3
+msg,1,<size=31><outline width=2 color=black>「そんなに迷わなくていいわよ……あなたなら、悪くないって思うの」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_03.mp3
+msg,1,<size=31><outline width=2 color=black>「……出会ったばっかりで、自分でも不思議だけど……でも、そうやって\n真剣に私の事を考えてくれるんだもの……だから……ね？」</outline></size>,
+clickwait
+name, 
+msg,0,<size=31><outline width=2 color=black>恐れるように肌に触れ合い、服を少しずつ脱がせていく。</outline></size>,
+clickwait
+name, 
+msg,0,<size=31><outline width=2 color=black>甘い匂いと、柔らかな感触、熱い吐息。\n現実味の薄い夢のような間を経て、見つめあった。</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_04.mp3
+msg,1,<size=31><outline width=2 color=black>「……ちゃんと……優しくしてよね」</outline></size>,
+clickwait
+spriteoff,all,0,5
+bg,download/character/100100/adv/image/101.jpg,0.5,255
+endwait,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_05.mp3
+msg,1,<size=31><outline width=2 color=black>「えっ……あ……思ったより、すごいのね……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_06.mp3
+msg,1,<size=31><outline width=2 color=black>「えっと……私も、脱ぐのよね……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_07.mp3
+msg,1,<size=31><outline width=2 color=black>「その方が……それも……その、\n……ねぇ、それって、まだ大きくなる……？」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_08.mp3
+msg,1,<size=31><outline width=2 color=black>「ぁ、ぅ……大丈夫よ……こんなところで止めたら、\nそれこそ恥ずかしいだけで、なににもならないじゃない……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_09.mp3
+msg,1,<size=31><outline width=2 color=black>「……ねえ、少し、手が震えちゃって……脱がせて、くれる？」</outline></size>,
+clickwait
+spriteoff,all,0,5
+bg,download/character/100100/adv/image/102.jpg,0.5,255
+endwait,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_10.mp3
+msg,1,<size=31><outline width=2 color=black>「んっ……なんで、そんなにゆっくり……ゃん……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_11.mp3
+msg,1,<size=31><outline width=2 color=black>「ぁ……う……見られちゃった……」</outline></size>,
+clickwait
+spriteoff,all,0,5
+bg,download/character/100100/adv/image/103.jpg,0.5,255
+endwait,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_12.mp3
+msg,1,<size=31><outline width=2 color=black>「うん、お互い様……私も、あなたの見ちゃってる……あはは」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_13.mp3
+msg,1,<size=31><outline width=2 color=black>「……大丈夫よ。優しくしてくれるなら、怖くないから」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_14.mp3
+msg,1,<size=31><outline width=2 color=black>「…………して？」</outline></size>,
+clickwait
+spriteoff,all,0,5
+bg,download/character/100100/adv/image/102.jpg,0.5,255
+endwait,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_15.mp3
+msg,1,<size=31><outline width=2 color=black>「もう、たくさん触ってくれたから……大丈夫、なの。\n恥ずかしいから、言わせないで……？」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_16.mp3
+msg,1,<size=31><outline width=2 color=black>「うん……なんでだろう……あなたの声聞いてると、安心する……\nでも……どうせなら、謝罪や気遣いの言葉よりも……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_17.mp3
+msg,1,<size=31><outline width=2 color=black>「こんな時、なんだもん……少しくらい、褒めて欲しい。\n私の身体……変じゃ、ないよね？」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_18.mp3
+msg,1,<size=31><outline width=2 color=black>「ん、ありがと……ぁ」</outline></size>,
+clickwait
+spriteoff,all,0,5
+bg,download/character/100100/adv/image/104.jpg,0.5,255
+endwait,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_19.mp3
+msg,1,<size=31><outline width=2 color=black>「んふ……うぅ……く、ぅ……ふぁ……ぁ……あぁ……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_20.mp3
+msg,1,<size=31><outline width=2 color=black>「ふぅ……んっ……はぁ……もうすこし……んっ……\nんぅ……ふっ……あっ……あぁぁ……いっ……くぅ」</outline></size>,
+clickwait
+spriteoff,all,0,5
+bg,download/character/100100/adv/image/105.jpg,0.5,255
+endwait,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_21.mp3
+msg,1,<size=31><outline width=2 color=black>「はぁ……んっ……はいったよ……もう、大丈夫……\nほら……いちばん深いところで、繋がっちゃった……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_22.mp3
+msg,1,<size=31><outline width=2 color=black>「大丈夫だから、慌てないで……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_23.mp3
+msg,1,<size=31><outline width=2 color=black>「ふふっ……せっかく、私の初めてなんだから……、\nちょっとは喜びなさいよね、もう……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_24.mp3
+msg,1,<size=31><outline width=2 color=black>「……うん……私も、ありがとう。たくさん、たくさん、優しくしてくれて」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_25.mp3
+msg,1,<size=31><outline width=2 color=black>「あなたは、その……苦しくない……？\nそこって、敏感なんでしょ……んっ」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_26.mp3
+msg,1,<size=31><outline width=2 color=black>「ぁふ……ん、ぅ……ぴくんって……動いてる……気持ちいいの？\nそっか……それなら……んっ、もう……ね……いいよ」</outline></size>,
+clickwait
+spriteoff,all,0,5
+bg,download/character/100100/adv/image/106.jpg,0.5,255
+endwait,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_27.mp3
+msg,1,<size=31><outline width=2 color=black>「だから……ちゃんと気持ちよくなりなさいってこと。\nほら、私のこと、見て……他のことは、今はなにも考えないで……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_28.mp3
+msg,1,<size=31><outline width=2 color=black>「うん……繋がってるね、私たち……えっちなこと、してる。\nだから……その……ちゃんと、初めての思い出をちょうだい？」</outline></size>,
+clickwait
+spriteoff,all,0,5
+bg,download/character/100100/adv/image/105.jpg,0.5,255
+endwait,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_29.mp3
+msg,1,<size=31><outline width=2 color=black>「私だって恥ずかしいんだから……これ以上言わせないで」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_30.mp3
+msg,1,<size=31><outline width=2 color=black>「んっ……あっ……んんっ……ふ、ぁ……\nあっ……やっと、うごいた……ゃ、んぅぅ……くぅ」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_31.mp3
+msg,1,<size=31><outline width=2 color=black>「ふぁ……あっ……あっ……ゃん……まって……きゃふっ、\nんっ……んっ、んっ、ぁ、んんぅっ！　ふぁ、あぁぁ！」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_32.mp3
+msg,1,<size=31><outline width=2 color=black>「おくぅ……なに、これぇ……痛いの、まだ……あるのに……\nへん、なの……んっ……やぁ……き、きくなぁ……ぁんっ」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_33.mp3
+msg,1,<size=31><outline width=2 color=black>「あっ、あっ、あぁ……んっ、んんっ……ふ、ぁ……あぁぁ！\nはぁ……はぁ……なんで……こんなに、気持ちいいの……ぁ」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_34.mp3
+msg,1,<size=31><outline width=2 color=black>「おなかの、おくっ……じわぁって……あたたかくなって……\nからだが、へんに……んぁ……はぁ……へん、なのよぉ……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_35.mp3
+msg,1,<size=31><outline width=2 color=black>「あなたのが……私のなか……おしひろげて……きもち、くて……\nでていくの、さみしくて……んっ……やだぁ……抜いちゃ、だめ……っ」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_36.mp3
+msg,1,<size=31><outline width=2 color=black>「まだ、いかないで……やだ……んっ、ぁ……あっ、あっ……\nそれ、だめぇ……やぁ、んっ、んぅぅっ！　ふぁ、ぁ、あぁぁっ！」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_37.mp3
+msg,1,<size=31><outline width=2 color=black>「まっ、てぇ……いまっ、やだ……んっ、ぁ……ぁ……はぁ……\nいき……できな……あっ……ひ、ぁ、ぁ、ぁ……あぁぁ……っ！」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_38.mp3
+msg,1,<size=31><outline width=2 color=black>「ば、かぁ……んっ……あっ、あぁ……イくっ……はぁ……\nあっ、あっ、あぁ……イく……ひぁ、ぁ――っ！！」</outline></size>,
+clickwait
+flash,255,255,255,4,0.3,1.0
+spriteoff,all,0,5
+bg,download/character/100100/adv/image/107.jpg,0.5,255
+endwait,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_39.mp3
+msg,1,<size=31><outline width=2 color=black>「あぁ、ぁ――あぁあぁぁぁぁっ！！」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_40.mp3
+msg,1,<size=31><outline width=2 color=black>「はぁ……あっ、あぁ……あっ、あっ、んぅぅっ！\nふぁ、あっ、やだっ、もぉ、でてるのに……ぁんっ！」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_41.mp3
+msg,1,<size=31><outline width=2 color=black>「あっ、あっ、あっ、はぁ、ぁ、んぅぅぅっ！\nふぁ……あっ……もぅ、だめぇ……あぁぁ……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_42.mp3
+msg,1,<size=31><outline width=2 color=black>「ふぁ……ぁ……ひ、ぁ、ぁ……あぁ……はぁ……\nひぅ……うぅぅ……ふ、ぁ……あっ……はぁぁ……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_43.mp3
+msg,1,<size=31><outline width=2 color=black>「なかに、射精しちゃってる……ほんとに、出てる……\nこんなの……わたし……んっ……ふぁ、ぁ……はぁ……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_44.mp3
+msg,1,<size=31><outline width=2 color=black>「……優しくするって、言ったくせに」</outline></size>,
+clickwait
+name,,,,,,,,,,,
+msg,0,,,,,,,,,,,
+spriteoff,all,0.5
+endwait,,,,,,,,,,,
+bg,color_0_0_0,1,255
+endwait,,,,,,,,,,,
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_45.mp3
+msg,1,<size=31><outline width=2 color=black>「けだもの……」</outline></size>,
+clickwait
+name, 
+msg,0,<size=31><outline width=2 color=black>………………。</outline></size>,
+clickwait
+name, 
+msg,0,<size=31><outline width=2 color=black>…………。</outline></size>,
+clickwait
+name, 
+msg,0,<size=31><outline width=2 color=black>……。</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_46.mp3
+msg,1,<size=31><outline width=2 color=black>「……まさか、もう一回だなんて……私、なんであんな……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_47.mp3
+msg,1,<size=31><outline width=2 color=black>「でも……なんだろう、この感覚……胸の中に、今まで足りなかったものが、\n湧いてくるみたいな……すごく安心する……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_48.mp3
+msg,1,<size=31><outline width=2 color=black>「きっと、これは、あなたの力の影響なのね……そうよ、だからきっと、\n初めてなのに……私、あんな……あんなに……うぅぅ……」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_49.mp3
+msg,1,<size=31><outline width=2 color=black>「…………でも、気持ちよかった――って、なに言ってるのよ私……っ！\nあぁ、もう……どうなってるのよ、本当に」</outline></size>,
+clickwait
+name,<size=27><outline width=2 color=black>亜紗花</outline></size>,
+playvoice,1,download/adv/voice/character/1001/adu100100_01_50.mp3
+msg,1,<size=31><outline width=2 color=black>「なんで、こんな……終わったのに、ずっとドキドキしてるんだろう……」</outline></size>,
+clickwait
+fadeinblack,0.5
+endwait
+name, 
+endwmsg, 
+spriteoff,all,0.5
+endwait
+bgoff,1.0
+stopbgm
+endwait

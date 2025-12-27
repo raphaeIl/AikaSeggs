@@ -45,7 +45,7 @@ namespace AikaSeggs.GameServer.Controllers
             Response.Headers.Append("Allow", "GET,HEAD");
             Response.Headers.Append("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
             
-            return Content("GET,HEAD", "text/html; charset=utf-8");
+            return Content("GET,HEAD,POST", "text/html; charset=utf-8");
         }
     }
 }
