@@ -84,7 +84,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
             // pure IMessage: use default HttpMessage.Create, HttpMessage: just use it
 
             // return val is IMessage, meaning use default headers, with no gzip
-            if (handler.ReturnType == typeof(IMessage))
+            if (typeof(IMessage).IsAssignableFrom(handler.ReturnType))
             {
                 IMessage packet = (IMessage)handler.Invoke(inst, args);
 

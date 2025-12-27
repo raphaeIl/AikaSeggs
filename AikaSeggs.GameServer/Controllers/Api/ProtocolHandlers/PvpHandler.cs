@@ -8,6 +8,14 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     {
         public PvpHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
 
+        [ProtocolHandler(Protocol.Pvp_GetMasterData)]
+        public HttpMessage PvpGetMasterData()
+        {
+            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Pvp_GetMasterData);
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            return resp;
+        }
+
         [ProtocolHandler(Protocol.Pvp_GetUserData)]
         public HttpMessage PvpGetUserData()
         {

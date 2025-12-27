@@ -8,6 +8,14 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     {
         public TowerHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
 
+        [ProtocolHandler(Protocol.Tower_GetMasterData)]
+        public HttpMessage TowerGetMasterData()
+        {
+            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Tower_GetMasterData);
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            return resp;
+        }
+
         [ProtocolHandler(Protocol.Tower_GetUserData)]
         public HttpMessage TowerGetUserData()
         {

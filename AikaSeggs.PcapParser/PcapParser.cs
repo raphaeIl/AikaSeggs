@@ -16,9 +16,17 @@ namespace AikaSeggs.PcapParser
 
         public void LoadAllPackets()
         {
-            //PcapParser.Instance.Parse("0.json");
-            PcapParser.Instance.Parse("gacha_packets.json");
-            //PcapParser.Instance.Parse("login_packets.json");
+            // Get all JSON files in the PcapDir
+            var pcapFiles = Directory.GetFiles(Config.PcapDir, "*.json");
+            
+            Console.WriteLine($"Found {pcapFiles.Length} pcap file(s) in {Config.PcapDir}");
+            
+            foreach (var pcapFile in pcapFiles)
+            {
+                string fileName = Path.GetFileName(pcapFile);
+                Console.WriteLine($"Loading pcap file: {fileName}");
+                PcapParser.Instance.Parse(fileName);
+            }
         }
 
         public DeepOnePacket[] GetAllPcapPacketOfType(Protocol protocol)
@@ -48,7 +56,15 @@ namespace AikaSeggs.PcapParser
 
             foreach (PcapPacket pcapPacket in pcapPackets)
             {
-                Protocol protocol = Util.GetProtocolFromRoute(pcapPacket.Path.Substring(1));
+                // Remove leading slash and query parameters
+                string path = pcapPacket.Path.Substring(1);
+                int queryIndex = path.IndexOf('?');
+                if (queryIndex > 0)
+                {
+                    path = path.Substring(0, queryIndex);
+                }
+                
+                Protocol protocol = Util.GetProtocolFromRoute(path);
                 
                 Console.WriteLine($"Processing path: {pcapPacket.Path}");
                 Console.WriteLine($"Converted to protocol: {protocol}");

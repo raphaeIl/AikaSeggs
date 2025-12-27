@@ -8,6 +8,14 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     {
         public MinigameHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
 
+        [ProtocolHandler(Protocol.Minigame_GetMasterData)]
+        public HttpMessage MinigameGetMasterData()
+        {
+            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Minigame_GetMasterData);
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            return resp;
+        }
+
         [ProtocolHandler(Protocol.Minigame_GetUserData)]
         public HttpMessage MinigameGetUserData()
         {

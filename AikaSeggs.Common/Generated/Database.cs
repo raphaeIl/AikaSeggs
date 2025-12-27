@@ -43,7 +43,7 @@ namespace AikaSeggs.Common.Database
 		public int UnisonType { get; set; }
 		public int NormalAttackId { get; set; }
 		public int EffectShowType { get; set; }
-		public dynamic EffectShowValue { get; set; }
+		public double EffectShowValue { get; set; }
 		public string AniName { get; set; }
 		public string HitEffectName { get; set; }
 		public string HitEffectAniName { get; set; }
@@ -110,16 +110,16 @@ namespace AikaSeggs.Common.Database
 		public int MissionGroupId { get; set; }
 		public int MissionId { get; set; }
 		public int ConditionType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 	}
 
 	public class CabinMissionMainModel
 	{
 		public int MissionGroupId { get; set; }
-		public dynamic MemorialId1 { get; set; }
-		public dynamic MemorialId2 { get; set; }
-		public dynamic MemorialId3 { get; set; }
-		public dynamic MemorialId4 { get; set; }
+		public int MemorialId1 { get; set; }
+		public int MemorialId2 { get; set; }
+		public int MemorialId3 { get; set; }
+		public int MemorialId4 { get; set; }
 		public string VisibleDate { get; set; }
 	}
 
@@ -141,9 +141,9 @@ namespace AikaSeggs.Common.Database
 	public class CampaignModel
 	{
 		public int TargetType { get; set; }
-		public dynamic TargetIds { get; set; }
+		public string TargetIds { get; set; }
 		public int CampaignType { get; set; }
-		public dynamic CampaignValue { get; set; }
+		public int CampaignValue { get; set; }
 		public string FromDate { get; set; }
 		public string ToDate { get; set; }
 		public string WeekTypes { get; set; }
@@ -154,7 +154,7 @@ namespace AikaSeggs.Common.Database
 		public int AbilityId { get; set; }
 		public int ConditionGroup { get; set; }
 		public int ConditionType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 	}
 
 	public class CharacterAbilityEffectModel
@@ -220,7 +220,7 @@ namespace AikaSeggs.Common.Database
 
 	public class CharacterAwakeConditionModel
 	{
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 		public int Index { get; set; }
 		public int ConditionType { get; set; }
 		public int AwakeId { get; set; }
@@ -265,10 +265,10 @@ namespace AikaSeggs.Common.Database
 
 	public class CharacterContentsModel
 	{
-		public dynamic ConditionValue1 { get; set; }
-		public dynamic ConditionValue2 { get; set; }
-		public dynamic ConditionType1 { get; set; }
-		public dynamic ConditionType2 { get; set; }
+		public int ConditionValue1 { get; set; }
+		public int ConditionValue2 { get; set; }
+		public int ConditionType1 { get; set; }
+		public int ConditionType2 { get; set; }
 		public int ContentsId { get; set; }
 		public int ContentType { get; set; }
 		public int ContentsGroupId { get; set; }
@@ -334,7 +334,7 @@ namespace AikaSeggs.Common.Database
 		public string RoomName { get; set; }
 		public string ReadingName { get; set; }
 		public string Text { get; set; }
-		public dynamic Union { get; set; }
+		public int Union { get; set; }
 		public int ContentsGroupId { get; set; }
 		public string FromDate { get; set; }
 		public int StandHeadPositionX { get; set; }
@@ -444,7 +444,7 @@ namespace AikaSeggs.Common.Database
 		public string SkillShortText { get; set; }
 		public int AddExp { get; set; }
 		public int AddExceedLimitExp { get; set; }
-		public double AddSkillUpRate { get; set; }
+		public int AddSkillUpRate { get; set; }
 		public int MaterialType { get; set; }
 		public int BaseSkillFortifyType { get; set; }
 		public int SkillFortifyType { get; set; }
@@ -551,7 +551,7 @@ namespace AikaSeggs.Common.Database
 		public int AddAtk { get; set; }
 		public int AddDef { get; set; }
 		public int AddExceedLimitExp { get; set; }
-		public double AddSkillUpRate { get; set; }
+		public int AddSkillUpRate { get; set; }
 	}
 
 	public class CharacterModel
@@ -637,7 +637,7 @@ namespace AikaSeggs.Common.Database
 		public int ExceedLimitMaxCount { get; set; }
 		public int AddExp { get; set; }
 		public int AddExceedLimitExp { get; set; }
-		public double AddSkillUpRate { get; set; }
+		public int AddSkillUpRate { get; set; }
 		public int MaterialType { get; set; }
 		public int BaseSkillFortifyType { get; set; }
 		public int SkillFortifyType { get; set; }
@@ -678,7 +678,7 @@ namespace AikaSeggs.Common.Database
 		public string HitEffectName { get; set; }
 		public int NormalAttackId { get; set; }
 		public string AniName { get; set; }
-		public dynamic EffectShowValue { get; set; }
+		public double EffectShowValue { get; set; }
 		public int EffectShowType { get; set; }
 		public string HitEffectAniName { get; set; }
 	}
@@ -836,7 +836,7 @@ namespace AikaSeggs.Common.Database
 		public int AbilityId { get; set; }
 		public int ConditionGroup { get; set; }
 		public int ConditionType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 	}
 
 	public class EquipmentAbilityConditionModel
@@ -844,7 +844,7 @@ namespace AikaSeggs.Common.Database
 		public int EquipmentId { get; set; }
 		public int ConditionGroup { get; set; }
 		public int ConditionType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 	}
 
 	public class EquipmentEffectModel
@@ -1026,7 +1026,7 @@ namespace AikaSeggs.Common.Database
 		public int EffectType { get; set; }
 		public int AddType { get; set; }
 		public int ConditionType { get; set; }
-		public int ConditionId { get; set; }
+		public string ConditionId { get; set; }
 		public dynamic Value1 { get; set; }
 		public dynamic Value2 { get; set; }
 		public dynamic Value3 { get; set; }
@@ -1129,7 +1129,7 @@ namespace AikaSeggs.Common.Database
 	{
 		public int TargetId { get; set; }
 		public int RewardType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 		public int ItemId { get; set; }
 		public int ExceedLimit { get; set; }
 	}
@@ -1206,7 +1206,7 @@ namespace AikaSeggs.Common.Database
 		public int AwakeId { get; set; }
 		public int Index { get; set; }
 		public int ConditionType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 		public string ConditionText { get; set; }
 	}
 
@@ -1304,7 +1304,7 @@ namespace AikaSeggs.Common.Database
 		public string FromDate { get; set; }
 		public int StandHeadPositionX { get; set; }
 		public int StandHeadPositionY { get; set; }
-		public dynamic Union { get; set; }
+		public int Union { get; set; }
 	}
 
 	public class ExCharacterMainModel
@@ -1615,7 +1615,7 @@ namespace AikaSeggs.Common.Database
 		public int FurnitureType { get; set; }
 		public int MapCategory { get; set; }
 		public string Name { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 		public int EventId { get; set; }
 		public string FurnitureAnimation { get; set; }
 		public string CharacterAnimation { get; set; }
@@ -1672,7 +1672,7 @@ namespace AikaSeggs.Common.Database
 		public int ConditionCount { get; set; }
 		public string ConditionRarity { get; set; }
 		public string ConditionAttribute { get; set; }
-		public int ConditionId { get; set; }
+		public string ConditionId { get; set; }
 	}
 
 	public class ExLinearMissionMainModel
@@ -1735,7 +1735,7 @@ namespace AikaSeggs.Common.Database
 		public int ExceedLimitType { get; set; }
 		public string VoiceActorNames { get; set; }
 		public string IllustratorName { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 		public bool IsCollaboration { get; set; }
 		public int MemorialFilterType { get; set; }
 		public Dictionary<string, MemorialStatusModel> MemorialStatusMasterMap { get; set; }
@@ -1792,7 +1792,7 @@ namespace AikaSeggs.Common.Database
 		public int Order { get; set; }
 		public string Title { get; set; }
 		public string FileName { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 		public int TransitionId { get; set; }
 		public int TransitionParam1 { get; set; }
 		public int TransitionParam2 { get; set; }
@@ -1843,8 +1843,8 @@ namespace AikaSeggs.Common.Database
 	{
 		public int StageId { get; set; }
 		public int ConditionType { get; set; }
-		public int ConditionId { get; set; }
-		public string ConditionValue { get; set; }
+		public string ConditionId { get; set; }
+		public int ConditionValue { get; set; }
 	}
 
 	public class ExQuestStageModel
@@ -1954,7 +1954,7 @@ namespace AikaSeggs.Common.Database
 		public int AbilityId { get; set; }
 		public int EffectGroupId { get; set; }
 		public int ConditionType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 		public List<dynamic> EffectGroupMasterArray { get; set; }
 		public Dictionary<string, dynamic> EffectGroupMasterMap { get; set; }
 		public string AbilityText { get; set; }
@@ -1966,7 +1966,7 @@ namespace AikaSeggs.Common.Database
 		public int AreaId { get; set; }
 		public string WeekTypes { get; set; }
 		public int StageGroupId { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 		public List<RaceStageModel> RaceStageMasterArray { get; set; }
 		public Dictionary<string, RaceStageModel> RaceStageMasterMap { get; set; }
 	}
@@ -2379,7 +2379,7 @@ namespace AikaSeggs.Common.Database
 		public int MapCategory { get; set; }
 		public string FurnitureAnimation { get; set; }
 		public double AnchorX { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 		public string CharacterAnimation { get; set; }
 		public string ToDate { get; set; }
 		public int MaxLimitCount { get; set; }
@@ -2686,7 +2686,7 @@ namespace AikaSeggs.Common.Database
 		public string Name { get; set; }
 		public string ConditionAttribute { get; set; }
 		public string Text { get; set; }
-		public int ConditionId { get; set; }
+		public string ConditionId { get; set; }
 		public int ConditionCount { get; set; }
 		public int RewardPoint { get; set; }
 		public string ConditionRarity { get; set; }
@@ -2727,7 +2727,7 @@ namespace AikaSeggs.Common.Database
 	{
 		public int CharacterId { get; set; }
 		public string Serif { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 		public int MainPosX { get; set; }
 		public int MainPosY { get; set; }
 		public int BackPosX { get; set; }
@@ -2749,7 +2749,7 @@ namespace AikaSeggs.Common.Database
 	public class LoadingTipsModel
 	{
 		public string Title { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 	}
 
 	public class LoginBonusModel
@@ -2817,7 +2817,7 @@ namespace AikaSeggs.Common.Database
 		public int AbilityId { get; set; }
 		public int ConditionGroup { get; set; }
 		public int ConditionType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 	}
 
 	public class MemorialAbilityEffectModel
@@ -2917,7 +2917,7 @@ namespace AikaSeggs.Common.Database
 		public int ExceedLimitType { get; set; }
 		public string VoiceActors { get; set; }
 		public string Illustrator { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 	}
 
 	public class MemorialModel
@@ -3016,7 +3016,7 @@ namespace AikaSeggs.Common.Database
 		public int ReleaseMissionId { get; set; }
 		public string Text { get; set; }
 		public int ConditionCount { get; set; }
-		public int ConditionId { get; set; }
+		public string ConditionId { get; set; }
 	}
 
 	public class MissionMainModel
@@ -3055,7 +3055,7 @@ namespace AikaSeggs.Common.Database
 		public int MissionType { get; set; }
 		public int ReleaseMissionId { get; set; }
 		public int ConditionCount { get; set; }
-		public int ConditionId { get; set; }
+		public string ConditionId { get; set; }
 		public bool IsReceivable { get; set; }
 		public bool IsCompleted { get; set; }
 		public bool IsReceived { get; set; }
@@ -3125,7 +3125,7 @@ namespace AikaSeggs.Common.Database
 		public int Order { get; set; }
 		public string Title { get; set; }
 		public string FileName { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 		public int TransitionId { get; set; }
 		public int TransitionParam1 { get; set; }
 		public int TransitionParam2 { get; set; }
@@ -3192,7 +3192,7 @@ namespace AikaSeggs.Common.Database
 		public int CharacterType { get; set; }
 		public string VisibleDate { get; set; }
 		public dynamic MaxFriendship { get; set; }
-		public dynamic Union { get; set; }
+		public int Union { get; set; }
 		public string ReadingName { get; set; }
 		public double FriendshipRate { get; set; }
 		public int FriendshipBonusHp { get; set; }
@@ -3215,10 +3215,10 @@ namespace AikaSeggs.Common.Database
 		public Dictionary<string, dynamic> UserVoiceStoryMap { get; set; }
 		public List<dynamic> CharacterFriendshipContentsMasterArray { get; set; }
 		public int ContentsId { get; set; }
-		public dynamic ConditionType1 { get; set; }
-		public dynamic ConditionType2 { get; set; }
-		public dynamic ConditionValue1 { get; set; }
-		public dynamic ConditionValue2 { get; set; }
+		public int ConditionType1 { get; set; }
+		public int ConditionType2 { get; set; }
+		public int ConditionValue1 { get; set; }
+		public int ConditionValue2 { get; set; }
 		public int StoryId { get; set; }
 		public List<dynamic> CharacterStoryContentsMasterArray { get; set; }
 		public dynamic LastReleaseFriendshipContentsMaster { get; set; }
@@ -3317,7 +3317,7 @@ namespace AikaSeggs.Common.Database
 
 	public class QuestAchieveModel
 	{
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 		public int Count { get; set; }
 		public int ItemType { get; set; }
 		public string Text { get; set; }
@@ -3444,7 +3444,7 @@ namespace AikaSeggs.Common.Database
 	{
 		public int RestrictionGroupId { get; set; }
 		public int RestrictionType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 	}
 
 	public class QuestScenarioModel
@@ -3457,8 +3457,8 @@ namespace AikaSeggs.Common.Database
 	{
 		public int StageId { get; set; }
 		public int ConditionType { get; set; }
-		public int ConditionId { get; set; }
-		public string ConditionValue { get; set; }
+		public string ConditionId { get; set; }
+		public int ConditionValue { get; set; }
 	}
 
 	public class QuestStageModel
@@ -3539,7 +3539,7 @@ namespace AikaSeggs.Common.Database
 		public int AbilityId { get; set; }
 		public int EffectGroupId { get; set; }
 		public int ConditionType { get; set; }
-		public string ConditionValue { get; set; }
+		public int ConditionValue { get; set; }
 	}
 
 	public class RaceAreaModel
@@ -3548,7 +3548,7 @@ namespace AikaSeggs.Common.Database
 		public int AreaId { get; set; }
 		public string WeekTypes { get; set; }
 		public int StageGroupId { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 	}
 
 	public class RaceCharacterFreeModel
@@ -3787,7 +3787,7 @@ namespace AikaSeggs.Common.Database
 		public int CharacterGroupId { get; set; }
 		public string FurnitureCd { get; set; }
 		public string NextCollectDate { get; set; }
-		public dynamic LastCollectDate { get; set; }
+		public string LastCollectDate { get; set; }
 		public dynamic CorrectionCollectSecond { get; set; }
 	}
 
@@ -3813,7 +3813,7 @@ namespace AikaSeggs.Common.Database
 	{
 		public int ListId { get; set; }
 		public int ConditionType { get; set; }
-		public int ConditionId { get; set; }
+		public string ConditionId { get; set; }
 		public int ShopId { get; set; }
 	}
 
@@ -3851,7 +3851,7 @@ namespace AikaSeggs.Common.Database
 		public int EventId { get; set; }
 		public int ItemId { get; set; }
 		public int ItemType { get; set; }
-		public int ConditionId { get; set; }
+		public string ConditionId { get; set; }
 		public int Count { get; set; }
 		public int ConditionTo { get; set; }
 	}
@@ -4203,7 +4203,7 @@ namespace AikaSeggs.Common.Database
 		public int TutorialEventId { get; set; }
 		public int CompleteStep { get; set; }
 		public int CompleteSubStep { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 		public int ActionType { get; set; }
 		public string ActionParam1 { get; set; }
 		public string ActionParam2 { get; set; }
@@ -4734,12 +4734,12 @@ namespace AikaSeggs.Common.Database
 		public int ProgressType { get; set; }
 		public int ProgressGroup { get; set; }
 		public int Index { get; set; }
-		public int ConditionId { get; set; }
+		public string ConditionId { get; set; }
 		public string ConditionParam { get; set; }
 		public string ReleaseTargetParam { get; set; }
 		public int UserNoticeType { get; set; }
 		public string UserNoticeText { get; set; }
-		public string Description { get; set; }
+		public CharacterTextModel Description { get; set; }
 	}
 
 	public class UserPurchaseHistoryModel

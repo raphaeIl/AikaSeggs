@@ -8,6 +8,14 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     {
         public BoostHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
 
+        [ProtocolHandler(Protocol.Boost_GetMasterData)]
+        public HttpMessage BoostGetMasterData()
+        {
+            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Boost_GetMasterData);
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            return resp;
+        }
+
         [ProtocolHandler(Protocol.Boost_GetBoostUnitsList)]
         public HttpMessage BoostGetBoostUnitsList()
         {

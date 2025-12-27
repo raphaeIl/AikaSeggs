@@ -8,6 +8,30 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     {
         public UserHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
 
+        [ProtocolHandler(Protocol.User_GetMasterData)]
+        public HttpMessage UserGetMasterData()
+        {
+            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.User_GetMasterData);
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            return resp;
+        }
+
+        [ProtocolHandler(Protocol.User_GetMasterMyPageNewsData)]
+        public HttpMessage UserGetMasterMyPageNewsData()
+        {
+            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.User_GetMasterMyPageNewsData);
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            return resp;
+        }
+
+        [ProtocolHandler(Protocol.User_GetMasterMyPageNewsData2)]
+        public HttpMessage UserGetMasterMyPageNewsData2()
+        {
+            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.User_GetMasterMyPageNewsData2);
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            return resp;
+        }
+
         [ProtocolHandler(Protocol.User_GetUserData)]
         public HttpMessage UserGetUserData()
         {

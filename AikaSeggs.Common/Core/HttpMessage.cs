@@ -35,9 +35,12 @@ namespace AikaSeggs.Common.Core
             Headers["Access-Control-Allow-Headers"] = "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Deep-One-App-Version";
             Headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS";
 
-            foreach (var header in customHeaders) // supports overriding
+            if (customHeaders != null)
             {
-                Headers[header.Key] = header.Value;
+                foreach (var header in customHeaders) // supports overriding
+                {
+                    Headers[header.Key] = header.Value;
+                }
             }
         }
 

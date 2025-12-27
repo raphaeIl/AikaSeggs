@@ -8,6 +8,15 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     {
         public CabinMissionHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
 
+        [ProtocolHandler(Protocol.CabinMission_GetMasterData)]
+        public HttpMessage CabinMissionGetMasterData()
+        {
+            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.CabinMission_GetMasterData);
+            
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            return resp;
+        }
+
         [ProtocolHandler(Protocol.CabinMission_GetUserData)]
         public HttpMessage CabinMissionGetUserData()
         {

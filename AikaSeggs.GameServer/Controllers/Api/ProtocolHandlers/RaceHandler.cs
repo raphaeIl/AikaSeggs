@@ -8,6 +8,14 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     {
         public RaceHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
 
+        [ProtocolHandler(Protocol.Race_GetMasterData)]
+        public HttpMessage RaceGetMasterData()
+        {
+            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Race_GetMasterData);
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            return resp;
+        }
+
         [ProtocolHandler(Protocol.Race_GetUserData)]
         public HttpMessage RaceGetUserData()
         {
