@@ -780,6 +780,10 @@ namespace AikaSeggs.Common.Database
 		public string ToDate { get; set; }
 	}
 
+	public class ComebackLoginBonusModel
+	{
+	}
+
 	public class ComebackMainModel
 	{
 		public int CampaignId { get; set; }
@@ -3274,6 +3278,14 @@ namespace AikaSeggs.Common.Database
 		public int Count { get; set; }
 	}
 
+	public class PvPDeckModel
+	{
+	}
+
+	public class PvPEquipmentModel
+	{
+	}
+
 	public class PvPMainModel
 	{
 		public int Season { get; set; }
@@ -3313,6 +3325,14 @@ namespace AikaSeggs.Common.Database
 		public int WinCount { get; set; }
 		public int MaxScore { get; set; }
 		public int PvPMedalItemId { get; set; }
+	}
+
+	public class PvPPictureBookDetailModel
+	{
+	}
+
+	public class PvPSolidEquipmentModel
+	{
 	}
 
 	public class QuestAchieveModel
