@@ -4,6 +4,7 @@ using AikaSeggs.Common.Utils;
 using AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using MessagePack;
 using Serilog;
 using System.IO.Compression;
 using System.Reflection;
@@ -72,6 +73,20 @@ namespace AikaSeggs.GameServer.Controllers.Api
                 HttpContext.Response.Headers[header.Key] = header.Value;
             }
 
+            // Handle MessagePack responses
+            if (respMessage.DoMsgPack)
+            {
+                // Convert JSON string directly to MessagePack bytes
+                byte[] respBytes = MessagePackSerializer.ConvertFromJson(respMessage.Content);
+
+                HttpContext.Response.ContentType = "application/octet-stream";
+                HttpContext.Response.ContentLength = respBytes.Length;
+                HttpContext.Response.Body.Write(respBytes, 0, respBytes.Length);
+
+                return Results.Empty;
+            }
+
+            // Default JSON response
             return Results.Content(respMessage.Content, "application/json; charset=utf-8");
         }
     }

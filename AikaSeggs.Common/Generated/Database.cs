@@ -1619,7 +1619,7 @@ namespace AikaSeggs.Common.Database
 		public int FurnitureType { get; set; }
 		public int MapCategory { get; set; }
 		public string Name { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 		public int EventId { get; set; }
 		public string FurnitureAnimation { get; set; }
 		public string CharacterAnimation { get; set; }
@@ -1739,7 +1739,7 @@ namespace AikaSeggs.Common.Database
 		public int ExceedLimitType { get; set; }
 		public string VoiceActorNames { get; set; }
 		public string IllustratorName { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 		public bool IsCollaboration { get; set; }
 		public int MemorialFilterType { get; set; }
 		public Dictionary<string, MemorialStatusModel> MemorialStatusMasterMap { get; set; }
@@ -1796,7 +1796,7 @@ namespace AikaSeggs.Common.Database
 		public int Order { get; set; }
 		public string Title { get; set; }
 		public string FileName { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 		public int TransitionId { get; set; }
 		public int TransitionParam1 { get; set; }
 		public int TransitionParam2 { get; set; }
@@ -1970,7 +1970,7 @@ namespace AikaSeggs.Common.Database
 		public int AreaId { get; set; }
 		public string WeekTypes { get; set; }
 		public int StageGroupId { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 		public List<RaceStageModel> RaceStageMasterArray { get; set; }
 		public Dictionary<string, RaceStageModel> RaceStageMasterMap { get; set; }
 	}
@@ -2383,7 +2383,7 @@ namespace AikaSeggs.Common.Database
 		public int MapCategory { get; set; }
 		public string FurnitureAnimation { get; set; }
 		public double AnchorX { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 		public string CharacterAnimation { get; set; }
 		public string ToDate { get; set; }
 		public int MaxLimitCount { get; set; }
@@ -2731,7 +2731,7 @@ namespace AikaSeggs.Common.Database
 	{
 		public int CharacterId { get; set; }
 		public string Serif { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 		public int MainPosX { get; set; }
 		public int MainPosY { get; set; }
 		public int BackPosX { get; set; }
@@ -2753,7 +2753,7 @@ namespace AikaSeggs.Common.Database
 	public class LoadingTipsModel
 	{
 		public string Title { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 	}
 
 	public class LoginBonusModel
@@ -2921,7 +2921,7 @@ namespace AikaSeggs.Common.Database
 		public int ExceedLimitType { get; set; }
 		public string VoiceActors { get; set; }
 		public string Illustrator { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 	}
 
 	public class MemorialModel
@@ -3129,7 +3129,7 @@ namespace AikaSeggs.Common.Database
 		public int Order { get; set; }
 		public string Title { get; set; }
 		public string FileName { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 		public int TransitionId { get; set; }
 		public int TransitionParam1 { get; set; }
 		public int TransitionParam2 { get; set; }
@@ -3568,7 +3568,7 @@ namespace AikaSeggs.Common.Database
 		public int AreaId { get; set; }
 		public string WeekTypes { get; set; }
 		public int StageGroupId { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 	}
 
 	public class RaceCharacterFreeModel
@@ -3807,7 +3807,7 @@ namespace AikaSeggs.Common.Database
 		public int CharacterGroupId { get; set; }
 		public string FurnitureCd { get; set; }
 		public string NextCollectDate { get; set; }
-		public string LastCollectDate { get; set; }
+		public dynamic LastCollectDate { get; set; }
 		public dynamic CorrectionCollectSecond { get; set; }
 	}
 
@@ -4223,7 +4223,7 @@ namespace AikaSeggs.Common.Database
 		public int TutorialEventId { get; set; }
 		public int CompleteStep { get; set; }
 		public int CompleteSubStep { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 		public int ActionType { get; set; }
 		public string ActionParam1 { get; set; }
 		public string ActionParam2 { get; set; }
@@ -4759,7 +4759,7 @@ namespace AikaSeggs.Common.Database
 		public string ReleaseTargetParam { get; set; }
 		public int UserNoticeType { get; set; }
 		public string UserNoticeText { get; set; }
-		public CharacterTextModel Description { get; set; }
+		public string Description { get; set; }
 	}
 
 	public class UserPurchaseHistoryModel

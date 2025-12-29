@@ -9,13 +9,13 @@ namespace AikaSeggs.Common.Core
 {
     public class HttpMessage
     {
-        public string Content { get; private set; } // Serialized Packet
+        public string Content { get; private set; } // Serialized Packet (JSON)
 
         public bool DoMsgPack { get; set; }
 
         public Dictionary<string, string>? Headers { get; init; }
 
-        private HttpMessage(string packet, bool doMsgPack = false, Dictionary<string, string> customHeaders = null)
+        private HttpMessage(string packet, bool doMsgPack = false, Dictionary<string, string>? customHeaders = null)
         {
             Content = packet;
             DoMsgPack = doMsgPack;
@@ -24,7 +24,9 @@ namespace AikaSeggs.Common.Core
             Headers = new Dictionary<string, string>();
 
             // Set standard headers
-            Headers["Access-Control-Allow-Credentials"] = "true";
+            Headers["Date"] = DateTimeOffset.UtcNow.ToString("r"); // RFC1123 format
+            Headers["Content-Type"] = "application/json; charset=utf-8";
+            Headers["Server"] = "nginx";
             Headers["X-DNS-Prefetch-Control"] = "off";
             Headers["X-Frame-Options"] = "SAMEORIGIN";
             Headers["Strict-Transport-Security"] = "max-age=15552000; includeSubDomains";
@@ -34,6 +36,7 @@ namespace AikaSeggs.Common.Core
             Headers["Access-Control-Allow-Origin"] = "*";
             Headers["Access-Control-Allow-Headers"] = "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Deep-One-App-Version";
             Headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS";
+            Headers["Access-Control-Allow-Credentials"] = "true";
 
             if (customHeaders != null)
             {
@@ -44,14 +47,14 @@ namespace AikaSeggs.Common.Core
             }
         }
 
-        public static HttpMessage Create(IMessage packet, bool doGzip = false, Dictionary<string, string> customHeaders = null)
+        public static HttpMessage Create(IMessage packet, bool doMsgPack = false, Dictionary<string, string>? customHeaders = null)
         {
-            return new HttpMessage(JsonConvert.SerializeObject(packet), doGzip, customHeaders);
+            return new HttpMessage(JsonConvert.SerializeObject(packet), doMsgPack, customHeaders);
         }
 
-        public static HttpMessage Create(string jsonPacket, bool doGzip = false, Dictionary<string, string> customHeaders = null)
+        public static HttpMessage Create(string jsonPacket, bool doMsgPack = false, Dictionary<string, string>? customHeaders = null)
         {
-            return new HttpMessage(jsonPacket, doGzip, customHeaders);
+            return new HttpMessage(jsonPacket, doMsgPack, customHeaders);
         }
 
     }

@@ -95,7 +95,7 @@ namespace AikaSeggs.Common.Packets
 		public int advanceRate { get; set; }
 		public int buttonId { get; set; }
 		public int buttonType { get; set; }
-		public List<CoinPresentDynamicModel> coinPresent { get; set; }
+		public List<dynamic> coinPresent { get; set; }
 		public int costCount { get; set; }
 		public int costId { get; set; }
 		public int costType { get; set; }
@@ -122,18 +122,6 @@ namespace AikaSeggs.Common.Packets
 		public bool isPlayGacha { get; set; }
 		public int skuId { get; set; }
 		public int step { get; set; }
-	}
-
-	public class CoinPresentDynamicModel
-	{
-		public int index { get; set; }
-		public int itemCount { get; set; }
-		public int itemId { get; set; }
-		public int itemType { get; set; }
-		public int presentGroupId { get; set; }
-		public int rate { get; set; }
-		public int rateFrom { get; set; }
-		public int rateTo { get; set; }
 	}
 
 	public class FurnitureRewardsDynamicModel

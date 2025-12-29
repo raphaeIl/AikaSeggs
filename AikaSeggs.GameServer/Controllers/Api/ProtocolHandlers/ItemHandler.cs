@@ -12,7 +12,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage ItemGetMasterData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Item_GetMasterData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), doMsgPack: true);
             return resp;
         }
 
