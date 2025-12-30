@@ -16,11 +16,11 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
 
             return new AuthGetDmmAccessTokenResponse()
             {
-                dmmId = "52475226",
-                userId = "1vHS7sj9nC1Gz7fuk8CbZE",
-                token = "3OH36sQ5RNAKRwoj0Kdqwy",
-                secret = "qXoCtXC2FDvfqnjKoSwCx8UxNrD8W7nHCpkgQ8l3GVoZBOzKEqTImr1ETAGnFBqolgsbK2Uyylitxb08r5yXpb",
-                expires = 1764267603
+                DmmId = "52475226",
+                UserId = "1vHS7sj9nC1Gz7fuk8CbZE",
+                Token = "3OH36sQ5RNAKRwoj0Kdqwy",
+                Secret = "qXoCtXC2FDvfqnjKoSwCx8UxNrD8W7nHCpkgQ8l3GVoZBOzKEqTImr1ETAGnFBqolgsbK2Uyylitxb08r5yXpb",
+                Expires = 1764267603
             };
         }
     }

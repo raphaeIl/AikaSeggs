@@ -1,6 +1,8 @@
 using AikaSeggs.Common;
 using AikaSeggs.Common.Core;
+using AikaSeggs.Common.Packets;
 using AikaSeggs.PcapParser;
+using Newtonsoft.Json;
 
 namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
 {
@@ -12,7 +14,18 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage LoginBonusGetMasterData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.LoginBonus_GetMasterData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
+            
+            LoginBonusGetMasterDataResponse? respPacket = JsonConvert.DeserializeObject<LoginBonusGetMasterDataResponse>(pcap.Packet.ToString());
+
+            foreach (var reward in respPacket.LoginBonusReward)
+            {
+                reward.Amount = 999_999_999;
+                reward.Amount2 = 999_888_777;
+            }
+
+            // Serialize with camelCase settings
+            string json = JsonConvert.SerializeObject(respPacket);
+            HttpMessage resp = HttpMessage.Create(json, doMsgPack: true);
             return resp;
         }
 

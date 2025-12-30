@@ -9,11 +9,16 @@ namespace AikaSeggs.Common.Packets
 {
 	public class AuthGetDmmAccessTokenResponse : BasePacket
 	{
-		public string dmmId { get; set; }
-		public int expires { get; set; }
-		public string secret { get; set; }
-		public string token { get; set; }
-		public string userId { get; set; }
+		[JsonProperty("dmmId")]
+		public string DmmId { get; set; }
+		[JsonProperty("expires")]
+		public int Expires { get; set; }
+		[JsonProperty("secret")]
+		public string Secret { get; set; }
+		[JsonProperty("token")]
+		public string Token { get; set; }
+		[JsonProperty("userId")]
+		public string UserId { get; set; }
 	}
 
 	public class BoostGetMasterDataResponse : BasePacket
@@ -24,21 +29,36 @@ namespace AikaSeggs.Common.Packets
 
 	public class BoxGachaGetBoxDetailResponse : BasePacket
 	{
-		public Dictionary<string, Dictionary<string, AllLineupsDynamicModel>> allLineups { get; set; }
-		public List<BoxLineupsDynamicModel> boxLineups { get; set; }
-		public List<ButtonsDynamicModel> buttons { get; set; }
-		public int conditionFrom { get; set; }
-		public int conditionTo { get; set; }
-		public int conditionType { get; set; }
-		public CharacterTextModel description { get; set; }
-		public string fromDate { get; set; }
-		public int gachaId { get; set; }
-		public bool isReset { get; set; }
-		public int resetCount { get; set; }
-		public int step { get; set; }
-		public string toDate { get; set; }
-		public UserBasicInfoModel user { get; set; }
-		public string weekType { get; set; }
+		[JsonProperty("allLineups")]
+		public Dictionary<string, Dictionary<string, AllLineupsDynamicModel>> AllLineups { get; set; }
+		[JsonProperty("boxLineups")]
+		public List<BoxLineupsDynamicModel> BoxLineups { get; set; }
+		[JsonProperty("buttons")]
+		public List<ButtonsDynamicModel> Buttons { get; set; }
+		[JsonProperty("conditionFrom")]
+		public int ConditionFrom { get; set; }
+		[JsonProperty("conditionTo")]
+		public int ConditionTo { get; set; }
+		[JsonProperty("conditionType")]
+		public int ConditionType { get; set; }
+		[JsonProperty("description")]
+		public CharacterTextModel Description { get; set; }
+		[JsonProperty("fromDate")]
+		public string FromDate { get; set; }
+		[JsonProperty("gachaId")]
+		public int GachaId { get; set; }
+		[JsonProperty("isReset")]
+		public bool IsReset { get; set; }
+		[JsonProperty("resetCount")]
+		public int ResetCount { get; set; }
+		[JsonProperty("step")]
+		public int Step { get; set; }
+		[JsonProperty("toDate")]
+		public string ToDate { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
+		[JsonProperty("weekType")]
+		public string WeekType { get; set; }
 	}
 
 	public class CabinMissionGetMasterDataResponse : BasePacket
@@ -50,13 +70,16 @@ namespace AikaSeggs.Common.Packets
 
 	public class CabinMissionGetUserDataResponse : BasePacket
 	{
-		public List<CabinMissionModel> cabinMissions { get; set; }
+		[JsonProperty("cabinMissions")]
+		public List<CabinMissionModel> CabinMissions { get; set; }
 	}
 
 	public class CabinMissionReceiveResponse : BasePacket
 	{
-		public List<CabinMissionModel> cabinMissions { get; set; }
-		public List<StoryModel> stories { get; set; }
+		[JsonProperty("cabinMissions")]
+		public List<CabinMissionModel> CabinMissions { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
 	}
 
 	public class CampaignGetMasterDataResponse : BasePacket
@@ -66,80 +89,122 @@ namespace AikaSeggs.Common.Packets
 
 	public class CharacterAwakeResponse : BasePacket
 	{
-		public List<EquipmentModel> addEquipments { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public List<ItemModel> items { get; set; }
+		[JsonProperty("addEquipments")]
+		public List<EquipmentModel> AddEquipments { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
 	}
 
 	public class CharacterBulkFortifySkillWarehouseResponse : BasePacket
 	{
-		public List<CharacterModel> characters { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public int tryCount { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("tryCount")]
+		public int TryCount { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 	public class CharacterChangePartnerResponse : BasePacket
 	{
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class CharacterChangeProtectResponse : BasePacket
 	{
-		public List<CharacterModel> updateCharacters { get; set; }
+		[JsonProperty("updateCharacters")]
+		public List<CharacterModel> UpdateCharacters { get; set; }
 	}
 
 	public class CharacterEquipResponse : BasePacket
 	{
-		public List<CharacterModel> characters { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
 	}
 
 	public class CharacterExceedLimitByItemResponse : BasePacket
 	{
-		public List<UserStoryModel> addStories { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<StoryModel> stories { get; set; }
+		[JsonProperty("addStories")]
+		public List<UserStoryModel> AddStories { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
 	}
 
 	public class CharacterFortifyAbilityResponse : BasePacket
 	{
-		public List<CharacterModel> characters { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
 	}
 
 	public class CharacterFortifySkillWarehouseResponse : BasePacket
 	{
-		public List<CharacterModel> characters { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 	public class CharacterFortifyWarehouseResponse : BasePacket
 	{
-		public List<CharacterModel> characters { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public bool isGreatSuccess { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("isGreatSuccess")]
+		public bool IsGreatSuccess { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 	public class CharacterGetMasterAbilityDataResponse : BasePacket
@@ -261,7 +326,8 @@ namespace AikaSeggs.Common.Packets
 
 	public class CharacterGetUserDataResponse : BasePacket
 	{
-		public List<CharacterModel> characters { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
 	}
 
 	public class CharacterLinkGetMasterDataResponse : BasePacket
@@ -271,20 +337,26 @@ namespace AikaSeggs.Common.Packets
 
 	public class CharacterLinkGetUserDataResponse : BasePacket
 	{
-		public List<CharacterLinkUnitModel> characterLinks { get; set; }
+		[JsonProperty("characterLinks")]
+		public List<CharacterLinkUnitModel> CharacterLinks { get; set; }
 	}
 
 	public class CharacterSellResponse : BasePacket
 	{
-		public List<CharacterModel> characters { get; set; }
-		public List<ItemModel> items { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
 	}
 
 	public class CharacterSellWarehouseResponse : BasePacket
 	{
-		public List<ItemModel> items { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 	public class ComebackGetMasterDataResponse : BasePacket
@@ -300,52 +372,82 @@ namespace AikaSeggs.Common.Packets
 
 	public class DeckGetUserDataResponse : BasePacket
 	{
-		public List<DeckModel> decks { get; set; }
-		public List<MemorialDeckModel> memorialDecks { get; set; }
+		[JsonProperty("decks")]
+		public List<DeckModel> Decks { get; set; }
+		[JsonProperty("memorialDecks")]
+		public List<MemorialDeckModel> MemorialDecks { get; set; }
 	}
 
 	public class DeckUpdateResponse : BasePacket
 	{
-		public List<DeckModel> decks { get; set; }
-		public List<MemorialDeckModel> memorialDecks { get; set; }
+		[JsonProperty("decks")]
+		public List<DeckModel> Decks { get; set; }
+		[JsonProperty("memorialDecks")]
+		public List<MemorialDeckModel> MemorialDecks { get; set; }
 	}
 
 	public class EquipmentBulkFullFortifyResponse : BasePacket
 	{
-		public List<SolidEquipmentModel> addSolidEquipments { get; set; }
-		public List<EquipmentModel> equipments { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<CharacterModel> updateCharacters { get; set; }
-		public List<SolidEquipmentModel> updateSolidEquipments { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("addSolidEquipments")]
+		public List<SolidEquipmentModel> AddSolidEquipments { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("updateCharacters")]
+		public List<CharacterModel> UpdateCharacters { get; set; }
+		[JsonProperty("updateSolidEquipments")]
+		public List<SolidEquipmentModel> UpdateSolidEquipments { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 	public class EquipmentExceedLimitWarehouseResponse : BasePacket
 	{
-		public List<EquipmentModel> equipments { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 	public class EquipmentFortifyWarehouseResponse : BasePacket
 	{
-		public List<EquipmentModel> equipments { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public bool isGreatSuccess { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("isGreatSuccess")]
+		public bool IsGreatSuccess { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 	public class EquipmentGetMasterDataResponse : BasePacket
@@ -371,51 +473,90 @@ namespace AikaSeggs.Common.Packets
 
 	public class EquipmentGetUserDataResponse : BasePacket
 	{
-		public List<CharacterModel> addCharacters { get; set; }
-		public List<DeckModel> decks { get; set; }
-		public List<EquipmentModel> equipments { get; set; }
-		public List<CharacterModel> updateCharacters { get; set; }
+		[JsonProperty("addCharacters")]
+		public List<CharacterModel> AddCharacters { get; set; }
+		[JsonProperty("decks")]
+		public List<DeckModel> Decks { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("updateCharacters")]
+		public List<CharacterModel> UpdateCharacters { get; set; }
 	}
 
 	public class EquipmentSellWarehouseResponse : BasePacket
 	{
-		public List<ItemModel> items { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 	public class EventEndBattleResponse : BasePacket
 	{
-		public List<dynamic> achieveRewards { get; set; }
-		public List<int> addCharacterExps { get; set; }
-		public List<UserEventFriendshipItemModel> addEventFriendshipItems { get; set; }
-		public List<UserEventItemModel> addEventPointItems { get; set; }
-		public List<int> addGolds { get; set; }
-		public int addUserExp { get; set; }
-		public List<int> addUserExps { get; set; }
-		public int addUserLevel { get; set; }
-		public List<WarehouseCharacterModel> addWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> addWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> addWarehouseMaterials { get; set; }
-		public List<UserBoostModel> boosts { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public int convertGolds { get; set; }
-		public List<List<dynamic>> dropItems { get; set; }
-		public List<EquipmentModel> equipments { get; set; }
-		public List<UserEventFriendshipItemModel> eventFriendshipItems { get; set; }
-		public List<UserEventItemModel> eventItems { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<QuestModel> quests { get; set; }
-		public List<StoryModel> stories { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("achieveRewards")]
+		public List<InitItemModel> AchieveRewards { get; set; }
+		[JsonProperty("addCharacterExps")]
+		public List<int> AddCharacterExps { get; set; }
+		[JsonProperty("addEventFriendshipItems")]
+		public List<UserEventFriendshipItemModel> AddEventFriendshipItems { get; set; }
+		[JsonProperty("addEventPointItems")]
+		public List<UserEventItemModel> AddEventPointItems { get; set; }
+		[JsonProperty("addGolds")]
+		public List<int> AddGolds { get; set; }
+		[JsonProperty("addUserExp")]
+		public int AddUserExp { get; set; }
+		[JsonProperty("addUserExps")]
+		public List<int> AddUserExps { get; set; }
+		[JsonProperty("addUserLevel")]
+		public int AddUserLevel { get; set; }
+		[JsonProperty("addWarehouseCharacters")]
+		public List<WarehouseCharacterModel> AddWarehouseCharacters { get; set; }
+		[JsonProperty("addWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> AddWarehouseEquipments { get; set; }
+		[JsonProperty("addWarehouseMaterials")]
+		public List<WarehouseMaterialModel> AddWarehouseMaterials { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("convertGolds")]
+		public int ConvertGolds { get; set; }
+		[JsonProperty("dropItems")]
+		public List<List<dynamic>> DropItems { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("eventFriendshipItems")]
+		public List<UserEventFriendshipItemModel> EventFriendshipItems { get; set; }
+		[JsonProperty("eventItems")]
+		public List<UserEventItemModel> EventItems { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("gem")]
+		public UserGemModel Gem { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("quests")]
+		public List<QuestModel> Quests { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class EventGetMasterDataResponse : BasePacket
@@ -439,98 +580,162 @@ namespace AikaSeggs.Common.Packets
 
 	public class EventGetUserDataResponse : BasePacket
 	{
-		public List<UserEventFriendshipItemModel> eventFriendshipItems { get; set; }
-		public List<UserEventItemModel> eventItems { get; set; }
+		[JsonProperty("eventFriendshipItems")]
+		public List<UserEventFriendshipItemModel> EventFriendshipItems { get; set; }
+		[JsonProperty("eventItems")]
+		public List<UserEventItemModel> EventItems { get; set; }
 	}
 
 	public class EventSkipBattleResponse : BasePacket
 	{
-		public List<int> addCharacterExps { get; set; }
-		public List<UserEventFriendshipItemModel> addEventFriendshipItems { get; set; }
-		public List<List<dynamic>> addEventPointItems { get; set; }
-		public List<int> addGolds { get; set; }
-		public int addUserExp { get; set; }
-		public List<int> addUserExps { get; set; }
-		public int addUserLevel { get; set; }
-		public List<WarehouseCharacterModel> addWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> addWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> addWarehouseMaterials { get; set; }
-		public List<UserBoostModel> boosts { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public int convertGolds { get; set; }
-		public List<List<dynamic>> dropItems { get; set; }
-		public List<EquipmentModel> equipments { get; set; }
-		public List<UserEventFriendshipItemModel> eventFriendshipItems { get; set; }
-		public List<UserEventItemModel> eventItems { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<QuestModel> quests { get; set; }
-		public List<StoryModel> stories { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("addCharacterExps")]
+		public List<int> AddCharacterExps { get; set; }
+		[JsonProperty("addEventFriendshipItems")]
+		public List<UserEventFriendshipItemModel> AddEventFriendshipItems { get; set; }
+		[JsonProperty("addEventPointItems")]
+		public List<List<dynamic>> AddEventPointItems { get; set; }
+		[JsonProperty("addGolds")]
+		public List<int> AddGolds { get; set; }
+		[JsonProperty("addUserExp")]
+		public int AddUserExp { get; set; }
+		[JsonProperty("addUserExps")]
+		public List<int> AddUserExps { get; set; }
+		[JsonProperty("addUserLevel")]
+		public int AddUserLevel { get; set; }
+		[JsonProperty("addWarehouseCharacters")]
+		public List<WarehouseCharacterModel> AddWarehouseCharacters { get; set; }
+		[JsonProperty("addWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> AddWarehouseEquipments { get; set; }
+		[JsonProperty("addWarehouseMaterials")]
+		public List<WarehouseMaterialModel> AddWarehouseMaterials { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("convertGolds")]
+		public int ConvertGolds { get; set; }
+		[JsonProperty("dropItems")]
+		public List<List<dynamic>> DropItems { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("eventFriendshipItems")]
+		public List<UserEventFriendshipItemModel> EventFriendshipItems { get; set; }
+		[JsonProperty("eventItems")]
+		public List<UserEventItemModel> EventItems { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("quests")]
+		public List<QuestModel> Quests { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class EventStartBattleResponse : BasePacket
 	{
-		public List<string> finishedMissionCds { get; set; }
-		public SessionDynamicModel session { get; set; }
-		public string stage { get; set; }
-		public List<StoryModel> stories { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("session")]
+		public SessionDynamicModel Session { get; set; }
+		[JsonProperty("stage")]
+		public string Stage { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class GachaGetDetailResponse : BasePacket
 	{
-		public string caution { get; set; }
-		public CharacterTextModel description { get; set; }
-		public int gachaId { get; set; }
-		public List<OddsDynamicModel> odds { get; set; }
-		public List<List<dynamic>> presents { get; set; }
-		public SelectPickInfoDynamicModel selectPickInfo { get; set; }
+		[JsonProperty("caution")]
+		public string Caution { get; set; }
+		[JsonProperty("description")]
+		public CharacterTextModel Description { get; set; }
+		[JsonProperty("gachaId")]
+		public int GachaId { get; set; }
+		[JsonProperty("odds")]
+		public List<OddsDynamicModel> Odds { get; set; }
+		[JsonProperty("presents")]
+		public List<List<dynamic>> Presents { get; set; }
+		[JsonProperty("selectPickInfo")]
+		public SelectPickInfoDynamicModel SelectPickInfo { get; set; }
 	}
 
 	public class GachaGetListResponse : BasePacket
 	{
-		public List<UserGachaModel> gacha { get; set; }
+		[JsonProperty("gacha")]
+		public List<UserGachaModel> Gacha { get; set; }
 	}
 
 	public class GachaGetStepUpGroupResponse : BasePacket
 	{
-		public List<List<dynamic>> odds { get; set; }
+		[JsonProperty("odds")]
+		public List<List<dynamic>> Odds { get; set; }
 	}
 
 	public class GachaGetUserDataResponse : BasePacket
 	{
-		public List<UserGachaModel> gacha { get; set; }
+		[JsonProperty("gacha")]
+		public List<UserGachaModel> Gacha { get; set; }
 	}
 
 	public class GachaPlayResponse : BasePacket
 	{
-		public List<CharacterModel> addCharacters { get; set; }
-		public List<EquipmentModel> addEquipments { get; set; }
-		public List<MemorialModel> addMemorials { get; set; }
-		public List<AddPresentsDynamicModel> addPresents { get; set; }
-		public List<UserBoostModel> boosts { get; set; }
-		public ButtonDynamicModel button { get; set; }
-		public List<CharacterSellBonusModel> cards { get; set; }
-		public List<CharacterLinkUnitModel> characterLinks { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public UserGemModel gem { get; set; }
-		public List<UserCharacterModel> getCharacters { get; set; }
-		public List<EquipmentModel> getEquipments { get; set; }
-		public bool isCanReplay { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<CharacterSellBonusModel> preConvert { get; set; }
-		public int remainReplayCount { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("addCharacters")]
+		public List<CharacterModel> AddCharacters { get; set; }
+		[JsonProperty("addEquipments")]
+		public List<EquipmentModel> AddEquipments { get; set; }
+		[JsonProperty("addMemorials")]
+		public List<MemorialModel> AddMemorials { get; set; }
+		[JsonProperty("addPresents")]
+		public List<AddPresentsDynamicModel> AddPresents { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("button")]
+		public ButtonDynamicModel Button { get; set; }
+		[JsonProperty("cards")]
+		public List<CharacterSellBonusModel> Cards { get; set; }
+		[JsonProperty("characterLinks")]
+		public List<CharacterLinkUnitModel> CharacterLinks { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("gem")]
+		public UserGemModel Gem { get; set; }
+		[JsonProperty("getCharacters")]
+		public List<UserCharacterModel> GetCharacters { get; set; }
+		[JsonProperty("getEquipments")]
+		public List<EquipmentModel> GetEquipments { get; set; }
+		[JsonProperty("isCanReplay")]
+		public bool IsCanReplay { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("preConvert")]
+		public List<CharacterSellBonusModel> PreConvert { get; set; }
+		[JsonProperty("remainReplayCount")]
+		public int RemainReplayCount { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class ItemGetMasterDataResponse : BasePacket
@@ -558,30 +763,42 @@ namespace AikaSeggs.Common.Packets
 
 	public class ItemGetUserDataResponse : BasePacket
 	{
-		public List<ItemModel> items { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
 	}
 
 	public class ItemSellResponse : BasePacket
 	{
-		public List<ItemModel> items { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
 	}
 
 	public class ItemUseRecoveryItemResponse : BasePacket
 	{
-		public List<ItemModel> items { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class ItemUseResponse : BasePacket
 	{
-		public List<UserBoostModel> boosts { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public List<EquipmentModel> equipments { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<QuestModel> quests { get; set; }
-		public List<dynamic> rewards { get; set; }
-		public List<StoryModel> stories { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("quests")]
+		public List<QuestModel> Quests { get; set; }
+		[JsonProperty("rewards")]
+		public List<dynamic> Rewards { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class LinearMissionGetMasterDataResponse : BasePacket
@@ -593,13 +810,16 @@ namespace AikaSeggs.Common.Packets
 
 	public class LinearMissionGetUserDataResponse : BasePacket
 	{
-		public List<LinearMissionModel> linearMissions { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
 	}
 
 	public class LoginBonusGetLoginBonusResponse : BasePacket
 	{
-		public List<LoginBonusModel> loginBonus { get; set; }
-		public int result { get; set; }
+		[JsonProperty("loginBonus")]
+		public List<LoginBonusModel> LoginBonus { get; set; }
+		[JsonProperty("result")]
+		public int Result { get; set; }
 	}
 
 	public class LoginBonusGetMasterDataResponse : BasePacket
@@ -610,7 +830,8 @@ namespace AikaSeggs.Common.Packets
 
 	public class LoginPackGetLoginPackResponse : BasePacket
 	{
-		public int result { get; set; }
+		[JsonProperty("result")]
+		public int Result { get; set; }
 	}
 
 	public class LoginPackGetMasterDataResponse : BasePacket
@@ -621,28 +842,38 @@ namespace AikaSeggs.Common.Packets
 
 	public class LoginPackGetUserDataResponse : BasePacket
 	{
-		public List<UserLoginPackModel> loginPacks { get; set; }
+		[JsonProperty("loginPacks")]
+		public List<UserLoginPackModel> LoginPacks { get; set; }
 	}
 
 	public class LotteryGetUserDataResponse : BasePacket
 	{
-		public List<LotteryModel> lotteries { get; set; }
+		[JsonProperty("lotteries")]
+		public List<LotteryModel> Lotteries { get; set; }
 	}
 
 	public class MemorialExceedLimitResponse : BasePacket
 	{
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MemorialModel> memorials { get; set; }
-		public List<MissionModel> missions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("memorials")]
+		public List<MemorialModel> Memorials { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
 	}
 
 	public class MemorialFortifyResponse : BasePacket
 	{
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MemorialModel> memorials { get; set; }
-		public List<MissionModel> missions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("memorials")]
+		public List<MemorialModel> Memorials { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
 	}
 
 	public class MemorialGetMasterDataResponse : BasePacket
@@ -664,17 +895,20 @@ namespace AikaSeggs.Common.Packets
 
 	public class MemorialGetUserDataResponse : BasePacket
 	{
-		public List<MemorialModel> memorials { get; set; }
+		[JsonProperty("memorials")]
+		public List<MemorialModel> Memorials { get; set; }
 	}
 
 	public class MemorialReleaseStoryResponse : BasePacket
 	{
-		public List<StoryModel> stories { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
 	}
 
 	public class MinigameGetListResponse : BasePacket
 	{
-		public List<MinigameMainModel> minigameData { get; set; }
+		[JsonProperty("minigameData")]
+		public List<MinigameMainModel> MinigameData { get; set; }
 	}
 
 	public class MinigameGetMasterDataResponse : BasePacket
@@ -685,14 +919,18 @@ namespace AikaSeggs.Common.Packets
 
 	public class MinigameGetUserDataResponse : BasePacket
 	{
-		public UserMinigameModel minigame { get; set; }
+		[JsonProperty("minigame")]
+		public UserMinigameModel Minigame { get; set; }
 	}
 
 	public class MinigamePlayResponse : BasePacket
 	{
-		public UserMinigameModel minigame { get; set; }
-		public int rivalLane { get; set; }
-		public int winLane { get; set; }
+		[JsonProperty("minigame")]
+		public UserMinigameModel Minigame { get; set; }
+		[JsonProperty("rivalLane")]
+		public int RivalLane { get; set; }
+		[JsonProperty("winLane")]
+		public int WinLane { get; set; }
 	}
 
 	public class MissionGetMasterDataResponse : BasePacket
@@ -724,50 +962,78 @@ namespace AikaSeggs.Common.Packets
 
 	public class MissionGetUserDataResponse : BasePacket
 	{
-		public List<MissionModel> missions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
 	}
 
 	public class MissionReceiveResponse : BasePacket
 	{
-		public List<CharacterModel> addCharacters { get; set; }
-		public List<EquipmentModel> addEquipments { get; set; }
-		public List<dynamic> addLotteries { get; set; }
-		public List<WarehouseCharacterModel> addWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> addWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> addWarehouseMaterials { get; set; }
-		public List<UserEventItemModel> eventItems { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<FurnitureModel> furniture { get; set; }
-		public UserGemModel gem { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<dynamic> nonReceiveReasons { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("addCharacters")]
+		public List<CharacterModel> AddCharacters { get; set; }
+		[JsonProperty("addEquipments")]
+		public List<EquipmentModel> AddEquipments { get; set; }
+		[JsonProperty("addLotteries")]
+		public List<dynamic> AddLotteries { get; set; }
+		[JsonProperty("addWarehouseCharacters")]
+		public List<WarehouseCharacterModel> AddWarehouseCharacters { get; set; }
+		[JsonProperty("addWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> AddWarehouseEquipments { get; set; }
+		[JsonProperty("addWarehouseMaterials")]
+		public List<WarehouseMaterialModel> AddWarehouseMaterials { get; set; }
+		[JsonProperty("eventItems")]
+		public List<UserEventItemModel> EventItems { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("furniture")]
+		public List<FurnitureModel> Furniture { get; set; }
+		[JsonProperty("gem")]
+		public UserGemModel Gem { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("nonReceiveReasons")]
+		public List<dynamic> NonReceiveReasons { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class MissionUpdateMissionProgressOnLoginResponse : BasePacket
 	{
-		public List<string> finishedMissionCds { get; set; }
-		public List<MissionModel> missions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
 	}
 
 	public class MyPageRefreshResponse : BasePacket
 	{
-		public List<UserNoticeModel> addNotices { get; set; }
-		public string checkingPaymentResult { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public bool isUpdateDate { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public int presentCount { get; set; }
+		[JsonProperty("addNotices")]
+		public List<UserNoticeModel> AddNotices { get; set; }
+		[JsonProperty("checkingPaymentResult")]
+		public string CheckingPaymentResult { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("isUpdateDate")]
+		public bool IsUpdateDate { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("presentCount")]
+		public int PresentCount { get; set; }
 	}
 
 	public class NoticeGetUserDataResponse : BasePacket
 	{
-		public List<UserNoticeModel> notices { get; set; }
+		[JsonProperty("notices")]
+		public List<UserNoticeModel> Notices { get; set; }
 	}
 
 	public class PaymentGetMasterDataResponse : BasePacket
@@ -777,25 +1043,36 @@ namespace AikaSeggs.Common.Packets
 
 	public class PictureBookGetUserDataResponse : BasePacket
 	{
-		public List<PictureBookBaseModel> pictureBookBase { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
+		[JsonProperty("pictureBookBase")]
+		public List<PictureBookBaseModel> PictureBookBase { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
 	}
 
 	public class PictureBookGiftResponse : BasePacket
 	{
-		public List<UserStoryModel> addStories { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<StoryModel> stories { get; set; }
+		[JsonProperty("addStories")]
+		public List<UserStoryModel> AddStories { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
 	}
 
 	public class PresentGetListResponse : BasePacket
 	{
-		public int maxCount { get; set; }
-		public int presentCount { get; set; }
-		public List<AddPresentsDynamicModel2> presents { get; set; }
+		[JsonProperty("maxCount")]
+		public int MaxCount { get; set; }
+		[JsonProperty("presentCount")]
+		public int PresentCount { get; set; }
+		[JsonProperty("presents")]
+		public List<PresentsDynamicModel> Presents { get; set; }
 	}
 
 	public class PresentGetMasterDataResponse : BasePacket
@@ -805,50 +1082,86 @@ namespace AikaSeggs.Common.Packets
 
 	public class PresentReceiveResponse : BasePacket
 	{
-		public List<CharacterModel> addCharacters { get; set; }
-		public List<EquipmentModel> addEquipments { get; set; }
-		public List<dynamic> addLotteries { get; set; }
-		public List<MemorialModel> addMemorials { get; set; }
-		public List<WarehouseCharacterModel> addWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> addWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> addWarehouseMaterials { get; set; }
-		public List<CharacterLinkUnitModel> characterLinks { get; set; }
-		public List<UserEventItemModel> eventItems { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<FurnitureModel> furniture { get; set; }
-		public UserGemModel gem { get; set; }
-		public List<ItemModel> items { get; set; }
-		public MemorialConvertInfoDynamicModel memorialConvertInfo { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<dynamic> nonReceivePresents { get; set; }
-		public List<dynamic> nonReceiveReasons { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<AddPresentsDynamicModel2> receivePresents { get; set; }
-		public List<ItemSelectModel> receiveWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> receiveWarehouseEquipments { get; set; }
-		public List<ItemSelectModel> receiveWarehouseMaterials { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("addCharacters")]
+		public List<CharacterModel> AddCharacters { get; set; }
+		[JsonProperty("addEquipments")]
+		public List<EquipmentModel> AddEquipments { get; set; }
+		[JsonProperty("addLotteries")]
+		public List<dynamic> AddLotteries { get; set; }
+		[JsonProperty("addMemorials")]
+		public List<MemorialModel> AddMemorials { get; set; }
+		[JsonProperty("addWarehouseCharacters")]
+		public List<WarehouseCharacterModel> AddWarehouseCharacters { get; set; }
+		[JsonProperty("addWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> AddWarehouseEquipments { get; set; }
+		[JsonProperty("addWarehouseMaterials")]
+		public List<WarehouseMaterialModel> AddWarehouseMaterials { get; set; }
+		[JsonProperty("characterLinks")]
+		public List<CharacterLinkUnitModel> CharacterLinks { get; set; }
+		[JsonProperty("eventItems")]
+		public List<UserEventItemModel> EventItems { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("furniture")]
+		public List<FurnitureModel> Furniture { get; set; }
+		[JsonProperty("gem")]
+		public UserGemModel Gem { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("memorialConvertInfo")]
+		public MemorialConvertInfoDynamicModel MemorialConvertInfo { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("nonReceivePresents")]
+		public List<dynamic> NonReceivePresents { get; set; }
+		[JsonProperty("nonReceiveReasons")]
+		public List<dynamic> NonReceiveReasons { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("receivePresents")]
+		public List<ReceivePresentsDynamicModel> ReceivePresents { get; set; }
+		[JsonProperty("receiveWarehouseCharacters")]
+		public List<ItemSelectModel> ReceiveWarehouseCharacters { get; set; }
+		[JsonProperty("receiveWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> ReceiveWarehouseEquipments { get; set; }
+		[JsonProperty("receiveWarehouseMaterials")]
+		public List<ItemSelectModel> ReceiveWarehouseMaterials { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class PvpEndBattleResponse : BasePacket
 	{
-		public int addPoint { get; set; }
-		public List<AddPresentsDynamicModel> addPresents { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public PvPModel pvp { get; set; }
+		[JsonProperty("addPoint")]
+		public int AddPoint { get; set; }
+		[JsonProperty("addPresents")]
+		public List<AddPresentsDynamicModel3> AddPresents { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("pvp")]
+		public PvPModel Pvp { get; set; }
 	}
 
 	public class PvpGetBattlePlayersResponse : BasePacket
 	{
-		public List<BattlePlayersDynamicModel> battlePlayers { get; set; }
-		public bool isNewSeason { get; set; }
-		public PvPModel pvp { get; set; }
+		[JsonProperty("battlePlayers")]
+		public List<BattlePlayersDynamicModel> BattlePlayers { get; set; }
+		[JsonProperty("isNewSeason")]
+		public bool IsNewSeason { get; set; }
+		[JsonProperty("pvp")]
+		public PvPModel Pvp { get; set; }
 	}
 
 	public class PvpGetMasterDataResponse : BasePacket
@@ -860,51 +1173,84 @@ namespace AikaSeggs.Common.Packets
 
 	public class PvpGetUserDataResponse : BasePacket
 	{
-		public PvPModel pvp { get; set; }
+		[JsonProperty("pvp")]
+		public PvPModel Pvp { get; set; }
 	}
 
 	public class PvpStartBattleResponse : BasePacket
 	{
-		public string playerId { get; set; }
-		public PvPModel pvp { get; set; }
-		public string sessionId { get; set; }
+		[JsonProperty("playerId")]
+		public string PlayerId { get; set; }
+		[JsonProperty("pvp")]
+		public PvPModel Pvp { get; set; }
+		[JsonProperty("sessionId")]
+		public string SessionId { get; set; }
 	}
 
 	public class PvpUpdateBattlePlayersResponse : BasePacket
 	{
-		public List<BattlePlayersDynamicModel> battlePlayers { get; set; }
-		public bool isNewSeason { get; set; }
-		public PvPModel pvp { get; set; }
+		[JsonProperty("battlePlayers")]
+		public List<BattlePlayersDynamicModel2> BattlePlayers { get; set; }
+		[JsonProperty("isNewSeason")]
+		public bool IsNewSeason { get; set; }
+		[JsonProperty("pvp")]
+		public PvPModel Pvp { get; set; }
 	}
 
 	public class QuestEndBattleResponse : BasePacket
 	{
-		public List<dynamic> achieveRewards { get; set; }
-		public List<int> addCharacterExps { get; set; }
-		public List<int> addGolds { get; set; }
-		public int addUserExp { get; set; }
-		public List<int> addUserExps { get; set; }
-		public int addUserLevel { get; set; }
-		public List<WarehouseCharacterModel> addWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> addWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> addWarehouseMaterials { get; set; }
-		public List<UserBoostModel> boosts { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public int convertGolds { get; set; }
-		public List<List<dynamic>> dropItems { get; set; }
-		public List<EquipmentModel> equipments { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<QuestModel> quests { get; set; }
-		public List<StoryModel> stories { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("achieveRewards")]
+		public List<InitItemModel> AchieveRewards { get; set; }
+		[JsonProperty("addCharacterExps")]
+		public List<int> AddCharacterExps { get; set; }
+		[JsonProperty("addGolds")]
+		public List<int> AddGolds { get; set; }
+		[JsonProperty("addUserExp")]
+		public int AddUserExp { get; set; }
+		[JsonProperty("addUserExps")]
+		public List<int> AddUserExps { get; set; }
+		[JsonProperty("addUserLevel")]
+		public int AddUserLevel { get; set; }
+		[JsonProperty("addWarehouseCharacters")]
+		public List<WarehouseCharacterModel> AddWarehouseCharacters { get; set; }
+		[JsonProperty("addWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> AddWarehouseEquipments { get; set; }
+		[JsonProperty("addWarehouseMaterials")]
+		public List<WarehouseMaterialModel> AddWarehouseMaterials { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("convertGolds")]
+		public int ConvertGolds { get; set; }
+		[JsonProperty("dropItems")]
+		public List<List<dynamic>> DropItems { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("quests")]
+		public List<QuestModel> Quests { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class QuestGetMasterDataResponse : BasePacket
@@ -977,77 +1323,120 @@ namespace AikaSeggs.Common.Packets
 
 	public class QuestGetStageDataResponse : BasePacket
 	{
-		public List<StageEnemiesDynamicModel> stageEnemies { get; set; }
-		public int wave { get; set; }
+		[JsonProperty("stageEnemies")]
+		public List<StageEnemiesDynamicModel> StageEnemies { get; set; }
+		[JsonProperty("wave")]
+		public int Wave { get; set; }
 	}
 
 	public class QuestGetUserDataResponse : BasePacket
 	{
-		public List<QuestModel> quests { get; set; }
+		[JsonProperty("quests")]
+		public List<QuestModel> Quests { get; set; }
 	}
 
 	public class QuestSkipBattleResponse : BasePacket
 	{
-		public List<int> addCharacterExps { get; set; }
-		public List<int> addGolds { get; set; }
-		public int addUserExp { get; set; }
-		public List<int> addUserExps { get; set; }
-		public int addUserLevel { get; set; }
-		public List<WarehouseCharacterModel> addWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> addWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> addWarehouseMaterials { get; set; }
-		public List<UserBoostModel> boosts { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public int convertGolds { get; set; }
-		public List<List<dynamic>> dropItems { get; set; }
-		public List<EquipmentModel> equipments { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<QuestModel> quests { get; set; }
-		public List<StoryModel> stories { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("addCharacterExps")]
+		public List<int> AddCharacterExps { get; set; }
+		[JsonProperty("addGolds")]
+		public List<int> AddGolds { get; set; }
+		[JsonProperty("addUserExp")]
+		public int AddUserExp { get; set; }
+		[JsonProperty("addUserExps")]
+		public List<int> AddUserExps { get; set; }
+		[JsonProperty("addUserLevel")]
+		public int AddUserLevel { get; set; }
+		[JsonProperty("addWarehouseCharacters")]
+		public List<WarehouseCharacterModel> AddWarehouseCharacters { get; set; }
+		[JsonProperty("addWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> AddWarehouseEquipments { get; set; }
+		[JsonProperty("addWarehouseMaterials")]
+		public List<WarehouseMaterialModel> AddWarehouseMaterials { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("convertGolds")]
+		public int ConvertGolds { get; set; }
+		[JsonProperty("dropItems")]
+		public List<List<dynamic>> DropItems { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("quests")]
+		public List<QuestModel> Quests { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class QuestStartBattleResponse : BasePacket
 	{
-		public SessionDynamicModel session { get; set; }
-		public string stage { get; set; }
-		public List<StoryModel> stories { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("session")]
+		public SessionDynamicModel2 Session { get; set; }
+		[JsonProperty("stage")]
+		public string Stage { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class QuestUnlockQuestResponse : BasePacket
 	{
-		public List<UserBoostModel> boosts { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class QuestionnaireGetQuestionnaireListResponse : BasePacket
 	{
-		public List<dynamic> questionnaire { get; set; }
+		[JsonProperty("questionnaire")]
+		public List<dynamic> Questionnaire { get; set; }
 	}
 
 	public class RaceEndRaceResponse : BasePacket
 	{
-		public List<AddPresentsDynamicModel2> addPresents { get; set; }
-		public RaceSessionModel raceSession { get; set; }
-		public List<RaceCharacterModel> updateRaceCharacters { get; set; }
+		[JsonProperty("addPresents")]
+		public List<AddPresentsDynamicModel2> AddPresents { get; set; }
+		[JsonProperty("raceSession")]
+		public RaceSessionModel RaceSession { get; set; }
+		[JsonProperty("updateRaceCharacters")]
+		public List<RaceCharacterModel> UpdateRaceCharacters { get; set; }
 	}
 
 	public class RaceFortifyCharacterResponse : BasePacket
 	{
-		public List<ItemModel> items { get; set; }
-		public List<RaceCharacterModel> updateRaceCharacters { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("updateRaceCharacters")]
+		public List<RaceCharacterModel> UpdateRaceCharacters { get; set; }
 	}
 
 	public class RaceGetMasterDataResponse : BasePacket
@@ -1076,21 +1465,28 @@ namespace AikaSeggs.Common.Packets
 
 	public class RaceGetUserDataResponse : BasePacket
 	{
-		public List<RaceCharacterModel> raceCharacters { get; set; }
-		public RaceSessionModel raceSession { get; set; }
+		[JsonProperty("raceCharacters")]
+		public List<RaceCharacterModel> RaceCharacters { get; set; }
+		[JsonProperty("raceSession")]
+		public RaceSessionModel RaceSession { get; set; }
 	}
 
 	public class RaceStartRaceResponse : BasePacket
 	{
-		public RaceSessionModel raceSession { get; set; }
-		public List<RaceCharacterModel> updateRaceCharacters { get; set; }
+		[JsonProperty("raceSession")]
+		public RaceSessionModel RaceSession { get; set; }
+		[JsonProperty("updateRaceCharacters")]
+		public List<RaceCharacterModel> UpdateRaceCharacters { get; set; }
 	}
 
 	public class RaceUpdateSeasonResponse : BasePacket
 	{
-		public List<RaceCharacterModel> addRaceCharacters { get; set; }
-		public RaceSessionModel raceSession { get; set; }
-		public List<RaceCharacterModel> updateRaceCharacters { get; set; }
+		[JsonProperty("addRaceCharacters")]
+		public List<RaceCharacterModel> AddRaceCharacters { get; set; }
+		[JsonProperty("raceSession")]
+		public RaceSessionModel RaceSession { get; set; }
+		[JsonProperty("updateRaceCharacters")]
+		public List<RaceCharacterModel> UpdateRaceCharacters { get; set; }
 	}
 
 	public class RaidGetMasterDataResponse : BasePacket
@@ -1103,21 +1499,32 @@ namespace AikaSeggs.Common.Packets
 
 	public class RoomBuyFurnitureResponse : BasePacket
 	{
-		public List<string> finishedMissionCds { get; set; }
-		public List<FurnitureModel> furniture { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("furniture")]
+		public List<FurnitureModel> Furniture { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
 	}
 
 	public class RoomCollectAllResponse : BasePacket
 	{
-		public List<string> finishedMissionCds { get; set; }
-		public List<FurnitureRewardsDynamicModel> furnitureRewards { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<dynamic> nonCollectRewards { get; set; }
-		public RoomModel room { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("furnitureRewards")]
+		public List<FurnitureRewardsDynamicModel> FurnitureRewards { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("nonCollectRewards")]
+		public List<dynamic> NonCollectRewards { get; set; }
+		[JsonProperty("room")]
+		public RoomModel Room { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class RoomGetMasterDataResponse : BasePacket
@@ -1139,35 +1546,48 @@ namespace AikaSeggs.Common.Packets
 
 	public class RoomGetUserDataResponse : BasePacket
 	{
-		public List<FurnitureModel> furniture { get; set; }
-		public RoomModel room { get; set; }
-		public List<UserRoomLayoutModel> roomLayouts { get; set; }
+		[JsonProperty("furniture")]
+		public List<FurnitureModel> Furniture { get; set; }
+		[JsonProperty("room")]
+		public RoomModel Room { get; set; }
+		[JsonProperty("roomLayouts")]
+		public List<UserRoomLayoutModel> RoomLayouts { get; set; }
 	}
 
 	public class RoomResetAllFurnitureResponse : BasePacket
 	{
-		public RoomModel room { get; set; }
+		[JsonProperty("room")]
+		public RoomModel Room { get; set; }
 	}
 
 	public class RoomSaveSelectCharacterResponse : BasePacket
 	{
-		public List<PictureBookBaseModel> pictureBookBase { get; set; }
+		[JsonProperty("pictureBookBase")]
+		public List<PictureBookBaseModel> PictureBookBase { get; set; }
 	}
 
 	public class RoomSetFurnitureResponse : BasePacket
 	{
-		public RoomModel room { get; set; }
+		[JsonProperty("room")]
+		public RoomModel Room { get; set; }
 	}
 
 	public class ShopExchangeResponse : BasePacket
 	{
-		public List<InitItemModel> addRewards { get; set; }
-		public List<UserBoostModel> boosts { get; set; }
-		public List<UserExchangeHistoryModel> exchangeHistories { get; set; }
-		public UserGemModel gem { get; set; }
-		public bool isReceivedBonus { get; set; }
-		public List<ItemModel> items { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("addRewards")]
+		public List<InitItemModel> AddRewards { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("exchangeHistories")]
+		public List<UserExchangeHistoryModel> ExchangeHistories { get; set; }
+		[JsonProperty("gem")]
+		public UserGemModel Gem { get; set; }
+		[JsonProperty("isReceivedBonus")]
+		public bool IsReceivedBonus { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class ShopGetMasterDataResponse : BasePacket
@@ -1200,31 +1620,44 @@ namespace AikaSeggs.Common.Packets
 
 	public class ShopGetOrderPackResponse : BasePacket
 	{
-		public List<OrderPackModel> orderPacks { get; set; }
+		[JsonProperty("orderPacks")]
+		public List<OrderPackModel> OrderPacks { get; set; }
 	}
 
 	public class ShopGetUserDataResponse : BasePacket
 	{
-		public List<UserExchangeHistoryModel> exchangeHistories { get; set; }
-		public List<UserPurchaseHistoryModel> purchaseHistories { get; set; }
+		[JsonProperty("exchangeHistories")]
+		public List<UserExchangeHistoryModel> ExchangeHistories { get; set; }
+		[JsonProperty("purchaseHistories")]
+		public List<UserPurchaseHistoryModel> PurchaseHistories { get; set; }
 	}
 
 	public class ShopPurchaseResponse : BasePacket
 	{
-		public List<RaceCharacterModel> addRaceCharacters { get; set; }
-		public List<SoundModel> addSounds { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public UserGemModel gem { get; set; }
-		public List<UserLoginPackModel> loginPacks { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<OrderPackModel> orderPacks { get; set; }
-		public List<UserPurchaseHistoryModel> purchaseHistories { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("addRaceCharacters")]
+		public List<RaceCharacterModel> AddRaceCharacters { get; set; }
+		[JsonProperty("addSounds")]
+		public List<SoundModel> AddSounds { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("gem")]
+		public UserGemModel Gem { get; set; }
+		[JsonProperty("loginPacks")]
+		public List<UserLoginPackModel> LoginPacks { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("orderPacks")]
+		public List<OrderPackModel> OrderPacks { get; set; }
+		[JsonProperty("purchaseHistories")]
+		public List<UserPurchaseHistoryModel> PurchaseHistories { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class SolidEquipmentGetUserDataResponse : BasePacket
 	{
-		public List<SolidEquipmentModel> solidEquipments { get; set; }
+		[JsonProperty("solidEquipments")]
+		public List<SolidEquipmentModel> SolidEquipments { get; set; }
 	}
 
 	public class SoundGetMasterDataResponse : BasePacket
@@ -1234,12 +1667,14 @@ namespace AikaSeggs.Common.Packets
 
 	public class SoundGetUserDataResponse : BasePacket
 	{
-		public List<SoundModel> sounds { get; set; }
+		[JsonProperty("sounds")]
+		public List<SoundModel> Sounds { get; set; }
 	}
 
 	public class StoryAddStoryResponse : BasePacket
 	{
-		public List<StoryModel> stories { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
 	}
 
 	public class StoryGetMasterDataResponse : BasePacket
@@ -1262,60 +1697,98 @@ namespace AikaSeggs.Common.Packets
 
 	public class StoryGetResourceResponse : BasePacket
 	{
-		public int adult { get; set; }
-		public List<ResourceDynamicModel> resource { get; set; }
-		public List<int> storyIds { get; set; }
+		[JsonProperty("adult")]
+		public int Adult { get; set; }
+		[JsonProperty("resource")]
+		public List<ResourceDynamicModel> Resource { get; set; }
+		[JsonProperty("storyIds")]
+		public List<int> StoryIds { get; set; }
 	}
 
 	public class StoryGetUserDataResponse : BasePacket
 	{
-		public List<StoryModel> stories { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
 	}
 
 	public class StoryReadStoryResponse : BasePacket
 	{
-		public int addFreeGems { get; set; }
-		public UserGemModel gem { get; set; }
-		public List<StoryModel> stories { get; set; }
+		[JsonProperty("addFreeGems")]
+		public int AddFreeGems { get; set; }
+		[JsonProperty("gem")]
+		public UserGemModel Gem { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
 	}
 
 	public class TowerEndBattleResponse : BasePacket
 	{
-		public List<dynamic> achieveRewards { get; set; }
-		public List<int> addCharacterExps { get; set; }
-		public List<int> addGolds { get; set; }
-		public int addUserExp { get; set; }
-		public List<int> addUserExps { get; set; }
-		public int addUserLevel { get; set; }
-		public List<WarehouseCharacterModel> addWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> addWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> addWarehouseMaterials { get; set; }
-		public List<UserBoostModel> boosts { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public int convertGolds { get; set; }
-		public List<List<dynamic>> dropItems { get; set; }
-		public List<EquipmentModel> equipments { get; set; }
-		public List<LinearMissionModel> finishedLinearMissions { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public bool isTowerClear { get; set; }
-		public List<ItemModel> items { get; set; }
-		public List<LinearMissionModel> linearMissions { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public List<PictureBookDetailModel> pictureBookDetail { get; set; }
-		public List<QuestModel> quests { get; set; }
-		public List<StoryModel> stories { get; set; }
-		public List<TowerCharacterStatusDynamicModel> towerCharacterStatus { get; set; }
-		public TowerSessionModel towerSession { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("achieveRewards")]
+		public List<InitItemModel> AchieveRewards { get; set; }
+		[JsonProperty("addCharacterExps")]
+		public List<int> AddCharacterExps { get; set; }
+		[JsonProperty("addGolds")]
+		public List<int> AddGolds { get; set; }
+		[JsonProperty("addUserExp")]
+		public int AddUserExp { get; set; }
+		[JsonProperty("addUserExps")]
+		public List<int> AddUserExps { get; set; }
+		[JsonProperty("addUserLevel")]
+		public int AddUserLevel { get; set; }
+		[JsonProperty("addWarehouseCharacters")]
+		public List<WarehouseCharacterModel> AddWarehouseCharacters { get; set; }
+		[JsonProperty("addWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> AddWarehouseEquipments { get; set; }
+		[JsonProperty("addWarehouseMaterials")]
+		public List<WarehouseMaterialModel> AddWarehouseMaterials { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("convertGolds")]
+		public int ConvertGolds { get; set; }
+		[JsonProperty("dropItems")]
+		public List<List<dynamic>> DropItems { get; set; }
+		[JsonProperty("equipments")]
+		public List<EquipmentModel> Equipments { get; set; }
+		[JsonProperty("finishedLinearMissions")]
+		public List<LinearMissionModel> FinishedLinearMissions { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("isTowerClear")]
+		public bool IsTowerClear { get; set; }
+		[JsonProperty("items")]
+		public List<ItemModel> Items { get; set; }
+		[JsonProperty("linearMissions")]
+		public List<LinearMissionModel> LinearMissions { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("pictureBookDetail")]
+		public List<PictureBookDetailModel> PictureBookDetail { get; set; }
+		[JsonProperty("quests")]
+		public List<QuestModel> Quests { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
+		[JsonProperty("towerCharacterStatus")]
+		public List<TowerCharacterStatusDynamicModel2> TowerCharacterStatus { get; set; }
+		[JsonProperty("towerSession")]
+		public TowerSessionModel TowerSession { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class TowerGetAreaDataResponse : BasePacket
 	{
-		public string area { get; set; }
-		public List<TowerCharacterStatusDynamicModel> towerCharacterStatus { get; set; }
+		[JsonProperty("area")]
+		public string Area { get; set; }
+		[JsonProperty("towerCharacterStatus")]
+		public List<TowerCharacterStatusDynamicModel> TowerCharacterStatus { get; set; }
 	}
 
 	public class TowerGetMasterDataResponse : BasePacket
@@ -1327,21 +1800,28 @@ namespace AikaSeggs.Common.Packets
 
 	public class TowerGetUserDataResponse : BasePacket
 	{
-		public TowerSessionModel towerSession { get; set; }
+		[JsonProperty("towerSession")]
+		public TowerSessionModel TowerSession { get; set; }
 	}
 
 	public class TowerSelectResponse : BasePacket
 	{
-		public List<string> finishedMissionCds { get; set; }
-		public List<MissionModel> missions { get; set; }
-		public TowerSessionModel towerSession { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("missions")]
+		public List<MissionModel> Missions { get; set; }
+		[JsonProperty("towerSession")]
+		public TowerSessionModel TowerSession { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class TowerStartBattleResponse : BasePacket
 	{
-		public string stage { get; set; }
-		public TowerSessionModel towerSession { get; set; }
+		[JsonProperty("stage")]
+		public string Stage { get; set; }
+		[JsonProperty("towerSession")]
+		public TowerSessionModel TowerSession { get; set; }
 	}
 
 	public class TutorialGetMasterDataResponse : BasePacket
@@ -1381,159 +1861,262 @@ namespace AikaSeggs.Common.Packets
 
 	public class UserGetUserDataResponse : BasePacket
 	{
-		public UserGemModel gem { get; set; }
-		public UserBasicInfoModel user { get; set; }
+		[JsonProperty("gem")]
+		public UserGemModel Gem { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
 	}
 
 	public class UserGetUserProfileDataResponse : BasePacket
 	{
-		public int questCount { get; set; }
+		[JsonProperty("questCount")]
+		public int QuestCount { get; set; }
 	}
 
 	public class UserLoginResponse : BasePacket
 	{
-		public List<UserBoostModel> boosts { get; set; }
-		public List<UserComebackModel> comebacks { get; set; }
-		public List<string> finishedMissionCds { get; set; }
-		public UserGemModel gem { get; set; }
-		public bool isUserWarning { get; set; }
-		public UserPrefModel pref { get; set; }
-		public string resourceKey { get; set; }
-		public RoomModel room { get; set; }
-		public List<StoryModel> stories { get; set; }
-		public UserBasicInfoModel user { get; set; }
-		public string version { get; set; }
+		[JsonProperty("boosts")]
+		public List<UserBoostModel> Boosts { get; set; }
+		[JsonProperty("comebacks")]
+		public List<UserComebackModel> Comebacks { get; set; }
+		[JsonProperty("finishedMissionCds")]
+		public List<string> FinishedMissionCds { get; set; }
+		[JsonProperty("gem")]
+		public UserGemModel Gem { get; set; }
+		[JsonProperty("isUserWarning")]
+		public bool IsUserWarning { get; set; }
+		[JsonProperty("pref")]
+		public UserPrefModel Pref { get; set; }
+		[JsonProperty("resourceKey")]
+		public string ResourceKey { get; set; }
+		[JsonProperty("room")]
+		public RoomModel Room { get; set; }
+		[JsonProperty("stories")]
+		public List<StoryModel> Stories { get; set; }
+		[JsonProperty("user")]
+		public UserBasicInfoModel User { get; set; }
+		[JsonProperty("version")]
+		public string Version { get; set; }
 	}
 
 	public class UserUpdateUserPrefsResponse : BasePacket
 	{
-		public UserPrefModel pref { get; set; }
+		[JsonProperty("pref")]
+		public UserPrefModel Pref { get; set; }
 	}
 
 	public class VersionGetMd5DataResponse : BasePacket
 	{
-		public string getMasterBoostData { get; set; }
-		public string getMasterCabinMissionData { get; set; }
-		public string getMasterCampaignData { get; set; }
-		public string getMasterCharacterAbilityData { get; set; }
-		public string getMasterCharacterAbilityEffectData { get; set; }
-		public string getMasterCharacterAbilityEffectData2 { get; set; }
-		public string getMasterCharacterAbilityEffectData3 { get; set; }
-		public string getMasterCharacterAbilityEffectData4 { get; set; }
-		public string getMasterCharacterAbilityEffectData5 { get; set; }
-		public string getMasterCharacterAbilityEffectData6 { get; set; }
-		public string getMasterCharacterAwakeData { get; set; }
-		public string getMasterCharacterData { get; set; }
-		public string getMasterCharacterEvolutionData { get; set; }
-		public string getMasterCharacterLinkData { get; set; }
-		public string getMasterCharacterMainData { get; set; }
-		public string getMasterCharacterSkillData { get; set; }
-		public string getMasterCharacterSkillEffectData { get; set; }
-		public string getMasterCharacterSkillEffectData2 { get; set; }
-		public string getMasterCharacterTextData { get; set; }
-		public string getMasterCharacterTextData2 { get; set; }
-		public string getMasterCharacterTextData3 { get; set; }
-		public string getMasterCharacterTextData4 { get; set; }
-		public string getMasterCharacterTextData5 { get; set; }
-		public string getMasterComebackData { get; set; }
-		public string getMasterEquipmentData { get; set; }
-		public string getMasterEquipmentEffectData { get; set; }
-		public string getMasterEquipmentEffectData2 { get; set; }
-		public string getMasterEventData { get; set; }
-		public string getMasterExchangeItemDetailData { get; set; }
-		public string getMasterExchangeItemDetailData2 { get; set; }
-		public string getMasterExchangePointDetailData { get; set; }
-		public string getMasterItemData { get; set; }
-		public string getMasterItemSetData { get; set; }
-		public string getMasterItemSetData2 { get; set; }
-		public string getMasterLinearMissionData { get; set; }
-		public string getMasterLoginBonusData { get; set; }
-		public string getMasterLoginPackData { get; set; }
-		public string getMasterMemorialData { get; set; }
-		public string getMasterMinigameData { get; set; }
-		public string getMasterMissionData { get; set; }
-		public string getMasterMissionDetailData { get; set; }
-		public string getMasterMissionDetailData2 { get; set; }
-		public string getMasterMissionDetailData3 { get; set; }
-		public string getMasterMissionDetailData4 { get; set; }
-		public string getMasterMyPageNewsData { get; set; }
-		public string getMasterMyPageNewsData2 { get; set; }
-		public string getMasterPresentData { get; set; }
-		public string getMasterPvPData { get; set; }
-		public string getMasterQuestData { get; set; }
-		public string getMasterQuestDropData { get; set; }
-		public string getMasterQuestDropData2 { get; set; }
-		public string getMasterQuestDropData3 { get; set; }
-		public string getMasterQuestDropData4 { get; set; }
-		public string getMasterQuestDropData5 { get; set; }
-		public string getMasterQuestDropData6 { get; set; }
-		public string getMasterQuestEventPointData { get; set; }
-		public string getMasterQuestStageData { get; set; }
-		public string getMasterQuestStageData2 { get; set; }
-		public string getMasterQuestStageData3 { get; set; }
-		public string getMasterRaceData { get; set; }
-		public string getMasterRaidData { get; set; }
-		public string getMasterRoomData { get; set; }
-		public string getMasterShopData { get; set; }
-		public string getMasterSoundData { get; set; }
-		public string getMasterStoryData { get; set; }
-		public string getMasterTowerData { get; set; }
-		public string getMasterTutorialData { get; set; }
-		public string getMasterUserData { get; set; }
+		[JsonProperty("getMasterBoostData")]
+		public string GetMasterBoostData { get; set; }
+		[JsonProperty("getMasterCabinMissionData")]
+		public string GetMasterCabinMissionData { get; set; }
+		[JsonProperty("getMasterCampaignData")]
+		public string GetMasterCampaignData { get; set; }
+		[JsonProperty("getMasterCharacterAbilityData")]
+		public string GetMasterCharacterAbilityData { get; set; }
+		[JsonProperty("getMasterCharacterAbilityEffectData")]
+		public string GetMasterCharacterAbilityEffectData { get; set; }
+		[JsonProperty("getMasterCharacterAbilityEffectData2")]
+		public string GetMasterCharacterAbilityEffectData2 { get; set; }
+		[JsonProperty("getMasterCharacterAbilityEffectData3")]
+		public string GetMasterCharacterAbilityEffectData3 { get; set; }
+		[JsonProperty("getMasterCharacterAbilityEffectData4")]
+		public string GetMasterCharacterAbilityEffectData4 { get; set; }
+		[JsonProperty("getMasterCharacterAbilityEffectData5")]
+		public string GetMasterCharacterAbilityEffectData5 { get; set; }
+		[JsonProperty("getMasterCharacterAbilityEffectData6")]
+		public string GetMasterCharacterAbilityEffectData6 { get; set; }
+		[JsonProperty("getMasterCharacterAwakeData")]
+		public string GetMasterCharacterAwakeData { get; set; }
+		[JsonProperty("getMasterCharacterData")]
+		public string GetMasterCharacterData { get; set; }
+		[JsonProperty("getMasterCharacterEvolutionData")]
+		public string GetMasterCharacterEvolutionData { get; set; }
+		[JsonProperty("getMasterCharacterLinkData")]
+		public string GetMasterCharacterLinkData { get; set; }
+		[JsonProperty("getMasterCharacterMainData")]
+		public string GetMasterCharacterMainData { get; set; }
+		[JsonProperty("getMasterCharacterSkillData")]
+		public string GetMasterCharacterSkillData { get; set; }
+		[JsonProperty("getMasterCharacterSkillEffectData")]
+		public string GetMasterCharacterSkillEffectData { get; set; }
+		[JsonProperty("getMasterCharacterSkillEffectData2")]
+		public string GetMasterCharacterSkillEffectData2 { get; set; }
+		[JsonProperty("getMasterCharacterTextData")]
+		public string GetMasterCharacterTextData { get; set; }
+		[JsonProperty("getMasterCharacterTextData2")]
+		public string GetMasterCharacterTextData2 { get; set; }
+		[JsonProperty("getMasterCharacterTextData3")]
+		public string GetMasterCharacterTextData3 { get; set; }
+		[JsonProperty("getMasterCharacterTextData4")]
+		public string GetMasterCharacterTextData4 { get; set; }
+		[JsonProperty("getMasterCharacterTextData5")]
+		public string GetMasterCharacterTextData5 { get; set; }
+		[JsonProperty("getMasterComebackData")]
+		public string GetMasterComebackData { get; set; }
+		[JsonProperty("getMasterEquipmentData")]
+		public string GetMasterEquipmentData { get; set; }
+		[JsonProperty("getMasterEquipmentEffectData")]
+		public string GetMasterEquipmentEffectData { get; set; }
+		[JsonProperty("getMasterEquipmentEffectData2")]
+		public string GetMasterEquipmentEffectData2 { get; set; }
+		[JsonProperty("getMasterEventData")]
+		public string GetMasterEventData { get; set; }
+		[JsonProperty("getMasterExchangeItemDetailData")]
+		public string GetMasterExchangeItemDetailData { get; set; }
+		[JsonProperty("getMasterExchangeItemDetailData2")]
+		public string GetMasterExchangeItemDetailData2 { get; set; }
+		[JsonProperty("getMasterExchangePointDetailData")]
+		public string GetMasterExchangePointDetailData { get; set; }
+		[JsonProperty("getMasterItemData")]
+		public string GetMasterItemData { get; set; }
+		[JsonProperty("getMasterItemSetData")]
+		public string GetMasterItemSetData { get; set; }
+		[JsonProperty("getMasterItemSetData2")]
+		public string GetMasterItemSetData2 { get; set; }
+		[JsonProperty("getMasterLinearMissionData")]
+		public string GetMasterLinearMissionData { get; set; }
+		[JsonProperty("getMasterLoginBonusData")]
+		public string GetMasterLoginBonusData { get; set; }
+		[JsonProperty("getMasterLoginPackData")]
+		public string GetMasterLoginPackData { get; set; }
+		[JsonProperty("getMasterMemorialData")]
+		public string GetMasterMemorialData { get; set; }
+		[JsonProperty("getMasterMinigameData")]
+		public string GetMasterMinigameData { get; set; }
+		[JsonProperty("getMasterMissionData")]
+		public string GetMasterMissionData { get; set; }
+		[JsonProperty("getMasterMissionDetailData")]
+		public string GetMasterMissionDetailData { get; set; }
+		[JsonProperty("getMasterMissionDetailData2")]
+		public string GetMasterMissionDetailData2 { get; set; }
+		[JsonProperty("getMasterMissionDetailData3")]
+		public string GetMasterMissionDetailData3 { get; set; }
+		[JsonProperty("getMasterMissionDetailData4")]
+		public string GetMasterMissionDetailData4 { get; set; }
+		[JsonProperty("getMasterMyPageNewsData")]
+		public string GetMasterMyPageNewsData { get; set; }
+		[JsonProperty("getMasterMyPageNewsData2")]
+		public string GetMasterMyPageNewsData2 { get; set; }
+		[JsonProperty("getMasterPresentData")]
+		public string GetMasterPresentData { get; set; }
+		[JsonProperty("getMasterPvPData")]
+		public string GetMasterPvPData { get; set; }
+		[JsonProperty("getMasterQuestData")]
+		public string GetMasterQuestData { get; set; }
+		[JsonProperty("getMasterQuestDropData")]
+		public string GetMasterQuestDropData { get; set; }
+		[JsonProperty("getMasterQuestDropData2")]
+		public string GetMasterQuestDropData2 { get; set; }
+		[JsonProperty("getMasterQuestDropData3")]
+		public string GetMasterQuestDropData3 { get; set; }
+		[JsonProperty("getMasterQuestDropData4")]
+		public string GetMasterQuestDropData4 { get; set; }
+		[JsonProperty("getMasterQuestDropData5")]
+		public string GetMasterQuestDropData5 { get; set; }
+		[JsonProperty("getMasterQuestDropData6")]
+		public string GetMasterQuestDropData6 { get; set; }
+		[JsonProperty("getMasterQuestEventPointData")]
+		public string GetMasterQuestEventPointData { get; set; }
+		[JsonProperty("getMasterQuestStageData")]
+		public string GetMasterQuestStageData { get; set; }
+		[JsonProperty("getMasterQuestStageData2")]
+		public string GetMasterQuestStageData2 { get; set; }
+		[JsonProperty("getMasterQuestStageData3")]
+		public string GetMasterQuestStageData3 { get; set; }
+		[JsonProperty("getMasterRaceData")]
+		public string GetMasterRaceData { get; set; }
+		[JsonProperty("getMasterRaidData")]
+		public string GetMasterRaidData { get; set; }
+		[JsonProperty("getMasterRoomData")]
+		public string GetMasterRoomData { get; set; }
+		[JsonProperty("getMasterShopData")]
+		public string GetMasterShopData { get; set; }
+		[JsonProperty("getMasterSoundData")]
+		public string GetMasterSoundData { get; set; }
+		[JsonProperty("getMasterStoryData")]
+		public string GetMasterStoryData { get; set; }
+		[JsonProperty("getMasterTowerData")]
+		public string GetMasterTowerData { get; set; }
+		[JsonProperty("getMasterTutorialData")]
+		public string GetMasterTutorialData { get; set; }
+		[JsonProperty("getMasterUserData")]
+		public string GetMasterUserData { get; set; }
 		[JsonProperty("payment/getMasterData")]
-		public string payment_getMasterData { get; set; }
+		public string Payment_getMasterData { get; set; }
 	}
 
 	public class WarehouseBringWarehouseResponse : BasePacket
 	{
-		public List<WarehouseCharacterModel> addWarehouseCharacters { get; set; }
-		public List<WarehouseMaterialModel> addWarehouseMaterials { get; set; }
-		public List<CharacterModel> characters { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("addWarehouseCharacters")]
+		public List<WarehouseCharacterModel> AddWarehouseCharacters { get; set; }
+		[JsonProperty("addWarehouseMaterials")]
+		public List<WarehouseMaterialModel> AddWarehouseMaterials { get; set; }
+		[JsonProperty("characters")]
+		public List<CharacterModel> Characters { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 	public class WarehouseGetCharacterCountResponse : BasePacket
 	{
-		public int maxCount { get; set; }
-		public int splitCount { get; set; }
+		[JsonProperty("maxCount")]
+		public int MaxCount { get; set; }
+		[JsonProperty("splitCount")]
+		public int SplitCount { get; set; }
 	}
 
 	public class WarehouseGetCharacterListResponse : BasePacket
 	{
-		public List<WarehouseCharacterModel> addWarehouseCharacters { get; set; }
+		[JsonProperty("addWarehouseCharacters")]
+		public List<WarehouseCharacterModel> AddWarehouseCharacters { get; set; }
 	}
 
 	public class WarehouseGetEquipmentCountResponse : BasePacket
 	{
-		public int maxCount { get; set; }
-		public int splitCount { get; set; }
+		[JsonProperty("maxCount")]
+		public int MaxCount { get; set; }
+		[JsonProperty("splitCount")]
+		public int SplitCount { get; set; }
 	}
 
 	public class WarehouseGetEquipmentListResponse : BasePacket
 	{
-		public List<WarehouseEquipmentModel> addWarehouseEquipments { get; set; }
+		[JsonProperty("addWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> AddWarehouseEquipments { get; set; }
 	}
 
 	public class WarehouseGetMaterialCountResponse : BasePacket
 	{
-		public int maxCount { get; set; }
-		public int splitCount { get; set; }
+		[JsonProperty("maxCount")]
+		public int MaxCount { get; set; }
+		[JsonProperty("splitCount")]
+		public int SplitCount { get; set; }
 	}
 
 	public class WarehouseGetMaterialListResponse : BasePacket
 	{
-		public List<WarehouseMaterialModel> addWarehouseMaterials { get; set; }
+		[JsonProperty("addWarehouseMaterials")]
+		public List<WarehouseMaterialModel> AddWarehouseMaterials { get; set; }
 	}
 
 	public class WarehouseTakeWarehouseResponse : BasePacket
 	{
-		public List<CharacterModel> addCharacters { get; set; }
-		public List<EquipmentModel> addEquipments { get; set; }
-		public List<CharacterLinkUnitModel> characterLinks { get; set; }
-		public List<WarehouseCharacterModel> updateWarehouseCharacters { get; set; }
-		public List<WarehouseEquipmentModel> updateWarehouseEquipments { get; set; }
-		public List<WarehouseMaterialModel> updateWarehouseMaterials { get; set; }
+		[JsonProperty("addCharacters")]
+		public List<CharacterModel> AddCharacters { get; set; }
+		[JsonProperty("addEquipments")]
+		public List<EquipmentModel> AddEquipments { get; set; }
+		[JsonProperty("characterLinks")]
+		public List<CharacterLinkUnitModel> CharacterLinks { get; set; }
+		[JsonProperty("updateWarehouseCharacters")]
+		public List<WarehouseCharacterModel> UpdateWarehouseCharacters { get; set; }
+		[JsonProperty("updateWarehouseEquipments")]
+		public List<WarehouseEquipmentModel> UpdateWarehouseEquipments { get; set; }
+		[JsonProperty("updateWarehouseMaterials")]
+		public List<WarehouseMaterialModel> UpdateWarehouseMaterials { get; set; }
 	}
 
 }
