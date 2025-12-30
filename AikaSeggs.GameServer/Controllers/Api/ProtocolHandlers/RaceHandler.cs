@@ -12,7 +12,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage RaceGetMasterData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Race_GetMasterData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -20,7 +20,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage RaceGetUserData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Race_GetUserData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -28,7 +28,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage RaceEndRace()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Race_EndRace);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -36,7 +36,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage RaceFortifyCharacter()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Race_FortifyCharacter);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -44,7 +44,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage RaceStartRace()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Race_StartRace);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -52,7 +52,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage RaceUpdateSeason()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Race_UpdateSeason);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
     }

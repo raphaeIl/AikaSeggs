@@ -12,7 +12,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage StoryGetMasterData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Story_GetMasterData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -20,7 +20,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage StoryGetUserData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Story_GetUserData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 

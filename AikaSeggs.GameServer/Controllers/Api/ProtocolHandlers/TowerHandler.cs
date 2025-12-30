@@ -12,7 +12,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage TowerGetMasterData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Tower_GetMasterData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -20,7 +20,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage TowerGetUserData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Tower_GetUserData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -28,7 +28,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage TowerGetAreaData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Tower_GetAreaData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -36,7 +36,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage TowerSelect()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Tower_Select);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
     }

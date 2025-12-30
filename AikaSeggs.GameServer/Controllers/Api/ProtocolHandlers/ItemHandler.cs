@@ -12,7 +12,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage ItemGetMasterData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Item_GetMasterData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), doMsgPack: true);
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -20,7 +20,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage ItemGetMasterItemSetData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Item_GetMasterItemSetData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -28,7 +28,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage ItemGetMasterItemSetData2()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Item_GetMasterItemSetData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -36,7 +36,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage ItemGetUserData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Item_GetUserData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -44,7 +44,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage ItemUse()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Item_Use);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
     }

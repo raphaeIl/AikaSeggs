@@ -13,7 +13,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.CabinMission_GetMasterData);
             
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -21,7 +21,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CabinMissionGetUserData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.CabinMission_GetUserData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
     }

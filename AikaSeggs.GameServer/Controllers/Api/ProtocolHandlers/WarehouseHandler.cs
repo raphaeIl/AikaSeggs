@@ -12,7 +12,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage WarehouseGetCharacterCount()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Warehouse_GetCharacterCount);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -20,7 +20,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage WarehouseGetCharacterList()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Warehouse_GetCharacterList);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -28,7 +28,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage WarehouseGetEquipmentCount()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Warehouse_GetEquipmentCount);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -36,7 +36,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage WarehouseGetEquipmentList()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Warehouse_GetEquipmentList);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -44,7 +44,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage WarehouseGetMaterialCount()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Warehouse_GetMaterialCount);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -52,7 +52,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage WarehouseGetMaterialList()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Warehouse_GetMaterialList);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
     }

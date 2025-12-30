@@ -79,7 +79,8 @@ namespace AikaSeggs.PcapParser
                 packets.Add(new DeepOnePacket()
                 {
                     Packet = pcapPacket.Packet,
-                    Protocol = protocol
+                    Protocol = protocol,
+                    IsMsgpack = pcapPacket.IsMsgpack
                 });
             }
             
@@ -100,11 +101,15 @@ namespace AikaSeggs.PcapParser
         
         [JsonProperty("path")]
         public string Path { get; set; }
+        
+        [JsonProperty("isMsgpack")]
+        public bool IsMsgpack { get; set; }
     }
 
     public class DeepOnePacket
     {
         public JObject Packet { get; set; }
         public Protocol Protocol { get; set; }
+        public bool IsMsgpack { get; set; }
     }
 }

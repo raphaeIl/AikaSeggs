@@ -12,7 +12,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -20,7 +20,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterCharacterMainData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterCharacterMainData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -28,7 +28,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterTextData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -36,7 +36,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterTextData2()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -44,7 +44,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterTextData3()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData3);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -52,7 +52,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterTextData4()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData4);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -60,7 +60,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterTextData5()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData5);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -68,7 +68,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterSkillData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterSkillData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -76,7 +76,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterSkillEffectData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterSkillEffectData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -84,7 +84,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterSkillEffectData2()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterSkillEffectData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -92,7 +92,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterAbilityData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -100,7 +100,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterAbilityEffectData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -108,7 +108,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterAbilityEffectData2()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -116,7 +116,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterAbilityEffectData3()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData3);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -124,7 +124,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterAbilityEffectData4()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData4);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -132,7 +132,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterAbilityEffectData5()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData5);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -140,7 +140,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterAbilityEffectData6()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData6);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -148,7 +148,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterAwakeData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAwakeData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -156,7 +156,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetMasterEvolutionData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterEvolutionData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
 
@@ -164,7 +164,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage CharacterGetUserData()
         {
             var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetUserData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString());
+            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
             return resp;
         }
     }
