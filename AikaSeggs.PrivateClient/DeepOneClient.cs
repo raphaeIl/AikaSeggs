@@ -25,6 +25,10 @@ namespace AikaSeggs.PrivateClient
             // Add default headers
             httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0");
             httpClient.DefaultRequestHeaders.Add("Accept", "*/*");
+
+            // Custom header to identify requests from private server (for proxy filtering)
+            // this is necessary because PrivateClient needs to send requests to the official server, with mitm open, it will redirect all reqs to ps, so we need a way to identify requests coming from the private client
+            httpClient.DefaultRequestHeaders.Add("X-Private-Client", "true");
         }
 
         /// <summary>
