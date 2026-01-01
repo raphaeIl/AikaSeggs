@@ -217,16 +217,17 @@ namespace AikaSeggs.Common.Services
                 return null;
             }
 
-            // Split: "Boost" and "GetMasterData"
+            // Split: "Boost" and "GetMasterData" or "LoginBonus" and "GetMasterData"
             var prefix = protocolStr.Substring(0, underscoreIndex);
             var suffix = protocolStr.Substring(underscoreIndex + 1);
 
-            // Lowercase prefix and first letter of suffix
-            // "Boost" -> "boost", "GetMasterData" -> "getMasterData"
-            var lowerPrefix = prefix.ToLower();
+            // Only lowercase the first letter of each part
+            // "Boost" -> "boost", "LoginBonus" -> "loginBonus"
+            // "GetMasterData" -> "getMasterData"
+            var lowerPrefix = char.ToLowerInvariant(prefix[0]) + prefix.Substring(1);
             var lowerSuffix = char.ToLowerInvariant(suffix[0]) + suffix.Substring(1);
 
-            // Format: "boost/getMasterData"
+            // Format: "boost/getMasterData" or "loginBonus/getMasterData"
             var path = $"{lowerPrefix}/{lowerSuffix}";
 
             // Check if this path exists in TableEndpoints

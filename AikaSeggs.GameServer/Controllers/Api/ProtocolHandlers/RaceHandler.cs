@@ -1,19 +1,25 @@
 using AikaSeggs.Common;
 using AikaSeggs.Common.Core;
+using AikaSeggs.Common.Services;
 using AikaSeggs.PcapParser;
 
 namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
 {
     public class RaceHandler : ProtocolHandlerBase
     {
-        public RaceHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
+        private readonly TableService tableService;
+
+        public RaceHandler(IProtocolHandlerFactory protocolHandlerFactory, TableService tableService) 
+            : base(protocolHandlerFactory)
+        {
+            this.tableService = tableService;
+        }
 
         [ProtocolHandler(Protocol.Race_GetMasterData)]
         public HttpMessage RaceGetMasterData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Race_GetMasterData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Race_GetMasterData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Race_GetUserData)]

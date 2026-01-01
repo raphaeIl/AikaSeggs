@@ -20,10 +20,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         [ProtocolHandler(Protocol.Boost_GetMasterData)]
         public HttpMessage BoostGetMasterData()
         {
-            //// Get table JSON from TableService
             var tableJson = tableService.GetTableJsonByProtocol(Protocol.Boost_GetMasterData);
-
-            // Return loaded table JSON
             return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
