@@ -1,19 +1,30 @@
 using AikaSeggs.Common;
 using AikaSeggs.Common.Core;
+using AikaSeggs.Common.Packets;
+using AikaSeggs.Common.Services;
 using AikaSeggs.PcapParser;
+using Newtonsoft.Json;
 
 namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
 {
     public class BoostHandler : ProtocolHandlerBase
     {
-        public BoostHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
+        private readonly TableService tableService;
+
+        public BoostHandler(IProtocolHandlerFactory protocolHandlerFactory, TableService tableService) 
+            : base(protocolHandlerFactory)
+        {
+            this.tableService = tableService;
+        }
 
         [ProtocolHandler(Protocol.Boost_GetMasterData)]
         public HttpMessage BoostGetMasterData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Boost_GetMasterData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            //// Get table JSON from TableService
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Boost_GetMasterData);
+
+            // Return loaded table JSON
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Boost_GetBoostUnitsList)]

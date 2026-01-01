@@ -1,8 +1,9 @@
-using System.Reflection;
+using AikaSeggs.Common;
+using AikaSeggs.Common.Services;
+using AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Serilog;
-using AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers;
-using AikaSeggs.Common.Services;
+using System.Reflection;
 
 namespace AikaSeggs.GameServer
 {
@@ -13,7 +14,7 @@ namespace AikaSeggs.GameServer
             Log.Information("Starting Game Server...");
 
             // Load PCAP packets
-            //PcapParser.PcapParser.Instance.LoadAllPackets();
+            PcapParser.PcapParser.Instance.LoadAllPackets();
 
             // Download master data tables
             var success = ResourceService.DownloadAllMasterData();
@@ -34,6 +35,7 @@ namespace AikaSeggs.GameServer
                 builder.Services.AddControllers();
                 builder.Services.AddProtocolHandlerFactory();
                 builder.Services.AddControllers().AddApplicationPart(Assembly.GetAssembly(typeof(GameServer)));
+                builder.Services.AddTableService();
 
                 var handlerGroups = Assembly.GetAssembly(typeof(ProtocolHandlerFactory))
                     .GetTypes()
