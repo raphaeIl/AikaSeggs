@@ -1,4 +1,4 @@
-using AikaSeggs.Common.Utils;
+using AikaSeggs.PrivateClient.Utils;
 using Serilog;
 using System;
 using System.Net.Http;
