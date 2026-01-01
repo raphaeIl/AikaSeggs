@@ -26,26 +26,24 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         public HttpMessage LoginBonusGetMasterData()
         {
             // Get table JSON from TableService
-            var tableJson = tableService.GetTableJsonByProtocol(Protocol.LoginBonus_GetMasterData);
-            
-            //// Settings to preserve camelCase when serializing back
-            //var settings = new JsonSerializerSettings 
-            //{ 
-            //    ContractResolver = new CamelCasePropertyNamesContractResolver() 
-            //};
-            
-            //LoginBonusGetMasterDataResponse? respPacket = JsonConvert.DeserializeObject<LoginBonusGetMasterDataResponse>(tableJson, settings);
+            MasterLoginBonusData masterLoginBonusTable = tableService.GetTable<MasterLoginBonusData>();
+
 
             //// temp Modify data for fun, TODO: Add saving for modified data to actual table locally
-            //foreach (var reward in respPacket.LoginBonusReward)
-            //{
-            //    reward.Amount = 999_999_999;
-            //    reward.Amount2 = 999_888_777;
-            //}
+            foreach (var reward in masterLoginBonusTable.LoginBonusReward)
+            {
+                reward.Amount = 999_999_999;
+                reward.Amount2 = 999_888_777;
+            }
 
             //// Serialize with camelCase settings
             //string json = JsonConvert.SerializeObject(respPacket, settings);
-            HttpMessage resp = HttpMessage.Create(tableJson, doMsgPack: true);
+            HttpMessage resp = HttpMessage.Create(new LoginBonusGetMasterDataResponse()
+            {
+                LoginBonusMain = masterLoginBonusTable.LoginBonusMain,
+                LoginBonusReward = masterLoginBonusTable.LoginBonusReward
+            }, doMsgPack: true);
+
             return resp;
         }
 
