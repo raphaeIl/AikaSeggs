@@ -21,5 +21,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AikaSeggs.Common\AikaSeggs.Common.csproj" />
     <ProjectReference Include="..\AikaSeggs.PcapParser\AikaSeggs.PcapParser.csproj" />
+    <ProjectReference Include="..\AikaSeggs.PrivateClient\AikaSeggs.PrivateClient.csproj" />
   </ItemGroup>
 </Project>

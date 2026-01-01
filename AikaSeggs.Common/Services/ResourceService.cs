@@ -1,33 +1,57 @@
 using AikaSeggs.Common.Utils;
+using AikaSeggs.PrivateClient;
 using MessagePack;
 using Newtonsoft.Json;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
 
 namespace AikaSeggs.Common.Services
 {
     public static class ResourceService
     {
-        private static readonly HttpClient httpClient;
-
         public static string TablesDir = Path.Join(Config.ResourceDir, "Tables");
+        private static string Md5ManifestPath = Path.Join(Config.ResourceDir, "md5_manifest.json");
 
-        static ResourceService()
+        /// <summary>
+        /// Load the cached MD5 manifest from disk
+        /// </summary>
+        /// <returns>Dictionary of cached MD5 hashes, or null if not found</returns>
+        private static Dictionary<string, string>? LoadCachedMd5Manifest()
         {
-            // Create HttpClientHandler with SSL validation disabled (like Python's verify=False)
-            var handler = new HttpClientHandler
+            try
             {
-                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-            };
+                if (File.Exists(Md5ManifestPath))
+                {
+                    var json = File.ReadAllText(Md5ManifestPath);
+                    return JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Warning(e, "Failed to load cached MD5 manifest");
+            }
+            return null;
+        }
 
-            httpClient = new HttpClient(handler);
-
-            // Add default headers
-            httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0");
-            httpClient.DefaultRequestHeaders.Add("Accept", "*/*");
+        /// <summary>
+        /// Save the MD5 manifest to disk for future comparison
+        /// </summary>
+        /// <param name="md5Data">MD5 manifest to save</param>
+        private static void SaveMd5Manifest(Dictionary<string, string> md5Data)
+        {
+            try
+            {
+                Directory.CreateDirectory(Config.ResourceDir);
+                var json = JsonConvert.SerializeObject(md5Data, Formatting.Indented);
+                File.WriteAllText(Md5ManifestPath, json);
+                Log.Debug("Saved MD5 manifest to {Path}", Md5ManifestPath);
+            }
+            catch (Exception e)
+            {
+                Log.Warning(e, "Failed to save MD5 manifest");
+            }
         }
 
         /// <summary>
@@ -36,25 +60,25 @@ namespace AikaSeggs.Common.Services
         /// <returns>Dictionary mapping endpoint names to MD5 hashes</returns>
         public static Dictionary<string, string>? GetMd5Data()
         {
-            var url = $"{Config.BaseUrl}/version/getMd5Data";
-            Log.Information("Fetching MD5 manifest from {Url}...", url);
+            Log.Information("Fetching MD5 manifest...");
+
+            var content = DeepOneClient.Instance.GetString("version/getMd5Data");
+            if (content == null)
+            {
+                Log.Error("Failed to retrieve MD5 manifest");
+                return null;
+            }
 
             try
             {
-                var response = httpClient.GetAsync(url).Result;
-                response.EnsureSuccessStatusCode();
-
-                var content = response.Content.ReadAsStringAsync().Result;
-
                 // MD5 endpoint returns JSON dictionary
                 var md5Data = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
-
                 Log.Information("Retrieved manifest for {Count} endpoints", md5Data?.Count ?? 0);
                 return md5Data;
             }
             catch (Exception e)
             {
-                Log.Error(e, "Failed to retrieve MD5 manifest");
+                Log.Error(e, "Failed to deserialize MD5 manifest");
                 return null;
             }
         }
@@ -74,16 +98,17 @@ namespace AikaSeggs.Common.Services
             }
 
             var tableName = Util.EndpointNameToTableName(endpointName);
-            var url = $"{Config.BaseUrl}/{apiPath}?v={md5Hash}";
             Log.Information("Downloading {TableName}...", tableName);
+
+            var content = DeepOneClient.Instance.GetBytes($"{apiPath}?v={md5Hash}");
+            if (content == null)
+            {
+                Log.Error("Failed to download {TableName}", tableName);
+                return false;
+            }
 
             try
             {
-                var response = httpClient.GetAsync(url).Result;
-                response.EnsureSuccessStatusCode();
-
-                var content = response.Content.ReadAsByteArrayAsync().Result;
-
                 // Decode msgpack binary response
                 var data = MessagePackSerializer.Deserialize<object>(content);
 
@@ -101,50 +126,129 @@ namespace AikaSeggs.Common.Services
             }
             catch (Exception e)
             {
-                Log.Error(e, "Failed to download {TableName}", tableName);
+                Log.Error(e, "Failed to process {TableName}", tableName);
                 return false;
             }
         }
 
         /// <summary>
-        /// Download all master data tables
+        /// Check which tables have updates available without downloading
         /// </summary>
+        /// <returns>List of endpoint names that have updates</returns>
+        public static List<string> CheckForUpdates()
+        {
+            var updates = new List<string>();
+
+            try
+            {
+                var newMd5Data = GetMd5Data();
+                if (newMd5Data == null)
+                {
+                    Log.Warning("Failed to retrieve MD5 manifest for update check");
+                    return updates;
+                }
+
+                var cachedMd5Data = LoadCachedMd5Manifest();
+                if (cachedMd5Data == null)
+                {
+                    Log.Information("No cached manifest found, all tables are new");
+                    return new List<string>(newMd5Data.Keys);
+                }
+
+                foreach (var (endpointName, newMd5Hash) in newMd5Data)
+                {
+                    if (!TableEndpoints.Endpoints.ContainsKey(endpointName))
+                        continue;
+
+                    if (!cachedMd5Data.TryGetValue(endpointName, out var cachedMd5) || cachedMd5 != newMd5Hash)
+                    {
+                        updates.Add(endpointName);
+                    }
+                }
+
+                Log.Information("Found {Count} table(s) with updates", updates.Count);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to check for updates");
+            }
+
+            return updates;
+        }
+
+        /// <summary>
+        /// Download all master data tables, only updating tables with changed MD5
+        /// </summary>
+        /// <param name="forceDownload">If true, download all tables regardless of MD5 changes</param>
         /// <returns>True if successful</returns>
-        public static bool DownloadAllMasterData()
+        public static bool DownloadAllMasterData(bool forceDownload = false)
         {
             Log.Information("Starting master data download...");
 
             try
             {
-                // Get MD5 manifest
-                var md5Data = GetMd5Data();
+                // Get current MD5 manifest from server
+                var newMd5Data = GetMd5Data();
 
-                if (md5Data == null)
+                if (newMd5Data == null)
                 {
                     Log.Warning("Failed to retrieve MD5 manifest");
                     return false;
                 }
 
-                int total = md5Data.Count;
+                // Load cached MD5 manifest
+                var cachedMd5Data = LoadCachedMd5Manifest();
+
+                int total = newMd5Data.Count;
                 int successful = 0;
                 int failed = 0;
                 int skipped = 0;
+                int unchanged = 0;
 
                 // Download each table
-                foreach (var (endpointName, md5Hash) in md5Data)
+                foreach (var (endpointName, newMd5Hash) in newMd5Data)
                 {
-                    var success = DownloadMasterData(endpointName, md5Hash);
-
-                    if (success)
+                    // Check if endpoint is mapped
+                    if (!TableEndpoints.Endpoints.ContainsKey(endpointName))
                     {
-                        successful++;
+                        skipped++;
+                        Log.Information("Skipped (unmapped): {EndpointName}", endpointName);
+                        continue;
+                    }
+
+                    // Check if MD5 has changed
+                    bool needsDownload = forceDownload;
+                    if (!forceDownload && cachedMd5Data != null && cachedMd5Data.TryGetValue(endpointName, out var cachedMd5))
+                    {
+                        if (cachedMd5 == newMd5Hash)
+                        {
+                            unchanged++;
+                            var tableName = Util.EndpointNameToTableName(endpointName);
+                            Log.Debug("Unchanged: {TableName} (MD5: {MD5})", tableName, newMd5Hash);
+                            continue;
+                        }
+                        else
+                        {
+                            var tableName = Util.EndpointNameToTableName(endpointName);
+                            Log.Information("Update detected: {TableName} (Old: {OldMD5} -> New: {NewMD5})", 
+                                tableName, cachedMd5.Substring(0, 8), newMd5Hash.Substring(0, 8));
+                            needsDownload = true;
+                        }
                     }
                     else
                     {
-                        if (!TableEndpoints.Endpoints.ContainsKey(endpointName))
+                        // New table or no cache
+                        needsDownload = true;
+                    }
+
+                    // Download if needed
+                    if (needsDownload)
+                    {
+                        var success = DownloadMasterData(endpointName, newMd5Hash);
+
+                        if (success)
                         {
-                            skipped++;
-                            Log.Information("Skipped: {EndpointName}", endpointName);
+                            successful++;
                         }
                         else
                         {
@@ -153,11 +257,14 @@ namespace AikaSeggs.Common.Services
                     }
                 }
 
-                Log.Information("Download complete! Total: {Total} | Successful: {Successful} | Failed: {Failed} | Skipped: {Skipped}",
-                    total, successful, failed, skipped);
+                // Save the new MD5 manifest for next time
+                SaveMd5Manifest(newMd5Data);
+
+                Log.Information("Download complete! Total: {Total} | Downloaded: {Successful} | Unchanged: {Unchanged} | Failed: {Failed} | Skipped: {Skipped}",
+                    total, successful, unchanged, failed, skipped);
                 Log.Information("Files saved to: {TablesDir}", TablesDir);
 
-                return successful > 0;
+                return successful > 0 || unchanged > 0;
             }
             catch (Exception ex)
             {

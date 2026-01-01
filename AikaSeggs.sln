@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AikaSeggs.Common", "AikaSeg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AikaSeggs.PcapParser", "AikaSeggs.PcapParser\AikaSeggs.PcapParser.csproj", "{98BB04E8-A07B-4075-934D-23E1327BB37A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AikaSeggs.PrivateClient", "AikaSeggs.PrivateClient\AikaSeggs.PrivateClient.csproj", "{B366D3C7-A5D6-45E4-A187-1AFFC00D7EA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{98BB04E8-A07B-4075-934D-23E1327BB37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98BB04E8-A07B-4075-934D-23E1327BB37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98BB04E8-A07B-4075-934D-23E1327BB37A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B366D3C7-A5D6-45E4-A187-1AFFC00D7EA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B366D3C7-A5D6-45E4-A187-1AFFC00D7EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B366D3C7-A5D6-45E4-A187-1AFFC00D7EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B366D3C7-A5D6-45E4-A187-1AFFC00D7EA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

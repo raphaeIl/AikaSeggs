@@ -16,6 +16,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\AikaSeggs.PrivateClient\AikaSeggs.PrivateClient.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Content Include="Resources\**\*">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
