@@ -47,9 +47,16 @@ namespace AikaSeggs.Common.Utils
         /// <summary>
         /// Converts endpoint name to table name by removing "get" prefix
         /// Example: "getMasterBoostData" -> "MasterBoostData"
+        /// Special case: "payment/getMasterData" -> "MasterPaymentData"
         /// </summary>
         public static string EndpointNameToTableName(string endpointName)
         {
+            // Special case for payment endpoint
+            if (endpointName == "payment/getMasterData")
+            {
+                return "MasterPaymentData";
+            }
+
             if (endpointName.StartsWith("get", StringComparison.OrdinalIgnoreCase))
             {
                 return endpointName.Substring(3);
@@ -60,9 +67,16 @@ namespace AikaSeggs.Common.Utils
         /// <summary>
         /// Converts table name to endpoint name by adding "get" prefix
         /// Example: "MasterBoostData" -> "getMasterBoostData"
+        /// Special case: "MasterPaymentData" -> "payment/getMasterData"
         /// </summary>
         public static string TableNameToEndpointName(string tableName)
         {
+            // Special case for payment endpoint
+            if (tableName == "MasterPaymentData")
+            {
+                return "payment/getMasterData";
+            }
+
             // Convert first character to lowercase and add "get" prefix
             if (!tableName.StartsWith("get", StringComparison.OrdinalIgnoreCase))
             {
