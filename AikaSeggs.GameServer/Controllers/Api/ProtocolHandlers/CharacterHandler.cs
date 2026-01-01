@@ -25,145 +25,127 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         [ProtocolHandler(Protocol.Character_GetMasterCharacterMainData)]
         public HttpMessage CharacterGetMasterCharacterMainData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterCharacterMainData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterCharacterMainData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterTextData)]
         public HttpMessage CharacterGetMasterTextData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterTextData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterTextData2)]
         public HttpMessage CharacterGetMasterTextData2()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterTextData2);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterTextData3)]
         public HttpMessage CharacterGetMasterTextData3()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData3);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterTextData3);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterTextData4)]
         public HttpMessage CharacterGetMasterTextData4()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData4);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterTextData4);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterTextData5)]
         public HttpMessage CharacterGetMasterTextData5()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterTextData5);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterTextData5);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterSkillData)]
         public HttpMessage CharacterGetMasterSkillData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterSkillData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterSkillData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterSkillEffectData)]
         public HttpMessage CharacterGetMasterSkillEffectData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterSkillEffectData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterSkillEffectData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterSkillEffectData2)]
         public HttpMessage CharacterGetMasterSkillEffectData2()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterSkillEffectData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterSkillEffectData2);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterAbilityData)]
         public HttpMessage CharacterGetMasterAbilityData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterAbilityData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterAbilityEffectData)]
         public HttpMessage CharacterGetMasterAbilityEffectData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterAbilityEffectData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterAbilityEffectData2)]
         public HttpMessage CharacterGetMasterAbilityEffectData2()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterAbilityEffectData2);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterAbilityEffectData3)]
         public HttpMessage CharacterGetMasterAbilityEffectData3()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData3);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterAbilityEffectData3);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterAbilityEffectData4)]
         public HttpMessage CharacterGetMasterAbilityEffectData4()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData4);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterAbilityEffectData4);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterAbilityEffectData5)]
         public HttpMessage CharacterGetMasterAbilityEffectData5()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData5);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterAbilityEffectData5);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterAbilityEffectData6)]
         public HttpMessage CharacterGetMasterAbilityEffectData6()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAbilityEffectData6);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterAbilityEffectData6);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterAwakeData)]
         public HttpMessage CharacterGetMasterAwakeData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterAwakeData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterAwakeData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterEvolutionData)]
         public HttpMessage CharacterGetMasterEvolutionData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetMasterEvolutionData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterEvolutionData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Character_GetUserData)]

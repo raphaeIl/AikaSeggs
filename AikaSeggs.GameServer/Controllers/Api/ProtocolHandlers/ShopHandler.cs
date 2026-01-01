@@ -25,25 +25,22 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         [ProtocolHandler(Protocol.Shop_GetMasterExchangePointDetailData)]
         public HttpMessage ShopGetMasterExchangePointDetailData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Shop_GetMasterExchangePointDetailData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Shop_GetMasterExchangePointDetailData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Shop_GetMasterExchangeItemDetailData)]
         public HttpMessage ShopGetMasterExchangeItemDetailData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Shop_GetMasterExchangeItemDetailData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Shop_GetMasterExchangeItemDetailData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Shop_GetMasterExchangeItemDetailData2)]
         public HttpMessage ShopGetMasterExchangeItemDetailData2()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Shop_GetMasterExchangeItemDetailData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Shop_GetMasterExchangeItemDetailData2);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Shop_GetUserData)]

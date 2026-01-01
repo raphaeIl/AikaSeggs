@@ -25,17 +25,15 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         [ProtocolHandler(Protocol.Equipment_GetMasterEquipmentEffectData)]
         public HttpMessage EquipmentGetMasterEquipmentEffectData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Equipment_GetMasterEquipmentEffectData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Equipment_GetMasterEquipmentEffectData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Equipment_GetMasterEquipmentEffectData2)]
         public HttpMessage EquipmentGetMasterEquipmentEffectData2()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Equipment_GetMasterEquipmentEffectData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Equipment_GetMasterEquipmentEffectData2);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Equipment_GetUserData)]

@@ -25,81 +25,71 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         [ProtocolHandler(Protocol.Quest_GetMasterDropData)]
         public HttpMessage QuestGetMasterDropData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterDropData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterDropData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetMasterDropData2)]
         public HttpMessage QuestGetMasterDropData2()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterDropData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterDropData2);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetMasterDropData3)]
         public HttpMessage QuestGetMasterDropData3()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterDropData3);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterDropData3);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetMasterDropData4)]
         public HttpMessage QuestGetMasterDropData4()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterDropData4);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterDropData4);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetMasterDropData5)]
         public HttpMessage QuestGetMasterDropData5()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterDropData5);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterDropData5);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetMasterDropData6)]
         public HttpMessage QuestGetMasterDropData6()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterDropData6);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterDropData6);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetMasterEventPointData)]
         public HttpMessage QuestGetMasterEventPointData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterEventPointData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterEventPointData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetMasterStageData)]
         public HttpMessage QuestGetMasterStageData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterStageData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterStageData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetMasterStageData2)]
         public HttpMessage QuestGetMasterStageData2()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterStageData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterStageData2);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetMasterStageData3)]
         public HttpMessage QuestGetMasterStageData3()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Quest_GetMasterStageData3);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Quest_GetMasterStageData3);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Quest_GetUserData)]

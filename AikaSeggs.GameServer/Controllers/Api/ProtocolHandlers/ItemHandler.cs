@@ -25,17 +25,15 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         [ProtocolHandler(Protocol.Item_GetMasterItemSetData)]
         public HttpMessage ItemGetMasterItemSetData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Item_GetMasterItemSetData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Item_GetMasterItemSetData);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Item_GetMasterItemSetData2)]
         public HttpMessage ItemGetMasterItemSetData2()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Item_GetMasterItemSetData2);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var tableJson = tableService.GetTableJsonByProtocol(Protocol.Item_GetMasterItemSetData2);
+            return HttpMessage.Create(tableJson, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Item_GetUserData)]

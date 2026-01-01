@@ -18,7 +18,7 @@ namespace AikaSeggs.Common.Services
         /// Load the cached MD5 manifest from disk
         /// </summary>
         /// <returns>Dictionary of cached MD5 hashes, or null if not found</returns>
-        private static Dictionary<string, string>? LoadCachedMd5Manifest()
+        public static Dictionary<string, string>? LoadCachedMd5Manifest()
         {
             try
             {

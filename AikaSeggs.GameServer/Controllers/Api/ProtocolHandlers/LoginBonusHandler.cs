@@ -16,10 +16,6 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
             : base(protocolHandlerFactory)
         {
             this.tableService = tableService;
-
-            var tableJson = tableService.GetTableJsonByProtocol(Protocol.LoginBonus_GetMasterData);
-
-            Console.WriteLine(tableJson);
         }
 
         [ProtocolHandler(Protocol.LoginBonus_GetMasterData)]

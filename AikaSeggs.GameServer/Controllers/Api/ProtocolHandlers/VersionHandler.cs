@@ -1,6 +1,8 @@
 using AikaSeggs.Common;
 using AikaSeggs.Common.Core;
+using AikaSeggs.Common.Services;
 using AikaSeggs.PcapParser;
+using Newtonsoft.Json;
 
 namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
 {
@@ -11,9 +13,14 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         [ProtocolHandler(Protocol.Version_GetMd5Data)]
         public HttpMessage VersionGetMd5Data()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Version_GetMd5Data);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            var md5Data = ResourceService.LoadCachedMd5Manifest();
+            if (md5Data == null)
+            {
+                throw new InvalidDataException("Failed to load cached MD5 manifest");
+            }
+
+            var json = JsonConvert.SerializeObject(md5Data);
+            return HttpMessage.Create(json, false);
         }
     }
 }
