@@ -43,5 +43,32 @@ namespace AikaSeggs.Common.Utils
                 return Protocol.Unknown;
             }
         }
+
+        /// <summary>
+        /// Converts endpoint name to table name by removing "get" prefix
+        /// Example: "getMasterBoostData" -> "MasterBoostData"
+        /// </summary>
+        public static string EndpointNameToTableName(string endpointName)
+        {
+            if (endpointName.StartsWith("get", StringComparison.OrdinalIgnoreCase))
+            {
+                return endpointName.Substring(3);
+            }
+            return endpointName;
+        }
+
+        /// <summary>
+        /// Converts table name to endpoint name by adding "get" prefix
+        /// Example: "MasterBoostData" -> "getMasterBoostData"
+        /// </summary>
+        public static string TableNameToEndpointName(string tableName)
+        {
+            // Convert first character to lowercase and add "get" prefix
+            if (!tableName.StartsWith("get", StringComparison.OrdinalIgnoreCase))
+            {
+                return "get" + tableName;
+            }
+            return tableName;
+        }
     }
 }

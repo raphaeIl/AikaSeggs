@@ -2,6 +2,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Serilog;
 using AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers;
+using AikaSeggs.Common.Services;
 
 namespace AikaSeggs.GameServer
 {
@@ -11,7 +12,15 @@ namespace AikaSeggs.GameServer
         {
             Log.Information("Starting Game Server...");
 
-            PcapParser.PcapParser.Instance.LoadAllPackets();
+            // Load PCAP packets
+            //PcapParser.PcapParser.Instance.LoadAllPackets();
+
+            // Download master data tables
+            var success = ResourceService.DownloadAllMasterData();
+            if (!success)
+            {
+                Log.Warning("Resource download failed or incomplete");
+            }
 
             try
             {
