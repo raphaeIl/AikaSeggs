@@ -10,12 +10,6 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     {
         public AuthHandler(IProtocolHandlerFactory protocolHandlerFactory, AikaSeggsContext dbContext) : base(protocolHandlerFactory) 
         {
-            dbContext.Accounts.Add(new Database.Models.AccountDB()
-            {
-                UserName = "testaccount1"
-            });
-
-            dbContext.SaveChanges();
         }
 
         [ProtocolHandler(Protocol.Auth_GetDmmAccessToken)]
