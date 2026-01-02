@@ -1,13 +1,22 @@
 using AikaSeggs.Common;
 using AikaSeggs.Common.Core;
 using AikaSeggs.Common.Packets;
+using AikaSeggs.Database;
 using AikaSeggs.PcapParser;
 
 namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
 {
     public class AuthHandler : ProtocolHandlerBase
     {
-        public AuthHandler(IProtocolHandlerFactory protocolHandlerFactory) : base(protocolHandlerFactory) { }
+        public AuthHandler(IProtocolHandlerFactory protocolHandlerFactory, AikaSeggsContext dbContext) : base(protocolHandlerFactory) 
+        {
+            dbContext.Accounts.Add(new Database.Models.AccountDB()
+            {
+                UserName = "testaccount1"
+            });
+
+            dbContext.SaveChanges();
+        }
 
         [ProtocolHandler(Protocol.Auth_GetDmmAccessToken)]
         public AuthGetDmmAccessTokenResponse AuthGetDmmAccessToken()

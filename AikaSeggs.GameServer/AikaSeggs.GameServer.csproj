@@ -10,6 +10,7 @@
   <ItemGroup>
 	<PackageReference Include="DotNetZip" Version="1.16.0" />
 	<PackageReference Include="MessagePack" Version="2.5.140" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  <PrivateAssets>all</PrivateAssets>
@@ -19,7 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AikaSeggs.Common\AikaSeggs.Common.csproj" />
+    <ProjectReference Include="..\AikaSeggs.Database\AikaSeggs.Database.csproj" />
     <ProjectReference Include="..\AikaSeggs.PcapParser\AikaSeggs.PcapParser.csproj" />
     <ProjectReference Include="..\AikaSeggs.PrivateClient\AikaSeggs.PrivateClient.csproj" />
   </ItemGroup>
