@@ -34,7 +34,15 @@ namespace AikaSeggs.GameServer
                 builder.Services.Configure<KestrelServerOptions>(op =>
                     op.AllowSynchronousIO = true
                 );
-                builder.Host.UseSerilog();
+                
+                // Configure Serilog to read from configuration and ensure console output
+                builder.Host.UseSerilog((context, services, configuration) => 
+                    configuration
+                        .ReadFrom.Configuration(context.Configuration)
+                        .Enrich.FromLogContext()
+                        .WriteTo.Console(
+                            outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+                );
 
                 builder.Services.AddControllers();
                 builder.Services.AddHealthChecks();
