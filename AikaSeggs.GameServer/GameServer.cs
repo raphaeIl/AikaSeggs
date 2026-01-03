@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace AikaSeggs.GameServer
 {
@@ -14,16 +15,6 @@ namespace AikaSeggs.GameServer
         public static void Main(string[] args)
         {
             Log.Information("Starting Game Server...");
-
-            // Load PCAP packets
-            PcapParser.PcapParser.Instance.LoadAllPackets();
-
-            // Download master data tables
-            var success = ResourceService.DownloadAllMasterData();
-            if (!success)
-            {
-                Log.Warning("Resource download failed or incomplete");
-            }
 
             try
             {
@@ -115,6 +106,29 @@ namespace AikaSeggs.GameServer
                 app.UseSerilogRequestLogging();
 
                 app.MapControllers();
+                
+                // Start background tasks after server is ready
+                _ = Task.Run(async () =>
+                {
+                    try
+                    {
+                        await Task.Delay(1000); // Give server time to start
+                        Log.Information("Loading PCAP packets...");
+                        PcapParser.PcapParser.Instance.LoadAllPackets();
+                        
+                        Log.Information("Downloading master data tables...");
+                        var success = ResourceService.DownloadAllMasterData();
+                        if (!success)
+                        {
+                            Log.Warning("Resource download failed or incomplete");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex, "Error in background initialization tasks");
+                    }
+                });
+                
                 app.Run();
             }
             catch (Exception ex)
