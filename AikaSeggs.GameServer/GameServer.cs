@@ -35,6 +35,7 @@ namespace AikaSeggs.GameServer
                 builder.Host.UseSerilog();
 
                 builder.Services.AddControllers();
+                builder.Services.AddHealthChecks();
                 builder.Services.AddProtocolHandlerFactory();
                 var gameServerAssembly = Assembly.GetAssembly(typeof(GameServer));
                 if (gameServerAssembly != null)
