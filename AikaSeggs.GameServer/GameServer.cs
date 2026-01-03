@@ -29,6 +29,17 @@ namespace AikaSeggs.GameServer
             {
                 var builder = WebApplication.CreateBuilder(args);
 
+                // Configure Kestrel to listen on PORT environment variable (for Railway/cloud platforms)
+                var port = Environment.GetEnvironmentVariable("PORT");
+                if (!string.IsNullOrEmpty(port) && int.TryParse(port, out var portNumber))
+                {
+                    builder.WebHost.ConfigureKestrel(options =>
+                    {
+                        options.ListenAnyIP(portNumber);
+                    });
+                    Log.Information("Configured Kestrel to listen on PORT: {Port}", portNumber);
+                }
+
                 builder.Services.Configure<KestrelServerOptions>(op =>
                     op.AllowSynchronousIO = true
                 );
