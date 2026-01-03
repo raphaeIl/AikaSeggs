@@ -85,6 +85,10 @@ namespace AikaSeggs.Database.Models
         public string TutorialEndDate { get; set; } = string.Empty;
 
         public string RegisterDate { get; set; } = string.Empty;
+
+        public string Email { get; set; } = string.Empty;
+
+        public string PasswordHash { get; set; } = string.Empty;
     }
 }
 

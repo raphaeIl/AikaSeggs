@@ -2,15 +2,36 @@
 using Serilog;
 using System.IO.Compression;
 using System.Text;
+using System.Security.Cryptography;
 using AikaSeggs.Common.Utils;
+using AikaSeggs.Database;
+using AikaSeggs.Database.Models;
 
 namespace AikaSeggs.GameServer.Controllers.SDK
 {
     [ApiController]
     public class DMMAuthController : ControllerBase
     {
-        // Global test field for password validation
-        private static readonly string TestPassword = "wrong";
+        private readonly AikaSeggsContext _context;
+
+        public DMMAuthController(AikaSeggsContext context)
+        {
+            _context = context;
+        }
+
+        private static string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(hashedBytes);
+            }
+        }
+
+        private static string GenerateUserId()
+        {
+            return Guid.NewGuid().ToString("N");
+        }
 
         private static string GetHtmlContent(string fileName)
         {
@@ -56,14 +77,66 @@ namespace AikaSeggs.GameServer.Controllers.SDK
         [Route("/welcome/signup/email/apply/=/channel=games")]
         public IResult SignupEmailApply()
         {
-            // Log account (email) if present
-            if (Request.HasFormContentType && Request.Form.ContainsKey("email"))
+            string? email = null;
+            string? password = null;
+
+            // Extract email and password from form
+            if (Request.HasFormContentType)
             {
-                Log.Information("Account: {Email}", Request.Form["email"].ToString());
+                if (Request.Form.ContainsKey("email"))
+                {
+                    email = Request.Form["email"].ToString();
+                }
+                if (Request.Form.ContainsKey("password"))
+                {
+                    password = Request.Form["password"].ToString();
+                }
             }
 
-            // Return the confirmation URL
-            var response = "/welcome/signup/email/confirm/=/channel=games?registration_id=101000-f08ee1b6-34a4-8e11-cfe5-7834786f4ae5";
+            // Create account if email and password are provided
+            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
+            {
+                try
+                {
+                    // Check if account already exists
+                    var existingAccount = _context.Accounts.FirstOrDefault(a => a.Email == email);
+                    if (existingAccount == null)
+                    {
+                        // Create new account
+                        var userId = GenerateUserId();
+                        var account = new AccountDB
+                        {
+                            UserId = userId,
+                            UserCd = userId,
+                            Email = email,
+                            PasswordHash = HashPassword(password),
+                            UserName = email.Split('@')[0], // Use email prefix as username
+                            Level = 1,
+                            Exp = 0,
+                            FreeGem = 0,
+                            PaidGem = 0,
+                            RegisterDate = DateTime.Now.ToString("yyyyMMddHHmmss")
+                        };
+
+                        _context.Accounts.Add(account);
+                        _context.SaveChanges();
+
+                        Log.Information("Account created: {Email}", email);
+                    }
+                    else
+                    {
+                        Log.Warning("Account already exists: {Email}", email);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "Failed to create account for: {Email}", email);
+                }
+            }
+
+            // Return the confirmation URL with email as query parameter
+            var emailParam = !string.IsNullOrEmpty(email) ? Uri.EscapeDataString(email) : "";
+            var response = $"/welcome/signup/email/confirm/=/channel=games?registration_id=101000-f08ee1b6-34a4-8e11-cfe5-7834786f4ae5&email={emailParam}";
             return Results.Redirect(response);
         }
 
@@ -71,7 +144,21 @@ namespace AikaSeggs.GameServer.Controllers.SDK
         [Route("/welcome/signup/email/confirm/=/channel=games")]
         public async Task SignupEmailConfirm()
         {
+            // Get email from query parameters
+            string? email = null;
+            if (Request.Query.ContainsKey("email"))
+            {
+                email = Request.Query["email"].ToString();
+            }
+
             var htmlContent = GetEmailConfirmHtml();
+            
+            // Replace template email with actual email if provided
+            if (!string.IsNullOrEmpty(email))
+            {
+                htmlContent = htmlContent.Replace("template_email@gmail.com", email);
+            }
+
             var htmlBytes = Encoding.UTF8.GetBytes(htmlContent);
 
             // Set essential response headers
@@ -97,12 +184,6 @@ namespace AikaSeggs.GameServer.Controllers.SDK
         [Route("/welcome/signup/email/complete/=/channel=games")]
         public async Task SignupEmailComplete()
         {
-            // Log account (email) if present
-            if (Request.HasFormContentType && Request.Form.ContainsKey("email"))
-            {
-                Log.Information("Account: {Email}", Request.Form["email"].ToString());
-            }
-
             var htmlContent = GetEmailCompleteHtml();
             var htmlBytes = Encoding.UTF8.GetBytes(htmlContent);
 
@@ -141,28 +222,15 @@ namespace AikaSeggs.GameServer.Controllers.SDK
         [Route("/service/login/password/authenticate")]
         public IResult PasswordAuthenticate()
         {
-            // Log account and password
-            string? account = null;
+            string? loginId = null;
             string? password = null;
             
+            // Extract login_id and password from form
             if (Request.HasFormContentType)
             {
-                // Try common account field names
-                if (Request.Form.ContainsKey("email"))
+                if (Request.Form.ContainsKey("login_id"))
                 {
-                    account = Request.Form["email"].ToString();
-                }
-                else if (Request.Form.ContainsKey("login"))
-                {
-                    account = Request.Form["login"].ToString();
-                }
-                else if (Request.Form.ContainsKey("account"))
-                {
-                    account = Request.Form["account"].ToString();
-                }
-                else if (Request.Form.ContainsKey("username"))
-                {
-                    account = Request.Form["username"].ToString();
+                    loginId = Request.Form["login_id"].ToString();
                 }
 
                 if (Request.Form.ContainsKey("password"))
@@ -171,21 +239,61 @@ namespace AikaSeggs.GameServer.Controllers.SDK
                 }
             }
 
-            if (!string.IsNullOrEmpty(account) || !string.IsNullOrEmpty(password))
+            // Log account and password
+            if (!string.IsNullOrEmpty(loginId) || !string.IsNullOrEmpty(password))
             {
-                Log.Information("Account: {Account}, Password: {Password}", account ?? "N/A", password ?? "N/A");
+                Log.Information("Account: {LoginId}, Password: {Password}", loginId ?? "N/A", password ?? "N/A");
             }
 
-            // Check if password is wrong (using global test field)
-
-            if (password == TestPassword)
+            // Validate credentials
+            bool loginSuccess = false;
+            if (!string.IsNullOrEmpty(loginId) && !string.IsNullOrEmpty(password))
             {
-                // Wrong password - redirect to login page
+                try
+                {
+                    var account = _context.Accounts.FirstOrDefault(a => a.Email == loginId);
+                    if (account != null)
+                    {
+                        var passwordHash = HashPassword(password);
+                        if (account.PasswordHash == passwordHash)
+                        {
+                            loginSuccess = true;
+                            Log.Information("Login successful for: {LoginId}", loginId);
+                        }
+                        else
+                        {
+                            Log.Warning("Invalid password for: {LoginId}", loginId);
+                        }
+                    }
+                    else
+                    {
+                        Log.Warning("Account not found: {LoginId}", loginId);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "Error during login for: {LoginId}", loginId);
+                }
+            }
+
+            if (!loginSuccess)
+            {
+                // Wrong credentials - redirect to login page
                 var path = Request.Form.ContainsKey("path") ? Request.Form["path"].ToString() : "https%3A%2F%2Fartemis.games.dmm.co.jp%2Fmember%2Fpc%2Finit-game-frame%2Fdeeponer";
                 var channel = Request.Form.ContainsKey("channel") ? Request.Form["channel"].ToString() : "games";
                 var redirectUrl = $"/service/login/password/=/path={path}/channel={channel}";
                 return Results.Redirect(redirectUrl);
             }
+
+            // Set response headers for successful login
+            var expiresDate = DateTime.UtcNow.AddYears(1).ToString("ddd, dd MMM yyyy HH:mm:ss GMT");
+            var expiresDateShort = DateTime.UtcNow.AddMonths(1).ToString("ddd, dd MMM yyyy HH:mm:ss GMT");
+
+            // Set multiple Set-Cookie headers
+           Response.Headers.Append("Set-Cookie", $"check_done_login=true; path=/; expires={expiresDate}; domain=dmm.co.jp; httponly");
+            Response.Headers.Append("Set-Cookie", $"subscription_members_status=non; path=/; expires={expiresDateShort}; domain=dmm.co.jp");
+            Response.Headers.Append("Set-Cookie", $"latestlogin=email; path=/; expires={expiresDate}; domain=accounts.dmm.co.jp; samesite=none; secure; httponly");
+            Response.Headers.Append("Set-Cookie", "ckcy_remedied_check=ktkrt_argt; path=/; domain=dmm.co.jp");
 
             // Redirect to the game frame URL
             return Results.Redirect("https://artemis.games.dmm.co.jp/member/pc/init-game-frame/deeponer");

@@ -93,6 +93,11 @@ namespace AikaSeggs.Database
             modelBuilder.Entity<QuestDB>()
                 .HasIndex(q => new { q.UserId, q.QuestId })
                 .IsUnique();
+
+            // Unique constraint for email
+            modelBuilder.Entity<AccountDB>()
+                .HasIndex(a => a.Email)
+                .IsUnique();
         }
     }
 }
