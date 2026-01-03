@@ -98,6 +98,7 @@ namespace AikaSeggs.GameServer
                     Log.Warning(ex, "Failed to apply database migrations. Make sure migrations exist.");
                 }
 
+                app.UseHealthChecks("/health");
                 app.UseAuthorization();
                 app.UseSerilogRequestLogging();
 
