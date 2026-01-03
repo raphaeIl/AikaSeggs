@@ -9,7 +9,7 @@ namespace AikaSeggs.Common.Utils
 {
     public static class Config
     {
-        public static string ResourceDir = Path.Join(Path.GetDirectoryName(AppContext.BaseDirectory), "Resources");
+        public static string ResourceDir = Path.Join(AppContext.BaseDirectory, "Resources");
         public static string PcapDir = Path.Join(ResourceDir, "Packets");
         public static string BaseUrl = "https://prod-web-r.tc.deepone-online.com/deep-one/api";
 

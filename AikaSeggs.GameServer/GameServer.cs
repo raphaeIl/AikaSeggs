@@ -107,12 +107,16 @@ namespace AikaSeggs.GameServer
 
                 app.MapControllers();
                 
+                // Log that server is about to start
+                var serverPort = Environment.GetEnvironmentVariable("PORT");
+                Log.Information("Starting web server on port: {Port}", serverPort ?? "default");
+                
                 // Start background tasks after server is ready
                 _ = Task.Run(async () =>
                 {
                     try
                     {
-                        await Task.Delay(1000); // Give server time to start
+                        await Task.Delay(2000); // Give server time to start
                         Log.Information("Loading PCAP packets...");
                         PcapParser.PcapParser.Instance.LoadAllPackets();
                         
@@ -129,6 +133,7 @@ namespace AikaSeggs.GameServer
                     }
                 });
                 
+                Log.Information("Web server starting...");
                 app.Run();
             }
             catch (Exception ex)
