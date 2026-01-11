@@ -8,11 +8,11 @@ namespace AikaSeggs.GameServer.Controllers
     [ApiController]
     public class ResourceController : ControllerBase
     {
-        private const string LOCAL_PROJECT_JS = @"E:\documents\Decompiling\Extracted\DeepOne\AikaDumper\project.js";
+        private const string LOCAL_PROJECT_JS = @"E:\documents\Decompiling\Extracted\DeepOne\AikaSeggs\project.js";
         private const string LOCAL_STORY_TEST = @"E:\documents\Decompiling\Extracted\DeepOne\AikaSeggs\AikaSeggs.GameServer\Controllers\CDN\0b28d5f523614f88989ca79def871b2d.txt";
         private const string LOCAL_MP4_PATH = @"E:\documents\Decompiling\Extracted\DeepOne\AikaSeggs\AikaSeggs.GameServer\Controllers\CDN\dd9acdabf7151ba50e5738ffe289b3e3.mp4";
 
-        [HttpGet("client/1.290.0/src/project.js")]
+        [HttpGet("client/1.293.0/src/project.js")]
         public IActionResult GetProjectJs()
         {
             var content = System.IO.File.ReadAllBytes(LOCAL_PROJECT_JS);
