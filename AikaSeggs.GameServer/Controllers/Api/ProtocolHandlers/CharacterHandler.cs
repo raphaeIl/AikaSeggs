@@ -1,7 +1,13 @@
 using AikaSeggs.Common;
 using AikaSeggs.Common.Core;
+using AikaSeggs.Common.Packets;
 using AikaSeggs.Common.Services;
 using AikaSeggs.PcapParser;
+using System;
+using System.Linq;
+using Newtonsoft.Json;
+using AikaSeggs.Database;
+using AikaSeggs.Database.Models;
 
 namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
 {
@@ -9,10 +15,103 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     {
         private readonly TableService tableService;
 
-        public CharacterHandler(IProtocolHandlerFactory protocolHandlerFactory, TableService tableService) 
+        private readonly AikaSeggsContext context;
+
+        public CharacterHandler(IProtocolHandlerFactory protocolHandlerFactory, TableService tableService, AikaSeggsContext context) 
             : base(protocolHandlerFactory)
         {
             this.tableService = tableService;
+            this.context = context;
+
+            this.AddAllCharacters();
+        }
+
+        [ProtocolHandler(Protocol.Character_GetUserData)]
+        public HttpMessage CharacterGetUserData()
+        {
+            CharacterGetUserDataResponse resp = new CharacterGetUserDataResponse()
+            {
+                Characters = []
+            };
+
+            foreach (CharacterDB character in context.Characters)
+            {
+                resp.Characters.Add(new Common.Database.CharacterModel()
+                {
+                    CharacterCd = character.CharacterCd,
+                    CharacterId = character.CharacterId,
+                    Exp = 0,
+                    Level = 999888777,
+                    SkillLevel = 9191919,
+                    AbilityLevel1 = 78787,
+                    AbilityLevel2 = 78787,
+                    AbilityLevel3 = 78787,
+                    ExceedLimit = 0,
+                    ExceedLimitExp = 0,
+                    IsProtect = 0,
+                    RegisterDate = character.RegisterDate,
+                    EquipmentWeaponCds = [],
+                    EquipmentProtectorCds = [],
+                    AwakeIds = [],
+                    BattleCount = 1,
+                });
+            }
+
+            //var settings = new JsonSerializerSettings
+            //{
+            //    NullValueHandling = NullValueHandling.Ignore
+            //};
+            //string json = JsonConvert.SerializeObject(resp, settings);
+            //return HttpMessage.Create(json, doMsgPack: true);
+            return HttpMessage.Create(resp, doMsgPack: true);
+        }
+
+        private void AddAllCharacters()
+        {
+            // Check if characters already exist
+            if (context.Characters.Any())
+            {
+                return; // Characters already added
+            }
+
+            // Get the first account's UserCd, or create a default account if none exists
+            var account = context.Accounts.FirstOrDefault();
+            if (account == null)
+            {
+                // Create a default account
+                account = new AccountDB
+                {
+                    UserId = Guid.NewGuid().ToString("N"),
+                    UserCd = Guid.NewGuid().ToString("N"),
+                    UserName = "DefaultUser",
+                    Level = 1,
+                    Exp = 0,
+                    FreeGem = 0,
+                    PaidGem = 0,
+                    RegisterDate = DateTime.Now.ToString("yyyyMMddHHmmss")
+                };
+                context.Accounts.Add(account);
+                context.SaveChanges();
+            }
+
+            foreach (Common.Database.ExCharacterMainModel characterMain in tableService.GetTable<MasterCharacterMainData>().CharacterMain)
+            {
+                // Skip characters that are linkerIds in CharacterLink
+                if (characterMain.CharacterType == (int)Character_CHARACTER_TYPE.W_UNIT)
+                {
+                    continue;
+                }
+
+                context.Characters.Add(new Database.Models.CharacterDB()
+                {
+                    CharacterCd = Guid.NewGuid().ToString("N"),
+                    CharacterId = characterMain.CharacterId,
+                    RegisterDate = DateTime.Now.ToString("yyyyMMddHHmmss"),
+                    UserCd = account.UserCd
+                });
+            }
+
+            context.SaveChanges();
         }
 
         [ProtocolHandler(Protocol.Character_GetMasterData)]
@@ -146,14 +245,6 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         {
             var tableJson = tableService.GetTableJsonByProtocol(Protocol.Character_GetMasterEvolutionData);
             return HttpMessage.Create(tableJson, doMsgPack: true);
-        }
-
-        [ProtocolHandler(Protocol.Character_GetUserData)]
-        public HttpMessage CharacterGetUserData()
-        {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Character_GetUserData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
         }
     }
 }

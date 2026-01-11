@@ -357,6 +357,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
                     SelectGrpupInfoArray = new List<dynamic>()
                 },
             };
+            
             return HttpMessage.Create(resp);
         }
 
@@ -8065,21 +8066,46 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
                 },
                 GetCharacters = new List<UserCharacterModel>(),
                 GetEquipments = new List<EquipmentModel>(),
+                
                 PreConvert = new List<CharacterSellBonusModel>
                 {
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100402, Count = 1, Rarity = 2 },
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100802, Count = 1, Rarity = 2 },
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100702, Count = 1, Rarity = 2 },
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 101380, Count = 1, Rarity = 3 },
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100802, Count = 1, Rarity = 2 }
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100106, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100107, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100108, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100109, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100110, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100111, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100112, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 190880, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 191105, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 191304, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100109, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100110, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100111, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100112, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 190880, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 191105, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 191304, Count = 1, Rarity = 4 },
                 },
                 Cards = new List<CharacterSellBonusModel>
                 {
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100402, Count = 1, Rarity = 2 },
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100802, Count = 1, Rarity = 2 },
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100702, Count = 1, Rarity = 2 },
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 101380, Count = 1, Rarity = 3 },
-                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100802, Count = 1, Rarity = 2 }
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100106, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100107, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100108, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100109, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100110, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100111, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100112, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 190880, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 191105, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 191304, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100109, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100110, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100111, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 100112, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 190880, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 191105, Count = 1, Rarity = 4 },
+                    new CharacterSellBonusModel { ItemType = 910, ItemId = 191304, Count = 1, Rarity = 4 },
                 },
                 IsCanReplay = false,
                 RemainReplayCount = 0,
@@ -8101,6 +8127,12 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
                     CoinPresent = new List<dynamic>()
                 }
             };
+
+            for (int i = 0; i < 1; i++)
+            {
+                resp.PreConvert.Add(new CharacterSellBonusModel { ItemType = 910, ItemId = 100110, Count = 1, Rarity = 4 });
+                resp.Cards.Add(new CharacterSellBonusModel { ItemType = 910, ItemId = 100110, Count = 1, Rarity = 4 });
+            }
 
             return resp;
         }
