@@ -12,7 +12,7 @@ namespace AikaSeggs.Database.Models
         public virtual ICollection<StoryDB> Stories { get; set; } = [];
 
         [JsonIgnore]
-        public virtual ICollection<PictureBookDetailDB> PictureBookDetails { get; set; } = [];
+        public virtual ICollection<PictureBookDB> PictureBooks { get; set; } = [];
 
         [Key]
         public int Id { get; set; }

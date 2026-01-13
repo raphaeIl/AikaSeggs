@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AikaSeggs.Database.Models
 {
-    public class PictureBookDetailDB
+    public class PictureBookDB
     {
         [JsonIgnore]
         public virtual AccountDB Account { get; set; } = null!;
@@ -16,6 +16,8 @@ namespace AikaSeggs.Database.Models
         public string UserCd { get; set; } = string.Empty;
 
         public int CharacterId { get; set; }
+
+        public int CharacterGroupId { get; set; }
 
         public int Friendship { get; set; }
 

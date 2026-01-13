@@ -10,7 +10,7 @@ namespace AikaSeggs.Database
         public DbSet<AccountDB> Accounts { get; set; }
         public DbSet<CharacterDB> Characters { get; set; }
         public DbSet<StoryDB> Stories { get; set; }
-        public DbSet<PictureBookDetailDB> PictureBookDetails { get; set; }
+        public DbSet<PictureBookDB> PictureBooks { get; set; }
 
         public AikaSeggsContext(DbContextOptions<AikaSeggsContext> options) : base(options) { }
 
@@ -19,7 +19,7 @@ namespace AikaSeggs.Database
             modelBuilder.Entity<AccountDB>().Property(x => x.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<CharacterDB>().Property(x => x.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<StoryDB>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<PictureBookDetailDB>().Property(x => x.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<PictureBookDB>().Property(x => x.Id).ValueGeneratedOnAdd();
 
             // Account relationships
             modelBuilder.Entity<AccountDB>()
@@ -37,7 +37,7 @@ namespace AikaSeggs.Database
                 .IsRequired();
 
             modelBuilder.Entity<AccountDB>()
-                .HasMany(x => x.PictureBookDetails)
+                .HasMany(x => x.PictureBooks)
                 .WithOne(x => x.Account)
                 .HasForeignKey(x => x.UserCd)
                 .HasPrincipalKey(x => x.UserCd)
@@ -52,7 +52,7 @@ namespace AikaSeggs.Database
                 .HasIndex(s => new { s.UserCd, s.StoryId })
                 .IsUnique();
 
-            modelBuilder.Entity<PictureBookDetailDB>()
+            modelBuilder.Entity<PictureBookDB>()
                 .HasIndex(p => new { p.UserCd, p.CharacterId })
                 .IsUnique();
 

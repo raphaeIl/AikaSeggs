@@ -26,7 +26,7 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         private void AddAllPictureBook()
         {
             // Check if picture book details already exist
-            if (context.PictureBookDetails.Any())
+            if (context.PictureBooks.Any())
             {
                 return; // Picture book details already added
             }
@@ -77,15 +77,16 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
 
             foreach (Common.Database.ExCharacterMainModel characterMain in tableService.GetTable<MasterCharacterMainData>().CharacterMain)
             {
-                if (!addCharacterIds.Contains(characterMain.CharacterId))
-                {
-                    continue;
-                }
+                //if (!addCharacterIds.Contains(characterMain.CharacterId))
+                //{
+                //    continue;
+                //}
 
-                context.PictureBookDetails.Add(new PictureBookDetailDB
+                context.PictureBooks.Add(new PictureBookDB
                 {
                     UserCd = account.UserCd,
                     CharacterId = characterMain.CharacterId,
+                    CharacterGroupId = characterMain.CharacterGroupId,
                     Friendship = 0,
                     ExceedLimit = 0
                 });
@@ -104,14 +105,23 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
             };
 
             // Add all picture book details from database
-            foreach (PictureBookDetailDB pictureBookDetail in context.PictureBookDetails)
+            foreach (PictureBookDB pictureBook in context.PictureBooks)
             {
                 resp.PictureBookDetail.Add(new Common.Database.PictureBookDetailModel
                 {
-                    CharacterId = pictureBookDetail.CharacterId,
-                    Friendship = pictureBookDetail.Friendship,
-                    ExceedLimit = pictureBookDetail.ExceedLimit
+                    CharacterId = pictureBook.CharacterId,
+                    Friendship = pictureBook.Friendship,
+                    ExceedLimit = pictureBook.ExceedLimit
                 });
+
+                if (!resp.PictureBookBase.Any(e => e.CharacterGroupId == pictureBook.CharacterGroupId))
+                {
+                    resp.PictureBookBase.Add(new Common.Database.PictureBookBaseModel()
+                    {
+                        CharacterGroupId = pictureBook.CharacterGroupId,
+                        RoomSelectCharacterId = 0
+                    });
+                }
             }
 
             return HttpMessage.Create(resp, doMsgPack: true);
