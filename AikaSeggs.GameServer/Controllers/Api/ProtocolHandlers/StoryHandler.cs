@@ -48,6 +48,33 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
             return HttpMessage.Create(resp, doMsgPack: true);
         }
 
+        [ProtocolHandler(Protocol.Story_ReadStory)]
+        public HttpMessage StoryReadStory()
+        {
+            StoryReadStoryResponse resp = new StoryReadStoryResponse
+            {
+                AddFreeGems = 20,
+                Gem = new Common.Database.UserGemModel
+                {
+                    FreeGem = 999888777,
+                    PaidGem = 999888777
+                },
+                Stories = new List<Common.Database.StoryModel>()
+            };
+
+            // Add all stories from database
+            foreach (StoryDB story in context.Stories)
+            {
+                resp.Stories.Add(new Common.Database.StoryModel
+                {
+                    StoryId = story.StoryId,
+                    IsRead = story.IsRead
+                });
+            }
+
+            return HttpMessage.Create(resp, doMsgPack: true);
+        }
+
         [ProtocolHandler(Protocol.Story_GetResource)]
         public HttpMessage StoryGetResource()
         {
