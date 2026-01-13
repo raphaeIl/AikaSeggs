@@ -1,6 +1,9 @@
 using AikaSeggs.Common;
 using AikaSeggs.Common.Core;
+using AikaSeggs.Common.Packets;
 using AikaSeggs.Common.Services;
+using AikaSeggs.Database;
+using AikaSeggs.Database.Models;
 using AikaSeggs.PcapParser;
 
 namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
@@ -8,11 +11,13 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
     public class StoryHandler : ProtocolHandlerBase
     {
         private readonly TableService tableService;
+        private readonly AikaSeggsContext context;
 
-        public StoryHandler(IProtocolHandlerFactory protocolHandlerFactory, TableService tableService) 
+        public StoryHandler(IProtocolHandlerFactory protocolHandlerFactory, TableService tableService, AikaSeggsContext context) 
             : base(protocolHandlerFactory)
         {
             this.tableService = tableService;
+            this.context = context;
         }
 
         [ProtocolHandler(Protocol.Story_GetMasterData)]
@@ -25,9 +30,22 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
         [ProtocolHandler(Protocol.Story_GetUserData)]
         public HttpMessage StoryGetUserData()
         {
-            var pcap = PcapParser.PcapParser.Instance.GetPcapPacket(Protocol.Story_GetUserData);
-            HttpMessage resp = HttpMessage.Create(pcap.Packet.ToString(), pcap.IsMsgpack);
-            return resp;
+            StoryGetUserDataResponse resp = new StoryGetUserDataResponse
+            {
+                Stories = new List<Common.Database.StoryModel>()
+            };
+
+            // Add all stories from database
+            foreach (StoryDB story in context.Stories)
+            {
+                resp.Stories.Add(new Common.Database.StoryModel
+                {
+                    StoryId = story.StoryId,
+                    IsRead = story.IsRead
+                });
+            }
+
+            return HttpMessage.Create(resp, doMsgPack: true);
         }
 
         [ProtocolHandler(Protocol.Story_GetResource)]

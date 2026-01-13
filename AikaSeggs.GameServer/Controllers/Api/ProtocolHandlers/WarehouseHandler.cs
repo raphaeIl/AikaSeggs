@@ -41,8 +41,9 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
                     UserCd = character.UserCd,
                     CharacterId = character.CharacterId,
                     ExceedLimit = 0,
-                    Count = 1,
-                    UpdateDate = DateTime.Now.ToString("yyyyMMddHHmmss")
+                    Count = character.Count,
+                    UpdateDate = DateTime.Now.ToString("yyyyMMddHHmmss"),
+                    Rarity = character.Rarity,
                 });
             }
 
@@ -67,20 +68,21 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
                 {
                     CharacterCd = character.CharacterCd,
                     CharacterId = character.CharacterId,
-                    Exp = 0,
-                    Level = 999888777,
-                    SkillLevel = 9191919,
-                    AbilityLevel1 = 78787,
-                    AbilityLevel2 = 78787,
-                    AbilityLevel3 = 78787,
-                    ExceedLimit = 1000,
-                    ExceedLimitExp = 0,
-                    IsProtect = 0,
+                    Rarity = character.Rarity,
+                    Exp = character.Exp,
+                    Level = character.Level,
+                    SkillLevel = character.SkillLevel,
+                    AbilityLevel1 = character.AbilityLevel1,
+                    AbilityLevel2 = character.AbilityLevel2,
+                    AbilityLevel3 = character.AbilityLevel3,
+                    ExceedLimit = character.ExceedLimit,
+                    ExceedLimitExp = character.ExceedLimitExp,
+                    IsProtect = character.IsProtect,
                     RegisterDate = character.RegisterDate,
                     EquipmentWeaponCds = [],
                     EquipmentProtectorCds = [],
                     AwakeIds = [],
-                    BattleCount = 1,
+                    BattleCount = character.BattleCount,
                 });
             }
 

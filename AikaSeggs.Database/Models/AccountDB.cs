@@ -8,6 +8,12 @@ namespace AikaSeggs.Database.Models
         [JsonIgnore]
         public virtual ICollection<CharacterDB> Characters { get; set; } = [];
 
+        [JsonIgnore]
+        public virtual ICollection<StoryDB> Stories { get; set; } = [];
+
+        [JsonIgnore]
+        public virtual ICollection<PictureBookDetailDB> PictureBookDetails { get; set; } = [];
+
         [Key]
         public int Id { get; set; }
 

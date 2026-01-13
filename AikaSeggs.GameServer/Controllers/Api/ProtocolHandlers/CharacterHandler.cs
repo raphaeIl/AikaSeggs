@@ -40,20 +40,21 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
                 {
                     CharacterCd = character.CharacterCd,
                     CharacterId = character.CharacterId,
-                    Exp = 0,
-                    Level = 999888777,
-                    SkillLevel = 9191919,
-                    AbilityLevel1 = 78787,
-                    AbilityLevel2 = 78787,
-                    AbilityLevel3 = 78787,
-                    ExceedLimit = 0,
-                    ExceedLimitExp = 0,
-                    IsProtect = 0,
+                    Rarity = character.Rarity,
+                    Exp = character.Exp,
+                    Level = character.Level,
+                    SkillLevel = character.SkillLevel,
+                    AbilityLevel1 = character.AbilityLevel1,
+                    AbilityLevel2 = character.AbilityLevel2,
+                    AbilityLevel3 = character.AbilityLevel3,
+                    ExceedLimit = character.ExceedLimit,
+                    ExceedLimitExp = character.ExceedLimitExp,
+                    IsProtect = character.IsProtect,
                     RegisterDate = character.RegisterDate,
                     EquipmentWeaponCds = [],
                     EquipmentProtectorCds = [],
                     AwakeIds = [],
-                    BattleCount = 1,
+                    BattleCount = character.BattleCount,
                 });
             }
 
@@ -94,6 +95,32 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
                 context.SaveChanges();
             }
 
+            // Character IDs to skip
+            int[] skipCharacterIds = { 100102 };
+            int[] addCharacterIds = { 
+                102901,
+                102903,
+                102904,
+                102905,
+                102906,
+                102907,
+                102908,
+                102909,
+                102910,
+                102911,
+                102912,
+                102913,
+                102914,
+                102915,
+                102916,
+                102917,
+                102918,
+                102919,
+                102920,
+                102921,
+                102922,
+             };
+
             foreach (Common.Database.ExCharacterMainModel characterMain in tableService.GetTable<MasterCharacterMainData>().CharacterMain)
             {
                 // Skip characters that are linkerIds in CharacterLink
@@ -102,12 +129,36 @@ namespace AikaSeggs.GameServer.Controllers.Api.ProtocolHandlers
                     continue;
                 }
 
+                // // Skip characters in the skip list
+                // if (skipCharacterIds.Contains(characterMain.CharacterId))
+                // {
+                //     continue;
+                // }
+                
+                if (!addCharacterIds.Contains(characterMain.CharacterId))
+                {
+                    continue;
+                }
+
+
                 context.Characters.Add(new Database.Models.CharacterDB()
                 {
                     CharacterCd = Guid.NewGuid().ToString("N"),
                     CharacterId = characterMain.CharacterId,
                     RegisterDate = DateTime.Now.ToString("yyyyMMddHHmmss"),
-                    UserCd = account.UserCd
+                    UserCd = account.UserCd,
+                    Rarity = characterMain.Rarity,
+                    Count = 1,
+                    Exp = 0,
+                    Level = 1,
+                    SkillLevel = 1,
+                    AbilityLevel1 = 1,
+                    AbilityLevel2 = 1,
+                    AbilityLevel3 = 1,
+                    ExceedLimit = 0,
+                    ExceedLimitExp = 0,
+                    IsProtect = 0,
+                    BattleCount = 0
                 });
             }
 

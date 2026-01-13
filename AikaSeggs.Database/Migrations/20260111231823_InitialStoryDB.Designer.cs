@@ -2,6 +2,7 @@
 using AikaSeggs.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AikaSeggs.Database.Migrations
 {
     [DbContext(typeof(AikaSeggsContext))]
-    partial class AikaSeggsContextModelSnapshot : ModelSnapshot
+    [Migration("20260111231823_InitialStoryDB")]
+    partial class InitialStoryDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.11");
@@ -142,18 +145,6 @@ namespace AikaSeggs.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AbilityLevel1")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AbilityLevel2")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AbilityLevel3")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("BattleCount")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("CharacterCd")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -161,33 +152,9 @@ namespace AikaSeggs.Database.Migrations
                     b.Property<int>("CharacterId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Count")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ExceedLimit")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ExceedLimitExp")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Exp")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("IsProtect")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Level")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Rarity")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("RegisterDate")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("SkillLevel")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserCd")
                         .IsRequired()
@@ -199,33 +166,6 @@ namespace AikaSeggs.Database.Migrations
                         .IsUnique();
 
                     b.ToTable("Characters");
-                });
-
-            modelBuilder.Entity("AikaSeggs.Database.Models.PictureBookDetailDB", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CharacterId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ExceedLimit")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Friendship")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserCd")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserCd", "CharacterId")
-                        .IsUnique();
-
-                    b.ToTable("PictureBookDetails");
                 });
 
             modelBuilder.Entity("AikaSeggs.Database.Models.StoryDB", b =>
@@ -264,18 +204,6 @@ namespace AikaSeggs.Database.Migrations
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("AikaSeggs.Database.Models.PictureBookDetailDB", b =>
-                {
-                    b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
-                        .WithMany("PictureBookDetails")
-                        .HasForeignKey("UserCd")
-                        .HasPrincipalKey("UserCd")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
             modelBuilder.Entity("AikaSeggs.Database.Models.StoryDB", b =>
                 {
                     b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
@@ -291,8 +219,6 @@ namespace AikaSeggs.Database.Migrations
             modelBuilder.Entity("AikaSeggs.Database.Models.AccountDB", b =>
                 {
                     b.Navigation("Characters");
-
-                    b.Navigation("PictureBookDetails");
 
                     b.Navigation("Stories");
                 });
