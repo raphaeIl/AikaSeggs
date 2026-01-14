@@ -3933,7 +3933,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("storyId")]
 		public int StoryId { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("name")]
 		public string Name { get; set; }
 	}
@@ -3965,7 +3965,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("releaseStoryId")]
 		public int ReleaseStoryId { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("stableEventId")]
 		public int StableEventId { get; set; }
 		[JsonProperty("stageId")]
@@ -3985,7 +3985,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("storyId")]
 		public int StoryId { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("name")]
 		public string Name { get; set; }
 		[JsonProperty("characterId")]
@@ -4017,7 +4017,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("storyId")]
 		public int StoryId { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("eventId")]
 		public int EventId { get; set; }
 		[JsonProperty("name")]
@@ -4037,7 +4037,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("storyId")]
 		public int StoryId { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("name")]
 		public string Name { get; set; }
 	}
@@ -4055,7 +4055,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("releaseDate")]
 		public string ReleaseDate { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("stageId")]
 		public int StageId { get; set; }
 		[JsonProperty("storyGroupId")]
@@ -4073,7 +4073,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("releaseDate")]
 		public string ReleaseDate { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("rewardCount")]
 		public int RewardCount { get; set; }
 		[JsonProperty("rewardId")]
@@ -4097,7 +4097,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("releaseDate")]
 		public string ReleaseDate { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("stageId")]
 		public int StageId { get; set; }
 		[JsonProperty("stageMaster")]
@@ -4119,7 +4119,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("releaseDate")]
 		public string ReleaseDate { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("rewardCount")]
 		public int RewardCount { get; set; }
 		[JsonProperty("rewardId")]
@@ -4139,7 +4139,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("name")]
 		public string Name { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("storyGroupId")]
 		public int StoryGroupId { get; set; }
 		[JsonProperty("storyId")]
@@ -4153,7 +4153,7 @@ namespace AikaSeggs.Common.Database
 		[JsonProperty("releaseDate")]
 		public string ReleaseDate { get; set; }
 		[JsonProperty("resourceId")]
-		public int ResourceId { get; set; }
+		public long ResourceId { get; set; }
 		[JsonProperty("storyGroupId")]
 		public int StoryGroupId { get; set; }
 		[JsonProperty("storyId")]

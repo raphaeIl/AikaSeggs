@@ -1,9 +1,10 @@
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AikaSeggs.Database.Models
 {
-    public class QuestDB
+    public class StoryDB
     {
         [JsonIgnore]
         public virtual AccountDB Account { get; set; } = null!;
@@ -12,15 +13,11 @@ namespace AikaSeggs.Database.Models
         public int Id { get; set; }
 
         [Required]
-        public string UserId { get; set; } = string.Empty;
+        public string UserCd { get; set; } = string.Empty;
 
-        public int QuestId { get; set; }
+        public int StoryId { get; set; }
 
-        public int StageId { get; set; }
-
-        public int ClearCount { get; set; }
-
-        public int IsUnlock { get; set; }
+        public int IsRead { get; set; }
     }
 }
 

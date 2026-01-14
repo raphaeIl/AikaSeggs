@@ -13,21 +13,21 @@ namespace AikaSeggs.Database.Models
         public int Id { get; set; }
 
         [Required]
-        public string UserId { get; set; } = string.Empty;
+        public string UserCd { get; set; } = string.Empty;
 
         public string CharacterCd { get; set; } = string.Empty;
 
         public int CharacterId { get; set; }
 
+        public string RegisterDate { get; set; } = string.Empty;
+
+        public int Rarity { get; set; }
+
+        public int Count { get; set; }
+
         public int Exp { get; set; }
 
         public int Level { get; set; }
-
-        public int AddHp { get; set; }
-
-        public int AddAtk { get; set; }
-
-        public int AddDef { get; set; }
 
         public int SkillLevel { get; set; }
 
@@ -43,17 +43,7 @@ namespace AikaSeggs.Database.Models
 
         public int IsProtect { get; set; }
 
-        public string RegisterDate { get; set; } = string.Empty;
-
-        public string EquipmentWeaponCds { get; set; } = string.Empty; // JSON array stored as string
-
-        public string EquipmentProtectorCds { get; set; } = string.Empty; // JSON array stored as string
-
-        public string AwakeIds { get; set; } = string.Empty; // JSON array stored as string
-
         public int BattleCount { get; set; }
-
-        public int AddRarity { get; set; }
     }
 }
 

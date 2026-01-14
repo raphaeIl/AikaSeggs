@@ -2,6 +2,7 @@
 using AikaSeggs.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AikaSeggs.Database.Migrations
 {
     [DbContext(typeof(AikaSeggsContext))]
-    partial class AikaSeggsContextModelSnapshot : ModelSnapshot
+    [Migration("20260112064048_AddMostCharacterDBFields")]
+    partial class AddMostCharacterDBFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.11");
@@ -201,36 +204,6 @@ namespace AikaSeggs.Database.Migrations
                     b.ToTable("Characters");
                 });
 
-            modelBuilder.Entity("AikaSeggs.Database.Models.PictureBookDB", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CharacterGroupId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CharacterId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ExceedLimit")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Friendship")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserCd")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserCd", "CharacterId")
-                        .IsUnique();
-
-                    b.ToTable("PictureBooks");
-                });
-
             modelBuilder.Entity("AikaSeggs.Database.Models.StoryDB", b =>
                 {
                     b.Property<int>("Id")
@@ -267,18 +240,6 @@ namespace AikaSeggs.Database.Migrations
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("AikaSeggs.Database.Models.PictureBookDB", b =>
-                {
-                    b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
-                        .WithMany("PictureBooks")
-                        .HasForeignKey("UserCd")
-                        .HasPrincipalKey("UserCd")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
             modelBuilder.Entity("AikaSeggs.Database.Models.StoryDB", b =>
                 {
                     b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
@@ -294,8 +255,6 @@ namespace AikaSeggs.Database.Migrations
             modelBuilder.Entity("AikaSeggs.Database.Models.AccountDB", b =>
                 {
                     b.Navigation("Characters");
-
-                    b.Navigation("PictureBooks");
 
                     b.Navigation("Stories");
                 });

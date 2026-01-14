@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using AikaSeggs.Database.Models;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace AikaSeggs.Database
 {
@@ -8,11 +9,8 @@ namespace AikaSeggs.Database
     {
         public DbSet<AccountDB> Accounts { get; set; }
         public DbSet<CharacterDB> Characters { get; set; }
-        public DbSet<ItemDB> Items { get; set; }
-        public DbSet<EquipmentDB> Equipment { get; set; }
-        public DbSet<DeckDB> Decks { get; set; }
-        public DbSet<MissionDB> Missions { get; set; }
-        public DbSet<QuestDB> Quests { get; set; }
+        public DbSet<StoryDB> Stories { get; set; }
+        public DbSet<PictureBookDB> PictureBooks { get; set; }
 
         public AikaSeggsContext(DbContextOptions<AikaSeggsContext> options) : base(options) { }
 
@@ -20,78 +18,42 @@ namespace AikaSeggs.Database
         {
             modelBuilder.Entity<AccountDB>().Property(x => x.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<CharacterDB>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<ItemDB>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<EquipmentDB>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<DeckDB>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<MissionDB>().Property(x => x.Id).ValueGeneratedOnAdd();
-            modelBuilder.Entity<QuestDB>().Property(x => x.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<StoryDB>().Property(x => x.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<PictureBookDB>().Property(x => x.Id).ValueGeneratedOnAdd();
 
             // Account relationships
             modelBuilder.Entity<AccountDB>()
                 .HasMany(x => x.Characters)
                 .WithOne(x => x.Account)
-                .HasForeignKey(x => x.UserId)
-                .HasPrincipalKey(x => x.UserId)
+                .HasForeignKey(x => x.UserCd)
+                .HasPrincipalKey(x => x.UserCd)
                 .IsRequired();
 
             modelBuilder.Entity<AccountDB>()
-                .HasMany(x => x.Items)
+                .HasMany(x => x.Stories)
                 .WithOne(x => x.Account)
-                .HasForeignKey(x => x.UserId)
-                .HasPrincipalKey(x => x.UserId)
+                .HasForeignKey(x => x.UserCd)
+                .HasPrincipalKey(x => x.UserCd)
                 .IsRequired();
 
             modelBuilder.Entity<AccountDB>()
-                .HasMany(x => x.Equipment)
+                .HasMany(x => x.PictureBooks)
                 .WithOne(x => x.Account)
-                .HasForeignKey(x => x.UserId)
-                .HasPrincipalKey(x => x.UserId)
-                .IsRequired();
-
-            modelBuilder.Entity<AccountDB>()
-                .HasMany(x => x.Decks)
-                .WithOne(x => x.Account)
-                .HasForeignKey(x => x.UserId)
-                .HasPrincipalKey(x => x.UserId)
-                .IsRequired();
-
-            modelBuilder.Entity<AccountDB>()
-                .HasMany(x => x.Missions)
-                .WithOne(x => x.Account)
-                .HasForeignKey(x => x.UserId)
-                .HasPrincipalKey(x => x.UserId)
-                .IsRequired();
-
-            modelBuilder.Entity<AccountDB>()
-                .HasMany(x => x.Quests)
-                .WithOne(x => x.Account)
-                .HasForeignKey(x => x.UserId)
-                .HasPrincipalKey(x => x.UserId)
+                .HasForeignKey(x => x.UserCd)
+                .HasPrincipalKey(x => x.UserCd)
                 .IsRequired();
 
             // Unique constraints
             modelBuilder.Entity<CharacterDB>()
-                .HasIndex(c => new { c.UserId, c.CharacterCd })
+                .HasIndex(c => new { c.UserCd, c.CharacterCd })
                 .IsUnique();
 
-            modelBuilder.Entity<ItemDB>()
-                .HasIndex(i => new { i.UserId, i.ItemId })
+            modelBuilder.Entity<StoryDB>()
+                .HasIndex(s => new { s.UserCd, s.StoryId })
                 .IsUnique();
 
-            modelBuilder.Entity<EquipmentDB>()
-                .HasIndex(e => new { e.UserId, e.EquipmentCd })
-                .IsUnique();
-
-            modelBuilder.Entity<DeckDB>()
-                .HasIndex(d => new { d.UserId, d.DeckId })
-                .IsUnique();
-
-            modelBuilder.Entity<MissionDB>()
-                .HasIndex(m => new { m.UserId, m.MissionId })
-                .IsUnique();
-
-            modelBuilder.Entity<QuestDB>()
-                .HasIndex(q => new { q.UserId, q.QuestId })
+            modelBuilder.Entity<PictureBookDB>()
+                .HasIndex(p => new { p.UserCd, p.CharacterId })
                 .IsUnique();
 
             // Unique constraint for email

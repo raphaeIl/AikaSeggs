@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AikaSeggs.Database.Migrations
 {
     [DbContext(typeof(AikaSeggsContext))]
-    [Migration("20260102071906_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260113012317_AddPictureBookDetailDB")]
+    partial class AddPictureBookDetailDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,10 @@ namespace AikaSeggs.Database.Migrations
 
                     b.Property<int>("CharacterMaxCount")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("EquipmentMaxCount")
                         .HasColumnType("INTEGER");
@@ -72,6 +76,10 @@ namespace AikaSeggs.Database.Migrations
 
                     b.Property<int>("PaidGem")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("PlayerType")
                         .HasColumnType("INTEGER");
@@ -125,6 +133,9 @@ namespace AikaSeggs.Database.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.ToTable("Accounts");
                 });
 
@@ -143,22 +154,6 @@ namespace AikaSeggs.Database.Migrations
                     b.Property<int>("AbilityLevel3")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AddAtk")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AddDef")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AddHp")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AddRarity")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AwakeIds")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("BattleCount")
                         .HasColumnType("INTEGER");
 
@@ -169,13 +164,8 @@ namespace AikaSeggs.Database.Migrations
                     b.Property<int>("CharacterId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("EquipmentProtectorCds")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EquipmentWeaponCds")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Count")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ExceedLimit")
                         .HasColumnType("INTEGER");
@@ -190,6 +180,9 @@ namespace AikaSeggs.Database.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Level")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Rarity")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("RegisterDate")
@@ -199,252 +192,99 @@ namespace AikaSeggs.Database.Migrations
                     b.Property<int>("SkillLevel")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserCd")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId", "CharacterCd")
+                    b.HasIndex("UserCd", "CharacterCd")
                         .IsUnique();
 
                     b.ToTable("Characters");
                 });
 
-            modelBuilder.Entity("AikaSeggs.Database.Models.DeckDB", b =>
+            modelBuilder.Entity("AikaSeggs.Database.Models.PictureBookDetailDB", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("CharacterCds")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("DeckId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("DeckName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MemorialCd")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId", "DeckId")
-                        .IsUnique();
-
-                    b.ToTable("Decks");
-                });
-
-            modelBuilder.Entity("AikaSeggs.Database.Models.EquipmentDB", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("EquipmentCd")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("EquipmentId")
+                    b.Property<int>("CharacterId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ExceedLimit")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ExceedLimitExp")
+                    b.Property<int>("Friendship")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Exp")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("IsProtect")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Level")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("RegisterDate")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserCd")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId", "EquipmentCd")
+                    b.HasIndex("UserCd", "CharacterId")
                         .IsUnique();
 
-                    b.ToTable("Equipment");
+                    b.ToTable("PictureBookDetails");
                 });
 
-            modelBuilder.Entity("AikaSeggs.Database.Models.ItemDB", b =>
+            modelBuilder.Entity("AikaSeggs.Database.Models.StoryDB", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Count")
+                    b.Property<int>("IsRead")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ItemId")
+                    b.Property<int>("StoryId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("UserCd")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId", "ItemId")
+                    b.HasIndex("UserCd", "StoryId")
                         .IsUnique();
 
-                    b.ToTable("Items");
-                });
-
-            modelBuilder.Entity("AikaSeggs.Database.Models.MissionDB", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ClearCount")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("MissionCd")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("MissionGroupId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MissionId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MissionType")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ReceiveCount")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId", "MissionId")
-                        .IsUnique();
-
-                    b.ToTable("Missions");
-                });
-
-            modelBuilder.Entity("AikaSeggs.Database.Models.QuestDB", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ClearCount")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("IsUnlock")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("QuestId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("StageId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId", "QuestId")
-                        .IsUnique();
-
-                    b.ToTable("Quests");
+                    b.ToTable("Stories");
                 });
 
             modelBuilder.Entity("AikaSeggs.Database.Models.CharacterDB", b =>
                 {
                     b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
                         .WithMany("Characters")
-                        .HasForeignKey("UserId")
-                        .HasPrincipalKey("UserId")
+                        .HasForeignKey("UserCd")
+                        .HasPrincipalKey("UserCd")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("AikaSeggs.Database.Models.DeckDB", b =>
+            modelBuilder.Entity("AikaSeggs.Database.Models.PictureBookDetailDB", b =>
                 {
                     b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
-                        .WithMany("Decks")
-                        .HasForeignKey("UserId")
-                        .HasPrincipalKey("UserId")
+                        .WithMany("PictureBookDetails")
+                        .HasForeignKey("UserCd")
+                        .HasPrincipalKey("UserCd")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("AikaSeggs.Database.Models.EquipmentDB", b =>
+            modelBuilder.Entity("AikaSeggs.Database.Models.StoryDB", b =>
                 {
                     b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
-                        .WithMany("Equipment")
-                        .HasForeignKey("UserId")
-                        .HasPrincipalKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
-            modelBuilder.Entity("AikaSeggs.Database.Models.ItemDB", b =>
-                {
-                    b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
-                        .WithMany("Items")
-                        .HasForeignKey("UserId")
-                        .HasPrincipalKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
-            modelBuilder.Entity("AikaSeggs.Database.Models.MissionDB", b =>
-                {
-                    b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
-                        .WithMany("Missions")
-                        .HasForeignKey("UserId")
-                        .HasPrincipalKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
-                });
-
-            modelBuilder.Entity("AikaSeggs.Database.Models.QuestDB", b =>
-                {
-                    b.HasOne("AikaSeggs.Database.Models.AccountDB", "Account")
-                        .WithMany("Quests")
-                        .HasForeignKey("UserId")
-                        .HasPrincipalKey("UserId")
+                        .WithMany("Stories")
+                        .HasForeignKey("UserCd")
+                        .HasPrincipalKey("UserCd")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -455,15 +295,9 @@ namespace AikaSeggs.Database.Migrations
                 {
                     b.Navigation("Characters");
 
-                    b.Navigation("Decks");
+                    b.Navigation("PictureBookDetails");
 
-                    b.Navigation("Equipment");
-
-                    b.Navigation("Items");
-
-                    b.Navigation("Missions");
-
-                    b.Navigation("Quests");
+                    b.Navigation("Stories");
                 });
 #pragma warning restore 612, 618
         }
